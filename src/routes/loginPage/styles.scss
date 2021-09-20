@@ -10,6 +10,7 @@
     width: 100%;
     max-width: 377px;
     max-height: 254px;
+    margin: 0 20px;
     margin-top: 10%;
   }
 
@@ -28,6 +29,21 @@
       line-height: 28px;
       font-weight: 400;
       color: $blue-darl-color;
+    }
+  }
+
+  @media (max-width: getBreackpoint('sm')) {
+    &__header {
+      &--image {
+        width: 35px;
+        height: 35px;
+      }
+  
+      &--title {
+        margin-left: $space-sm;
+        font-size: 20px;
+        line-height: 23px;
+      }
     }
   }
 }

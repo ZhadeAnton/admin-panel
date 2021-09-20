@@ -25,7 +25,8 @@ export default function LoginForm() {
           Пароль
         </label>
         <input
-          type="text"
+          type="password"
+          autoComplete="on"
           className='login-form__main--input'
         />
       </section>

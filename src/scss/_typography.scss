@@ -1,0 +1,15 @@
+%button-rules {
+  &:hover, &:focus {
+    filter: brightness(90%);
+  }
+
+  &:active {
+    filter: brightness(80%);
+  }
+
+  &:disabled {
+    background: none;
+    background-color: $grey-color;
+    cursor: not-allowed;
+  }
+}
