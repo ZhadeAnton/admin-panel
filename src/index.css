@@ -20,3 +20,7 @@ code {
   font-family: 'HelveticaRegular';
   src: local('Helvetica-Regular'), url('./assets/typography/Helvetica.ttf')
 }
+
+::-webkit-scrollbar {
+  display: none;
+}

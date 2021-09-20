@@ -1,0 +1,33 @@
+@import '../../scss/mixins'; 
+@import '../../scss/variables'; 
+
+.login-page {
+  height: 100vh;
+  @include flex-justify-center;
+  background-color: $grey-light-color;
+
+  &__form-block {
+    width: 100%;
+    max-width: 377px;
+    max-height: 254px;
+    margin-top: 10%;
+  }
+
+  &__header {
+    @include flex-center;
+    margin-bottom: $space-md;
+
+    &--image {
+      width: 45px;
+      height: 45px;
+    }
+
+    &--title {
+      margin-left: 12px;
+      font-size: 24px;
+      line-height: 28px;
+      font-weight: 400;
+      color: $blue-darl-color;
+    }
+  }
+}

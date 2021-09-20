@@ -1,0 +1,49 @@
+@import '../../../scss/variables';
+@import '../../../scss/mixins';
+
+%form-typography {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 12px;
+  color: $black-light-color;
+}
+
+.login-form {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  border-radius: 9px;
+  box-shadow: $card-shadow;
+  background-color: $white-color;
+
+  &__header {
+    margin-bottom: $space-lg;
+    @include flex-justify-center;
+
+    &--title {
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 20px;
+      color: $blue-darl-color;
+    }
+  }
+
+  &__main {
+    &--label {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: $space-sm;
+      @extend %form-typography;
+    }
+
+    &--input {
+      width: 100%;
+      padding: $space-sm 11px;
+      margin-bottom: $space-md;
+      border-radius: 3px;
+      outline: none;
+      border: 0.5px solid $grey-light-2-color;
+      @extend %form-typography;
+    }
+  }
+} 
