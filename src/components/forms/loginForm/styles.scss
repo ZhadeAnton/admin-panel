@@ -17,7 +17,7 @@
   background-color: $white-color;
 
   &__header {
-    margin-bottom: $space-lg;
+    margin-bottom: 25px;
     @include flex-justify-center;
 
     &--title {
@@ -44,6 +44,23 @@
       outline: none;
       border: 0.5px solid $grey-light-2-color;
       @extend %form-typography;
+    }
+  }
+
+  &__footer {
+    @include flex-align-center;
+    justify-content: space-between;
+
+    &--link {
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 11px;
+      line-height: 12px;
+      color: $blue-color;
+    }
+
+    &--button {
+      width: 110px;
     }
   }
 } 

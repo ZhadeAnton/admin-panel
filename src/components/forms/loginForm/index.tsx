@@ -1,6 +1,7 @@
 import React from 'react'
 
 import './styles.scss'
+import Button from '../../button/index'
 
 export default function LoginForm() {
   return (
@@ -13,7 +14,7 @@ export default function LoginForm() {
 
       <section className='login-form__main'>
         <label className='login-form__main--label'>
-            Почта
+          Почта
         </label>
         <input
           type="text"
@@ -21,7 +22,7 @@ export default function LoginForm() {
         />
 
         <label className='login-form__main--label'>
-            Пароль
+          Пароль
         </label>
         <input
           type="text"
@@ -29,14 +30,19 @@ export default function LoginForm() {
         />
       </section>
 
-      <div>
-        <a href="#">
-            Запросить доступ
+      <div className='login-form__footer'>
+        <a
+          className='login-form__footer--link'
+          href="#"
+        >
+          Запросить доступ
         </a>
 
-        <button>
+        <div className='login-form__footer--button'>
+          <Button backgrond='blue'>
             Войти
-        </button>
+          </Button>
+        </div>
       </div>
     </form>
   )

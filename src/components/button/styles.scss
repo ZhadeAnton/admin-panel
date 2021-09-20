@@ -1,0 +1,31 @@
+@import '../../scss/variables';
+
+%button {
+  width: 100%;
+  padding: 10px;
+  border: 0.5px solid $blue-color;
+  border-radius: 4px;
+  text-transform: capitalize;
+  border-radius: 4px;
+  color: $white-color;
+}
+
+.button-primary {
+  &-blue {
+    @extend %button;
+    background-color: $blue-color;
+    border: 0.5px solid $blue-color;
+  }
+
+  &-red {
+    @extend %button;
+    background-color: $red-color;
+    border: 0.5px solid $primary-accent-color;
+  }
+
+  &-grey {
+    @extend %button;
+    background-color: $grey-color;
+    border: 0.5px solid $primary-accent-color;
+  }
+}
