@@ -2,6 +2,7 @@ import React from 'react'
 
 import './styles.scss'
 import Button from '../../button/index'
+import InputPrimary from '../../inputs/inputPrimary'
 
 export default function LoginForm() {
   return (
@@ -16,19 +17,12 @@ export default function LoginForm() {
         <label className='login-form__main--label'>
           Почта
         </label>
-        <input
-          type="text"
-          className='login-form__main--input'
-        />
+        <InputPrimary type="text" />
 
         <label className='login-form__main--label'>
           Пароль
         </label>
-        <input
-          type="password"
-          autoComplete="on"
-          className='login-form__main--input'
-        />
+        <InputPrimary type="password" />
       </section>
 
       <div className='login-form__footer'>
