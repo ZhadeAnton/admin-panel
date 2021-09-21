@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { panelList } from '../../../utils/panelUtils'
+import { panelList } from '../../../../utils/panelUtils'
 import PanelAsideListItem from '../panelAsideListItem'
 
 export default function PanelAsideList() {

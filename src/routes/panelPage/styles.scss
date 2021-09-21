@@ -6,4 +6,9 @@
   display: grid;
   grid-template-columns: 285px 1fr;
   background-color: $grey-light-color;
+
+  &__main {
+    display: grid;
+    grid-template-rows: 67px 1fr;
+  }
 }
