@@ -33,4 +33,11 @@
       color: $grey-strong-2-color;
     }
   }
+
+  &__upload {
+    width: 100%;
+    @include flex-center;
+    margin-top: 10px;
+    margin-bottom: 22px;
+  }
 }

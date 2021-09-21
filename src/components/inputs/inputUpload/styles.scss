@@ -1,0 +1,43 @@
+@import '../../../scss/variables';
+@import '../../../scss/mixins';
+
+%input-font {
+  font-size: 10px;
+  line-height: 11px;
+  color: $black-light-color;
+}
+
+.input-upload {
+  width: 230px;
+  height: 29px;
+  @include flex-align-center; 
+  justify-content: space-between;
+  border: 1px solid $grey-light-2-color;
+  border-radius: 4px;
+
+  &__input {
+    padding-left: 13px;
+    @extend %input-font;
+  }
+
+  &__button {
+    width: 65px;
+    height: 100%;
+    @include flex-center;
+    cursor: pointer;
+    transition: $transition-sm;
+    background-color: $grey-strong-3-color;
+
+    &:hover {
+      opacity: .8;
+    }
+
+    .ant-upload.ant-upload-select {
+      display: block;
+    }
+
+    .ant-upload {
+      @extend %input-font;
+    }
+  }
+}

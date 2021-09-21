@@ -1,6 +1,7 @@
 import React from 'react'
 
 import './styles.scss'
+import InputUpload from '../inputs/inputUpload'
 
 interface Props {
   image: string,
@@ -23,6 +24,10 @@ export default function CarCard(props: Props) {
         <span className='car-card__info--type'>
           { props.type }
         </span>
+      </div>
+
+      <div className='car-card__upload'>
+        <InputUpload />
       </div>
     </section>
   )
