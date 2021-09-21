@@ -12,7 +12,7 @@ export default function InputSearch() {
 
       <input
         type="text"
-        placeholder='Поиск...'
+        placeholder='Поиск ...'
         className='input-search__input'
       />
     </div>
