@@ -2,6 +2,7 @@ import React from 'react'
 
 import './styles.scss'
 import Logo from '../../../assets/SVG/logo.svg'
+import PanelAsideList from '../panelAsideList'
 
 export default function PanelAside() {
   return (
@@ -17,6 +18,8 @@ export default function PanelAside() {
           Need for car
         </span>
       </div>
+
+      <PanelAsideList />
     </aside>
   )
 }
