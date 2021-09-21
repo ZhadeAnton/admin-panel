@@ -1,0 +1,17 @@
+@import '../../scss/mixins';
+@import '../../scss/variables';
+
+.user-panel {
+  @include flex-align-center;
+  padding: 0 25px;
+  cursor: pointer;
+
+  &__name {
+    margin-left: 13px;
+    margin-right: auto;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: $blue-darl-2-color;
+  }
+}

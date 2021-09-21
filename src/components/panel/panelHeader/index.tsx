@@ -1,6 +1,7 @@
 import React from 'react'
 import InputSearch from '../../inputs/inputSearch'
 import Notification from '../../notification/index'
+import UserPanel from '../../userPanel'
 
 import './styles.scss'
 
@@ -10,6 +11,8 @@ export default function PanelHeader() {
       <InputSearch />
 
       <Notification count={2} />
+
+      <UserPanel />
     </header>
   )
 }

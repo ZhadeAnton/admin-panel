@@ -6,11 +6,11 @@
   position: relative;
   border-left: 1px solid $grey-light-2-color;
   border-right: 1px solid $grey-light-2-color;
+  cursor: pointer;
 
   &__image {
     width: 17px;
     height: 17px;
-    cursor: pointer;
   }
 
   &__count {
