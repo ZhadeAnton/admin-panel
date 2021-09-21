@@ -1,10 +1,13 @@
 import React from 'react'
 
 import './styles.scss'
+import useHistoryPush from '../../../hooks/useHistory'
 import Button from '../../button/index'
 import InputPrimary from '../../inputs/inputPrimary'
 
 export default function LoginForm() {
+  const historyPush = useHistoryPush()
+
   return (
     <form className='login-form'>
       <div className='login-form__header'>
@@ -34,7 +37,10 @@ export default function LoginForm() {
         </a>
 
         <div className='login-form__footer--button'>
-          <Button backgrond='blue'>
+          <Button
+            backgrond='blue'
+            onClick={() => historyPush('/panel')}
+          >
             Войти
           </Button>
         </div>

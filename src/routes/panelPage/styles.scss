@@ -1,0 +1,9 @@
+@import '../../scss/variables';
+
+.panel-page {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 285px 1fr;
+  background-color: $grey-light-color;
+}
