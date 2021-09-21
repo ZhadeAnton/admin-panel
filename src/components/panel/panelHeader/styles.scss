@@ -1,4 +1,8 @@
+@import '../../../scss/variables';
+
 .panel-header {
   display: grid;
   grid-template-columns: 1fr 70px 217px;
+  background-color: $white-color;
+  box-shadow: 0px 2.5px 9.5px rgba(90, 97, 105, 0.12);
 }

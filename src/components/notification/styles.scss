@@ -1,0 +1,31 @@
+@import '../../scss/mixins';
+@import '../../scss/variables';
+
+.notification {
+  @include flex-center;
+  position: relative;
+  border-left: 1px solid $grey-light-2-color;
+  border-right: 1px solid $grey-light-2-color;
+
+  &__image {
+    width: 17px;
+    height: 17px;
+    cursor: pointer;
+  }
+
+  &__count {
+    width: 15px;
+    height: 15px;
+    @include flex-center;
+    @include abs-position(auto, 1rem, 1rem, auto);
+    border-radius: 50%;
+    background-color: $red-color;
+
+    &--number {
+      font-weight: 600;
+      font-size: 9px;
+      line-height: 13px;
+      color: $white-color;
+    }
+  }
+}
