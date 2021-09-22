@@ -1,0 +1,37 @@
+@import '../../scss/variables';
+@import '../../scss/typography';
+
+%button {
+  @extend %button-rules;
+  width: 100%;
+  padding: 10px;
+  border: 0.5px solid $blue-color;
+  border-radius: 4px;
+  text-transform: capitalize;
+  transition: $transition-sm;
+  border-radius: 4px;
+  user-select: none;
+  font-size: 11px;
+  line-height: 14px;
+  color: $white-color;
+}
+
+.button-primary {
+  &-blue {
+    @extend %button;
+    background-color: $blue-color;
+    border: 0.5px solid $blue-color;
+  }
+
+  &-red {
+    @extend %button;
+    background-color: $red-color;
+    border: 0.5px solid $primary-accent-color;
+  }
+
+  &-grey {
+    @extend %button;
+    background-color: $grey-color;
+    border: 0.5px solid $primary-accent-color;
+  }
+}

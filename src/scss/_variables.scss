@@ -1,0 +1,55 @@
+@use "sass:map";
+
+// Colors 
+$primary-accent-color: #0EC261;
+$black-color: #121212;
+$black-light-color: #495057;
+$blue-darl-color: #3D5170;
+$white-color: #FFFFFF;
+$blue-color: #007BFF;
+$red-color: #CB3656;
+$grey-color: #EEEEEE;
+$grey-light-color: #F5F6F8;
+$grey-light-2-color: #BECAD6;
+$grey-strong-color: #999999;
+
+// Transitions
+$transition-sm: .2s ease-in-out;
+$transition-md: .4s ease-in-out;
+
+// Box-shadow
+$card-shadow: 0px 1px 0px
+rgba(90, 97, 105, 0.11), 0px 2px 4px
+rgba(90, 97, 105, 0.12), 0px 5px 5px
+rgba(90, 97, 105, 0.06), 0px 3.5px 35px
+rgba(90, 97, 105, 0.1);
+
+// Layers
+$layer-1: 1;
+$layer-2: 10;
+$layer-3: 100;
+$layer-4: 200;
+$layer-5: 300;
+$layer-max: 1000;
+
+// Spaces
+$baseline: 8px;
+$space-sm: $baseline;
+$space-md: calc(#{$baseline} * 2); // 16px
+$space-lg: calc(#{$baseline} * 4); // 32px
+$space-xl: calc(#{$baseline} * 5); // 40px
+$space-xxl: calc(#{$baseline} * 8); // 64px
+
+// Breakpoints
+$grid-breakpoints: (
+  tiny: 320px,
+  vsm: 460px,
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1440px,
+);
+
+@function getBreackpoint($breakpoint) {
+  @return map-get($grid-breakpoints, $breakpoint)
+}
