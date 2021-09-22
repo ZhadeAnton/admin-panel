@@ -3,6 +3,7 @@ import React from 'react'
 import './styles.scss'
 import InputPrimary from '../../inputs/inputPrimary'
 import ButtonPlus from '../../button/buttonPlus'
+import RadioButton from '../../inputs/radioButton'
 
 export default function CatSettingForm() {
   return (
@@ -33,6 +34,8 @@ export default function CatSettingForm() {
           <ButtonPlus onClick={() => console.log('fire')} />
         </div>
       </div>
+
+      <RadioButton />
     </form>
   )
 }
