@@ -7,6 +7,7 @@ import PanelAside from '../../components/panel/PanelAside'
 import PanelTitle from '../../components/panel/panelTitle'
 import PanelFooter from '../../components/panel/panelFooter'
 import CarCard from '../../components/carCard'
+import CarSetting from '../../components/carSetting'
 
 export default function PanelPage() {
   return (
@@ -25,6 +26,8 @@ export default function PanelPage() {
               model='Hyndai, i30 N'
               type='Комплект-кар'
             />
+
+            <CarSetting />
           </section>
         </section>
 

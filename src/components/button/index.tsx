@@ -4,6 +4,7 @@ import './styles.scss'
 
 interface Props {
   children: string,
+  className?: string,
   backgrond: 'blue' | 'red' | 'grey',
   onClick: () => void
 }
@@ -16,8 +17,8 @@ export default function Button(props: Props) {
 
   return (
     <button
-      className={`button-primary${props.backgrond === 'blue'
-    ? '-blue' : props.backgrond === 'red' ? '-red' : '-grey' }`}
+      className={`${props.className} button-primary${props.backgrond === 'blue'
+    ? '-blue' : props.backgrond === 'red' ? '-red' : '-grey'}`}
       onClick={handleButtonClick}
     >
       { props.children }
