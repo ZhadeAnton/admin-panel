@@ -2,7 +2,7 @@ import React from 'react'
 
 import './styles.scss'
 import useHistoryPush from '../../../hooks/useHistory'
-import Button from '../../button/index'
+import Button from '../../button/buttonPrimary/index'
 import InputPrimary from '../../inputs/inputPrimary'
 
 export default function LoginForm() {

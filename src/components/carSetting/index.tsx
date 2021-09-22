@@ -1,16 +1,19 @@
 import React from 'react'
 
 import './styles.scss'
-import Button from '../button/index'
+import Button from '../button/buttonPrimary/index'
+import CatSettingForm from '../forms/carSettingForm'
 
 export default function CarSetting() {
   return (
     <section className='car-setting'>
-      <>
+      <div className='car-setting__top'>
         <p className='car-setting__title'>
           Настройки автомобиля
         </p>
-      </>
+
+        <CatSettingForm />
+      </div>
 
       <div className='car-setting__footer'>
         <div className='car-setting__footer--left-block'>

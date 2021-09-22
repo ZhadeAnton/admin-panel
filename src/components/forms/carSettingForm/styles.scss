@@ -1,0 +1,51 @@
+@import '../../../scss/variables';
+@import '../../../scss/mixins';
+
+%setting-label {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 12px;
+  color: $black-color;
+}
+
+.car-setting-form {
+  &__top-inputs {
+    @include flex-align-center;
+    margin-bottom: 30px;
+
+    &--wrapper {
+      width: 100%;
+      max-width: 320px;
+
+      input {
+        margin: 0;
+      }
+
+      &:not(:last-child) {
+        margin-right: 21px;
+      }
+    }
+
+    &--label {
+      @extend %setting-label;
+    }
+  }
+
+  &__car-colors {
+    width: 100%;
+    max-width: 320px;
+
+    &--label {
+      @extend %setting-label;
+    }
+
+    &--inputs-wrapper {
+      @include flex-align-center;
+
+      input {
+        margin: 0;
+        margin-right: $space-sm;
+      }
+    }
+  }
+}
