@@ -7,7 +7,7 @@ import { ReactComponent as person } from '../assets/SVG/person.svg'
 import { ReactComponent as error } from '../assets/SVG//error.svg'
 
 export const panelList = [
-  { icon: pen, title: 'Карточка автомобиля' },
+  { icon: pen, title: 'Карточка автомобиля'},
   { icon: list, title: 'Список авто' },
   { icon: doc, title: 'Заказы' },
   { icon: grid, title: 'Menu 4' },

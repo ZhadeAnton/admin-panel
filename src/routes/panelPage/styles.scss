@@ -8,19 +8,12 @@
   background-color: $grey-light-color;
 
   &__main {
-    display: grid;
-    grid-template-rows: 67px 1fr;
-  }
-
-  &__content {
-    padding: 28px;
-
-    &--main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &--content {
+      padding: 28px;
       height: 100%;
-      display: grid;
-      grid-template-columns: 335px 1fr;
-      column-gap: 30px;
-      margin-top: 30px;
     }
   }
 }

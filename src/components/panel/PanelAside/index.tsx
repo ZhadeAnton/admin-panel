@@ -2,7 +2,7 @@ import React from 'react'
 
 import './styles.scss'
 import Logo from '../../../assets/SVG/logo.svg'
-import PanelAsideList from './panelAsideList'
+import PanelTabs from './panelTabs'
 
 export default function PanelAside() {
   return (
@@ -19,7 +19,7 @@ export default function PanelAside() {
         </span>
       </div>
 
-      <PanelAsideList />
+      <PanelTabs />
     </aside>
   )
 }
