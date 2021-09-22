@@ -2,7 +2,7 @@ import React from 'react'
 
 import './styles.scss'
 import Button from '../button/buttonPrimary/index'
-import CatSettingForm from '../forms/carSettingForm'
+import CarSettingForm from '../forms/carSettingForm'
 
 export default function CarSetting() {
   return (
@@ -12,7 +12,7 @@ export default function CarSetting() {
           Настройки автомобиля
         </p>
 
-        <CatSettingForm />
+        <CarSettingForm />
       </div>
 
       <div className='car-setting__footer'>
