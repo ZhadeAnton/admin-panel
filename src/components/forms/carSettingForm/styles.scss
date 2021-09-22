@@ -9,9 +9,9 @@
 }
 
 .car-setting-form {
-  &__top-inputs {
+  &__double-inputs {
     @include flex-align-center;
-    margin-bottom: 30px;
+    margin-bottom: $space-md;
 
     &--wrapper {
       width: 100%;
@@ -47,5 +47,10 @@
         margin-right: $space-sm;
       }
     }
+  }
+
+  &__text-area {
+    margin-top: 30px;
+    max-width: 661px;
   }
 }

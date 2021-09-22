@@ -3,7 +3,7 @@ import React from 'react'
 import './styles.scss'
 import useHistoryPush from '../../../hooks/useHistory'
 import Button from '../../button/buttonPrimary/index'
-import InputPrimary from '../../inputs/inputPrimary'
+// import InputPrimary from '../../inputs/inputPrimary'
 
 export default function LoginForm() {
   const historyPush = useHistoryPush()
@@ -20,12 +20,18 @@ export default function LoginForm() {
         <label className='login-form__main--label'>
           Почта
         </label>
-        <InputPrimary type="text" />
+        {/* <InputPrimary
+          type="text"
+          name="email"
+        /> */}
 
         <label className='login-form__main--label'>
           Пароль
         </label>
-        <InputPrimary type="password" />
+        {/* <InputPrimary
+          type="password"
+          name="password"
+        /> */}
       </section>
 
       <div className='login-form__footer'>
