@@ -1,0 +1,31 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.progress-bar {
+  padding: $space-md;
+  border-top: 1px solid $grey-light-color;
+  border-bottom: 1px solid $grey-light-color;
+
+ &__header {
+  display: flex;
+  justify-content: space-between;
+
+   &--title {
+    font-size: 13px;
+    line-height: 15px;
+    color: $grey-light-5-color;
+   }
+
+   &--count {
+    font-weight: 400;
+    font-family: 'RobotoMedium';
+    font-size: 11px;
+    line-height: 13px;
+    color: $grey-light-5-color;
+   }
+ }
+
+ .ant-progress-success-bg, .ant-progress-bg {
+   background-color: $blue-color;
+ }
+}
