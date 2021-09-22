@@ -31,6 +31,7 @@
 
   &-grey {
     @extend %button;
+    color: $blue-darl-color;
     background-color: $grey-color;
     border: 0.5px solid $primary-accent-color;
   }

@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import './styles.scss'
 import useHistoryPush from '../../../hooks/useHistory'
 import Button from '../../button/buttonPrimary/index'
-// import InputPrimary from '../../inputs/inputPrimary'
+import InputPrimary from '../../inputs/inputPrimary'
 
 export default function LoginForm() {
   const historyPush = useHistoryPush()
+  const [authData, setAuthData] = useState({
+    email: '',
+    password: ''
+  })
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const {name, value} = event.target
+    setAuthData({...authData, [name]: value})
+  }
+
+  const { email, password } = authData
 
   return (
     <form className='login-form'>
@@ -20,18 +31,22 @@ export default function LoginForm() {
         <label className='login-form__main--label'>
           Почта
         </label>
-        {/* <InputPrimary
+        <InputPrimary
           type="text"
+          value={email}
           name="email"
-        /> */}
+          onChange={handleInputChange}
+        />
 
         <label className='login-form__main--label'>
           Пароль
         </label>
-        {/* <InputPrimary
+        <InputPrimary
           type="password"
+          value={password}
           name="password"
-        /> */}
+          onChange={handleInputChange}
+        />
       </section>
 
       <div className='login-form__footer'>
