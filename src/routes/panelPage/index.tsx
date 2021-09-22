@@ -1,12 +1,17 @@
 import React from 'react'
 
 import './styles.scss'
+import { panelList } from '../../utils/panelUtils'
 import PanelHeader from '../../components/panel/panelHeader'
 import PanelAside from '../../components/panel/PanelAside'
 import PanelFooter from '../../components/panel/panelFooter'
-import CarSettingTab from '../../components/tabs/carSettingTab'
+import { useAppSelector } from '../../hooks/usePreTypedHooks'
 
 export default function PanelPage() {
+  const state = useAppSelector((state) => state)
+  const activeTab = state.panel.activeTab
+  const currentComponent = panelList[+activeTab]
+
   return (
     <main className='panel-page'>
       <PanelAside />
@@ -15,7 +20,7 @@ export default function PanelPage() {
         <PanelHeader />
 
         <section className='panel-page__main--content'>
-          <CarSettingTab />
+          {currentComponent.component()}
         </section>
 
         <PanelFooter />

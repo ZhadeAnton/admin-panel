@@ -5,13 +5,15 @@ import { ReactComponent as grid } from '../assets/SVG/grid.svg'
 import { ReactComponent as panel } from '../assets/SVG/panel.svg'
 import { ReactComponent as person } from '../assets/SVG/person.svg'
 import { ReactComponent as error } from '../assets/SVG//error.svg'
+import CarSettingTab from '../components/tabs/carSettingTab'
+import OrdersTab from '../components/tabs/ordersTab'
 
 export const panelList = [
-  { icon: pen, title: 'Карточка автомобиля'},
-  { icon: list, title: 'Список авто' },
-  { icon: doc, title: 'Заказы' },
-  { icon: grid, title: 'Menu 4' },
-  { icon: panel, title: 'Menu 5' },
-  { icon: person, title: 'Menu 6' },
-  { icon: error, title: 'Menu 7' },
+  { icon: pen, title: 'Карточка автомобиля', component: CarSettingTab },
+  { icon: list, title: 'Список авто', component: CarSettingTab },
+  { icon: doc, title: 'Заказы', component: OrdersTab },
+  { icon: grid, title: 'Menu 4', component: CarSettingTab },
+  { icon: panel, title: 'Menu 5', component: CarSettingTab },
+  { icon: person, title: 'Menu 6', component: CarSettingTab },
+  { icon: error, title: 'Menu 7', component: CarSettingTab },
 ]

@@ -4,6 +4,8 @@ const { TabPane } = Tabs
 
 import './styles.scss'
 import { panelList } from '../../../../utils/panelUtils'
+import { useAppDispatch, useAppSelector } from '../../../../hooks/usePreTypedHooks'
+import { changeActiveTab } from '../../../../redux/panel/panelActionCreators'
 
 interface ITabProps {
   icon: string,
@@ -11,6 +13,14 @@ interface ITabProps {
 }
 
 export default function PanelTabs() {
+  const dispatch = useAppDispatch()
+  const state = useAppSelector((state) => state)
+  const activeTab = state.panel.activeTab
+
+  const handleChangeTab = (tab: string) => {
+    dispatch(changeActiveTab(tab))
+  }
+
   const Tab = ({ icon: Icon, title }: ITabProps) => {
     return (
       <div className='panel-tabs__item'>
@@ -25,7 +35,7 @@ export default function PanelTabs() {
     )
   }
 
-  const tabs = panelList.map((item, i) => {
+  const tabPanes = panelList.map((item, i) => {
     return (
       <TabPane
         key={i}
@@ -36,11 +46,12 @@ export default function PanelTabs() {
 
   return (
     <Tabs
-      defaultActiveKey="2"
+      defaultActiveKey={activeTab}
       tabPosition="right"
       className='panel-tabs'
+      onChange={handleChangeTab}
     >
-      { tabs }
+      { tabPanes }
     </Tabs>
   )
 }
