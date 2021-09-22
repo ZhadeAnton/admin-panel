@@ -1,0 +1,15 @@
+@import '../../../scss/variables';
+@import '../../../scss/typography';
+
+.input-primary {
+  width: 100%;
+  padding: $space-sm 11px;
+  margin-bottom: $space-md;
+  border-radius: 3px;
+  outline: none;
+  border: 0.5px solid $grey-light-2-color;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 12px;
+  color: $black-light-color;
+}

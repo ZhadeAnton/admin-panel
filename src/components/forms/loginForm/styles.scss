@@ -1,0 +1,73 @@
+@import '../../../scss/variables';
+@import '../../../scss/typography';
+@import '../../../scss/mixins';
+
+.login-form {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  border-radius: 9px;
+  box-shadow: $card-shadow;
+  background-color: $white-color;
+
+  &__header {
+    margin-bottom: 25px;
+    @include flex-justify-center;
+
+    &--title {
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 20px;
+      color: $blue-darl-color;
+    }
+  }
+
+  &__main {
+    &--label {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: $space-sm;
+      @extend %label;
+    }
+  }
+
+  &__footer {
+    @include flex-align-center;
+    justify-content: space-between;
+
+    &--link {
+      @extend %button-rules;
+      transition: $transition-sm;
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 11px;
+      line-height: 12px;
+      color: $blue-color;
+    }
+
+    &--button {
+      width: 110px;
+    }
+  }
+
+  @media (max-width: getBreackpoint('sm')) {
+    padding: $space-md;
+
+    &__main {
+      margin-bottom: 10px;
+    }
+
+    &__header {
+      &--title {
+        font-size: 15px;
+        line-height: 16px;
+      }
+    }
+
+    &__footer {
+      &--button {
+        width: 90px;
+      }
+    }
+  }
+} 
