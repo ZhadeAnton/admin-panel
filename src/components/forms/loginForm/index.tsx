@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 
 import './styles.scss'
-import useHistoryPush from '../../../hooks/useHistory'
+import { useAppDispatch } from '../../../hooks/usePreTypedHooks'
+import { logIn } from '../../../redux/auth/authActionCreators'
 import Button from '../../button/buttonPrimary/index'
 import InputPrimary from '../../inputs/inputPrimary'
 
 export default function LoginForm() {
-  const historyPush = useHistoryPush()
+  const dispatch = useAppDispatch()
   const [authData, setAuthData] = useState({
-    email: '',
+    username: '',
     password: ''
   })
 
@@ -17,7 +18,11 @@ export default function LoginForm() {
     setAuthData({...authData, [name]: value})
   }
 
-  const { email, password } = authData
+  const handleLogIn = () => {
+    dispatch(logIn(authData))
+  }
+
+  const { username, password } = authData
 
   return (
     <form className='login-form'>
@@ -33,8 +38,8 @@ export default function LoginForm() {
         </label>
         <InputPrimary
           type="text"
-          value={email}
-          name="email"
+          value={username}
+          name="username"
           onChange={handleInputChange}
         />
 
@@ -60,7 +65,7 @@ export default function LoginForm() {
         <div className='login-form__footer--button'>
           <Button
             backgrond='blue'
-            onClick={() => historyPush('/panel')}
+            onClick={handleLogIn}
           >
             Войти
           </Button>

@@ -1,0 +1,17 @@
+@import '../../../scss/variables';
+@import '../../../scss/mixins';
+
+.buttons-menu {
+  width: 233px;
+  height: 24px;
+  @include flex-center;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid $grey-light-2-color;
+
+  & > * {
+    &:not(:first-child) {
+      border-left: 1px solid $grey-light-2-color;
+    }
+  }
+}
