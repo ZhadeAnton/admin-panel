@@ -4,6 +4,7 @@ import './styles.scss'
 import { getOrders } from '../../../redux/order/orderActionCreators'
 import { useAppDispatch, useAppSelector } from '../../../hooks/usePreTypedHooks'
 import OrderList from '../../orderList'
+import PanelTitle from '../../panel/panelTitle'
 
 export default function OrdersTab() {
   const dispatch = useAppDispatch()
@@ -11,7 +12,6 @@ export default function OrdersTab() {
   const accessToken = state.auth.authData?.accessToken
   const currentPage = state.order.currentPage
   const orders = state.order.orders
-  // const count = state.order.count
 
   useEffect(() => {
     if (accessToken) dispatch(getOrders(accessToken, currentPage))
@@ -21,16 +21,20 @@ export default function OrdersTab() {
 
   return (
     <section className='orders-tab'>
-      <div className='orders-tab__header'>
-        Header
-      </div>
+      <PanelTitle title='Заказ' />
 
-      <div className='orders-tab__list'>
-        <OrderList orderList={orders} />
-      </div>
+      <div className='orders-tab__main'>
+        <div className='orders-tab__main--header'>
+          Header
+        </div>
 
-      <div className='orders-tab__footer'>
-        Footer
+        <div className='orders-tab__orders'>
+          <OrderList orderList={orders} />
+        </div>
+
+        <div className='orders-tab__footer'>
+          Footer
+        </div>
       </div>
     </section>
   )

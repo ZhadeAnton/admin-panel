@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const url = process.env.REACT_APP_DEFAULT_URL
 const appId = process.env.REACT_APP_APPLICATION_ID
-const ordersLimit = 6
+const ordersLimit = 4
 
 interface IGetOrder {
   accessToken: string,

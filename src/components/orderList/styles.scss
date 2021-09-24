@@ -1,9 +1,11 @@
 @import '../../scss/variables';
 
 .order-list {
+  padding: 16px 22px;
+
   & > * {
     &:not(:last-child) {
-      margin-bottom: $space-md;
+      margin-bottom: $space-lg;
     }
   }
 }
