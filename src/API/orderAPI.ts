@@ -2,12 +2,17 @@ import axios from 'axios';
 
 const url = process.env.REACT_APP_DEFAULT_URL
 const appId = process.env.REACT_APP_APPLICATION_ID
-const ordersLimit = 10
+const ordersLimit = 6
 
-export const getOrders = (accessToken: string, page: number) => {
+interface IGetOrder {
+  accessToken: string,
+  page: number
+}
+
+export const getOrders = ({accessToken, page}: IGetOrder) => {
   return axios({
     method: 'GET',
-    url: `${url}/db/order?page=${page}&limit=${ordersLimit}`,
+    url: `${url}api/db/order?page=${page}&limit=${ordersLimit}`,
     headers: {
       'X-Api-Factory-Application-Id': appId,
       'Content-Type': 'application/json',

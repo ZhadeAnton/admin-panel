@@ -3,12 +3,14 @@ import * as types from './orderActionTypes'
 
 interface IOrderState {
   orders: Array<IOrder>,
+  count: number,
   currentPage: number,
   isLoading: boolean
 }
 
 const INIT_STATE: IOrderState = {
   orders: [],
+  count: 0,
   currentPage: 0,
   isLoading: false
 }
@@ -24,7 +26,8 @@ const orderReducer = (state = INIT_STATE, action: types.IOrderTypes): IOrderStat
     case types.GET_ORDERS_SUCCESS:
       return {
         ...state,
-        orders: action.payload,
+        orders: action.payload.orders,
+        count: action.payload.count,
         isLoading: false
       }
 

@@ -6,9 +6,9 @@ import * as API from '../../API/orderAPI'
 
 function* getOrders({ payload }) {
   try {
-    const response = yield call(API.getOrders, {...payload})
+    const response = yield call(API.getOrders, payload)
     yield console.log(response)
-    yield put(actions.getOrdersSuccess())
+    yield put(actions.getOrdersSuccess(response.data.data, response.data.count))
   } catch (error) {
     console.error(error)
   }
@@ -17,7 +17,6 @@ function* getOrders({ payload }) {
 function* onGetOrders() {
   yield takeLatest(types.GET_ORDERS, getOrders)
 }
-
 
 export default function* orderSagas() {
   yield all([

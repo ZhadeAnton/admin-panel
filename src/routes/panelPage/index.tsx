@@ -4,16 +4,14 @@ import { Spin } from 'antd'
 import './styles.scss'
 import useHistoryPush from '../../hooks/useHistory'
 import { useAppSelector } from '../../hooks/usePreTypedHooks'
-import { panelList } from '../../utils/panelUtils'
 import PanelHeader from '../../components/panel/panelHeader'
 import PanelAside from '../../components/panel/PanelAside'
 import PanelFooter from '../../components/panel/panelFooter'
 
-export default function PanelPage() {
+export default function PanelPage({ CurrentTab }: any) {
   const historyPush = useHistoryPush()
   const state = useAppSelector((state) => state)
-  const activeTab = state.panel.activeTab
-  const currentComponent = panelList[+activeTab]
+
   const isAdmin = state.auth.authData
   const isLoading = state.auth.isLoading
 
@@ -30,7 +28,7 @@ export default function PanelPage() {
           <PanelHeader />
 
           <section className='panel-page__main--content'>
-            {currentComponent.component()}
+            <CurrentTab />
           </section>
 
           <PanelFooter />

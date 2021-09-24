@@ -1,0 +1,45 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+%row-item {
+  font-weight: 400;
+  font-family: 'RobotoRegular';
+  font-size: 13px;
+  line-height: 15px;
+}
+
+.order-list-item {
+  width: 100%;
+  height: 90px;
+  @include flex-align-center;
+
+  &__item-wrapper {
+    @include flex-align-center;
+    margin-right: $space-md;
+
+    &--image {
+      width: 140px;
+      height: 65px;
+    }
+  }
+
+  &__info {
+    max-width: 350px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: $grey-light-6-color;
+
+    &--row {
+      @extend %row-item;
+
+      &-strong {
+        @extend %row-item;
+        color: $black-color;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 6px;
+      }
+    }
+  }
+}

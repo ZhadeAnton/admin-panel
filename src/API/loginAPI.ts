@@ -9,7 +9,7 @@ const appId = process.env.REACT_APP_APPLICATION_ID
 export const logIn = (credantionals: IAuthCredantionals) => {
   return axios({
     method: 'POST',
-    url: `${url}/auth/login`,
+    url: `${url}api/auth/login`,
     headers: {
       'X-Api-Factory-Application-Id': appId,
       'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ export const logIn = (credantionals: IAuthCredantionals) => {
 export const logOut = (accessToken: string) => {
   return axios({
     method: 'POST',
-    url: `${url}/auth/logout`,
+    url: `${url}api/auth/logout`,
     headers: {
       'X-Api-Factory-Application-Id': appId,
       'Content-Type': 'application/json',

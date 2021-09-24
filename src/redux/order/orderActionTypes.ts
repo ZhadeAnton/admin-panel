@@ -9,7 +9,7 @@ export interface IGetOrders {
 export const GET_ORDERS_SUCCESS = 'GET_ORDERS_SUCCESS'
 export interface IGetOrdersSuccess {
   type: typeof GET_ORDERS_SUCCESS,
-  payload: Array<IOrder>
+  payload: { orders: Array<IOrder>, count: number }
 }
 
 export type IOrderTypes =

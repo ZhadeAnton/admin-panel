@@ -1,3 +1,9 @@
+@import '../../scss/variables';
+
 .order-list {
-  
+  & > * {
+    &:not(:last-child) {
+      margin-bottom: $space-md;
+    }
+  }
 }
