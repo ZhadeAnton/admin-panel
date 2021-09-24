@@ -2,6 +2,8 @@
 
 .order-list {
   padding: 16px 22px;
+  border-top: 1px solid $grey-light-color;
+  border-bottom: 1px solid $grey-light-color;
 
   & > * {
     &:not(:last-child) {

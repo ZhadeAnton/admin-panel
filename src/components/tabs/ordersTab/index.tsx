@@ -5,6 +5,8 @@ import { getOrders } from '../../../redux/order/orderActionCreators'
 import { useAppDispatch, useAppSelector } from '../../../hooks/usePreTypedHooks'
 import OrderList from '../../orderList'
 import PanelTitle from '../../panel/panelTitle'
+import SelectPrimary from '../../inputs/selectPrimary'
+import Button from '../../button/buttonPrimary'
 
 export default function OrdersTab() {
   const dispatch = useAppDispatch()
@@ -25,7 +27,36 @@ export default function OrdersTab() {
 
       <div className='orders-tab__main'>
         <div className='orders-tab__main--header'>
-          Header
+          <div className='orders-tab__main--options'>
+            <SelectPrimary
+              defaultValue='За неделю'
+              options={['За неделю', 'За месяц', 'За день']}
+            />
+
+            <SelectPrimary
+              defaultValue='За неделю'
+              options={['За неделю', 'За месяц', 'За день']}
+            />
+
+            <SelectPrimary
+              defaultValue='За неделю'
+              options={['За неделю', 'За месяц', 'За день']}
+            />
+
+            <SelectPrimary
+              defaultValue='За неделю'
+              options={['За неделю', 'За месяц', 'За день']}
+            />
+          </div>
+
+          <div className='orders-tab__main--button'>
+            <Button
+              backgrond='blue'
+              onClick={() => console.log('fire')}
+            >
+              Применить
+            </Button>
+          </div>
         </div>
 
         <div className='orders-tab__orders'>

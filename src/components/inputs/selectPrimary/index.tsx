@@ -2,20 +2,32 @@ import React from 'react'
 import { Select } from 'antd';
 const { Option } = Select;
 
-export default function SelectPrimary() {
+import './styles.scss'
+import { ReactComponent as Icon } from '../../../assets/SVG/doubleArrow.svg'
+
+interface Props {
+  defaultValue: string,
+  options: Array<string>
+}
+
+export default function SelectPrimary(props: Props) {
   function handleChange(value: string) {
     console.log(`selected ${value}`);
   }
 
   return (
     <div className='select-primary'>
-      <Select defaultValue="lucy" style={{ width: 120 }} onChange={handleChange}>
-        <Option value="jack">Jack</Option>
-        <Option value="lucy">Lucy</Option>
-        <Option value="disabled" disabled>
-        Disabled
-        </Option>
-        <Option value="Yiminghe">yiminghe</Option>
+      <Select
+        defaultValue={props.defaultValue}
+        onChange={handleChange}
+        suffixIcon={<Icon />}
+        style={{width: '110px'}}
+      >
+        {
+          props.options.map((opt) => (
+            <Option key={opt} value={opt}>{opt}</Option>
+          ))
+        }
       </Select>
     </div>
   )
