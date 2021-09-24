@@ -12,8 +12,8 @@ export const panelList = [
   { icon: pen, title: 'Карточка автомобиля', component: CarSettingTab },
   { icon: list, title: 'Список авто', component: CarSettingTab },
   { icon: doc, title: 'Заказы', component: OrdersTab },
-  { icon: grid, title: 'Menu 4', component: CarSettingTab },
-  { icon: panel, title: 'Menu 5', component: CarSettingTab },
-  { icon: person, title: 'Menu 6', component: CarSettingTab },
-  { icon: error, title: 'Menu 7', component: CarSettingTab },
+  { icon: grid, title: 'Menu 4', component: () => '<div></div>' },
+  { icon: panel, title: 'Menu 5', component: () => '<div></div>' },
+  { icon: person, title: 'Menu 6', component: () => '<div></div>' },
+  { icon: error, title: 'Menu 7', component: () => '<div></div>' },
 ]
