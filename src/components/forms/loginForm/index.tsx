@@ -16,6 +16,7 @@ export default function LoginForm() {
   })
 
   const isLoading = state.auth.isLoading
+  const { username, password } = authData
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const {name, value} = event.target
@@ -26,20 +27,18 @@ export default function LoginForm() {
     dispatch(logIn(authData))
   }
 
-  const { username, password } = authData
-
   return (
     <Spin tip='Loading' spinning={isLoading}>
       <form className='login-form'>
         <div className='login-form__header'>
           <h5 className='login-form__header--title'>
-          Вход
+            Вход
           </h5>
         </div>
 
         <section className='login-form__main'>
           <label className='login-form__main--label'>
-          Почта
+            Почта
           </label>
           <InputPrimary
             type="text"
@@ -49,7 +48,7 @@ export default function LoginForm() {
           />
 
           <label className='login-form__main--label'>
-          Пароль
+            Пароль
           </label>
           <InputPrimary
             type="password"
@@ -64,7 +63,7 @@ export default function LoginForm() {
             className='login-form__footer--link'
             href="#"
           >
-          Запросить доступ
+            Запросить доступ
           </a>
 
           <div className='login-form__footer--button'>
@@ -72,7 +71,7 @@ export default function LoginForm() {
               backgrond='blue'
               onClick={handleLogIn}
             >
-            Войти
+              Войти
             </Button>
           </div>
         </div>

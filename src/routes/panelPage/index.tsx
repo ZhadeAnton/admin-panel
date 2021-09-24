@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Spin } from 'antd'
 
 import './styles.scss'
 import useHistoryPush from '../../hooks/useHistory'
@@ -14,24 +15,27 @@ export default function PanelPage() {
   const activeTab = state.panel.activeTab
   const currentComponent = panelList[+activeTab]
   const isAdmin = state.auth.authData
+  const isLoading = state.auth.isLoading
 
   useEffect(() => {
     if (!isAdmin) historyPush('/login')
   }, [isAdmin])
 
   return (
-    <main className='panel-page'>
-      <PanelAside />
+    <Spin tip='Loading' spinning={isLoading}>
+      <main className='panel-page'>
+        <PanelAside />
 
-      <section className='panel-page__main'>
-        <PanelHeader />
+        <section className='panel-page__main'>
+          <PanelHeader />
 
-        <section className='panel-page__main--content'>
-          {currentComponent.component()}
+          <section className='panel-page__main--content'>
+            {currentComponent.component()}
+          </section>
+
+          <PanelFooter />
         </section>
-
-        <PanelFooter />
-      </section>
-    </main>
+      </main>
+    </Spin>
   )
 }

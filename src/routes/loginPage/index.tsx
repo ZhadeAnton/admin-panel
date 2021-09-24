@@ -23,7 +23,7 @@ export default function LoginPage() {
   useEffect(() => {
     if (errorMessage) {
       setAlertVisible(true)
-      setTimeout(() => setAlertVisible(false), 4000)
+      setTimeout(() => setAlertVisible(false), 3500)
     }
   }, [errorMessage])
 
