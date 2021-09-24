@@ -4,9 +4,10 @@
 .notification {
   @include flex-center;
   position: relative;
+  transition: $transition-sm;
+  cursor: pointer;
   border-left: 1px solid $grey-light-2-color;
   border-right: 1px solid $grey-light-2-color;
-  cursor: pointer;
 
   &__image {
     width: 17px;
@@ -27,5 +28,9 @@
       line-height: 13px;
       color: $white-color;
     }
+  }
+
+  &:hover {
+    background-color: $grey-light-color;
   }
 }

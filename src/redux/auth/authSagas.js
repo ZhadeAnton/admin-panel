@@ -21,12 +21,26 @@ function* logIn({ payload }) {
   }
 }
 
+function* logOut({ payload }) {
+  try {
+    yield call(API.logOut, payload)
+    yield put(actions.logOutSuccess())
+  } catch (error) {
+    yield put(actions.logOutFailure(error.message))
+  }
+}
+
 function* onAuth() {
   yield takeLatest(types.LOG_IN, logIn)
 }
 
+function* onLogOut() {
+  yield takeLatest(types.LOG_OUT, logOut)
+}
+
 export default function* authSagas() {
   yield all([
-    call(onAuth)
+    call(onAuth),
+    call(onLogOut)
   ])
 }

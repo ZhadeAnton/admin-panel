@@ -18,3 +18,15 @@ export const logIn = (credantionals: IAuthCredantionals) => {
     data: credantionals
   })
 }
+
+export const logOut = (accessToken: string) => {
+  return axios({
+    method: 'POST',
+    url: `${url}/auth/logout`,
+    headers: {
+      'X-Api-Factory-Application-Id': appId,
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessToken}`
+    }
+  })
+}

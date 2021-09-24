@@ -3,7 +3,6 @@
 
 .user-panel {
   @include flex-align-center;
-  padding: 0 25px;
   cursor: pointer;
 
   &__name {
@@ -13,5 +12,22 @@
     font-size: 15px;
     line-height: 18px;
     color: $blue-darl-2-color;
+  }
+
+  &__dropdown {
+    width: 100%;
+    height: 100%;
+    @include flex-center;
+    transition: $transition-sm;
+    padding: 0 25px;
+
+    svg {
+      width: 9px;
+      height: 5px;
+    }
+
+    &:hover {
+      background-color: $grey-light-color;
+    }
   }
 }

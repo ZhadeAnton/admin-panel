@@ -12,9 +12,26 @@ export interface ILogInSuccess {
   payload: IAuthSuccess
 }
 
+export const LOG_OUT = 'LOG_OUT'
+export interface ILogOut {
+  type: typeof LOG_OUT,
+  payload: string
+}
+
+export const LOG_OUT_SUCCESS = 'LOG_OUT_SUCCESS'
+export interface ILogOutSuccess {
+  type: typeof LOG_OUT_SUCCESS
+}
+
 export const LOG_IN_FAILURE = 'LOG_IN_FAILURE'
 export interface ILogInFailure {
   type: typeof LOG_IN_FAILURE,
+  payload: string
+}
+
+export const LOG_OUT_FAILURE = 'LOG_IN_FAILURE'
+export interface ILogOutFailure {
+  type: typeof LOG_OUT_FAILURE,
   payload: string
 }
 
@@ -22,3 +39,6 @@ export type IAuthTypes =
 | ILogIn
 | ILogInSuccess
 | ILogInFailure
+| ILogOut
+| ILogOutSuccess
+| ILogOutFailure
