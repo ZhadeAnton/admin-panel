@@ -4,14 +4,12 @@ import * as types from './orderActionTypes'
 interface IOrderState {
   orders: Array<IOrder>,
   count: number,
-  currentPage: number,
   isLoading: boolean
 }
 
 const INIT_STATE: IOrderState = {
   orders: [],
   count: 0,
-  currentPage: 0,
   isLoading: false
 }
 

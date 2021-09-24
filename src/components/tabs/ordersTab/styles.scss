@@ -12,7 +12,7 @@
     &--header {
       @include flex-align-center;
       justify-content: space-between;
-      padding: 16px 21px;
+      padding: 16px 20px;
     }
 
     &--options {
@@ -28,6 +28,11 @@
     &--button {
       width: 95px;
       height: 30px;
+    }
+
+    &--footer {
+      @include flex-center;
+      padding: 20px;
     }
   }
 }

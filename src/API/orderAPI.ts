@@ -6,13 +6,13 @@ const ordersLimit = 4
 
 interface IGetOrder {
   accessToken: string,
-  page: number
+  currentPage: number
 }
 
-export const getOrders = ({accessToken, page}: IGetOrder) => {
+export const getOrders = ({accessToken, currentPage}: IGetOrder) => {
   return axios({
     method: 'GET',
-    url: `${url}api/db/order?page=${page}&limit=${ordersLimit}`,
+    url: `${url}api/db/order?limit=${ordersLimit}&page=${currentPage}`,
     headers: {
       'X-Api-Factory-Application-Id': appId,
       'Content-Type': 'application/json',

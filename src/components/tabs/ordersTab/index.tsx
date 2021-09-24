@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useCallback } from 'react'
 
 import './styles.scss'
 import { getOrders } from '../../../redux/order/orderActionCreators'
@@ -7,19 +7,19 @@ import OrderList from '../../orderList'
 import PanelTitle from '../../panel/panelTitle'
 import SelectPrimary from '../../inputs/selectPrimary'
 import Button from '../../button/buttonPrimary'
+import CustomPagination from '../../pagination'
 
 export default function OrdersTab() {
   const dispatch = useAppDispatch()
   const state = useAppSelector((state) => state)
-  const accessToken = state.auth.authData?.accessToken
-  const currentPage = state.order.currentPage
+  const accessToken = state.auth.authData?.accessToken!
   const orders = state.order.orders
+  const count = state.order.count
 
-  useEffect(() => {
-    if (accessToken) dispatch(getOrders(accessToken, currentPage))
+  const handlePagination = useCallback((page: number) => {
+    console.log(page)
+    dispatch(getOrders(accessToken, page))
   }, [])
-
-  if (!orders) return
 
   return (
     <section className='orders-tab'>
@@ -59,12 +59,16 @@ export default function OrdersTab() {
           </div>
         </div>
 
-        <div className='orders-tab__orders'>
+        <div className='orders-tab__main--orders'>
           <OrderList orderList={orders} />
         </div>
 
-        <div className='orders-tab__footer'>
-          Footer
+        <div className='orders-tab__main--footer'>
+          <CustomPagination
+            defaultPageSize={4}
+            pagesLength={count}
+            onChange={handlePagination}
+          />
         </div>
       </div>
     </section>

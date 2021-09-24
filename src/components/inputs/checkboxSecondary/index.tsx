@@ -12,6 +12,7 @@ export default function CheckboxSecondary(props: Props) {
   return (
     <div className='checkbox-secondary-wrapper'>
       <input
+        readOnly
         type="checkbox"
         checked={props.checked}
         className="checkbox-secondary"

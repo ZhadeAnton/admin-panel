@@ -7,7 +7,6 @@ import * as API from '../../API/orderAPI'
 function* getOrders({ payload }) {
   try {
     const response = yield call(API.getOrders, payload)
-    yield console.log(response)
     yield put(actions.getOrdersSuccess(response.data.data, response.data.count))
   } catch (error) {
     console.error(error)
