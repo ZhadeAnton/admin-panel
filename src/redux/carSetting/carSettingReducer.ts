@@ -1,3 +1,4 @@
+import { ICarImage } from '../../interfaces/carInterfaces'
 import * as types from './carActionTypes'
 
 interface ICarSettingState {
@@ -5,7 +6,9 @@ interface ICarSettingState {
   type: string,
   description: string,
   priceMin: string,
-  priceMax: string
+  priceMax: string,
+  image: ICarImage | null
+
 }
 
 const INIT_STATE: ICarSettingState = {
@@ -13,16 +16,23 @@ const INIT_STATE: ICarSettingState = {
   type: '',
   description: '',
   priceMin: '',
-  priceMax: ''
+  priceMax: '',
+  image: null
 }
 
 const carSettingReducer = (
-    state = INIT_STATE, action: types.ICarSettingChange): ICarSettingState => {
+    state = INIT_STATE, action: types.ICarSettingTypes): ICarSettingState => {
   switch (action.type) {
     case types.CAR_SETTING_CHANGE:
       return {
         ...state,
         [action.payload.type]: action.payload.value
+      }
+
+    case types.CAR_SETTING_SET_IMAGE:
+      return {
+        ...state,
+        image: action.payload
       }
 
     default:

@@ -1,30 +1,34 @@
 import React from 'react'
+import { Skeleton } from 'antd'
 
 import './styles.scss'
+import { useAppSelector } from '../../hooks/usePreTypedHooks'
 import InputUpload from '../inputs/inputUpload'
 import ProgressBar from '../progressBar'
 
-interface Props {
-  image: string,
-  model: string,
-  type: string
-}
+export default function CarCard() {
+  const state = useAppSelector((state) => state)
+  const { name, type, description, image } = state.carSetting
 
-export default function CarCard(props: Props) {
   return (
     <section className='car-card'>
       <div className='car-card__top'>
-        <div className='car-card__image-wrapper'>
-          <img src={props.image} alt="" />
+        <div
+          className='car-card__image-wrapper'>
+          {
+            image
+            ? <img src={image.url} alt="image" />
+            : <Skeleton.Image />
+          }
         </div>
 
         <div className='car-card__info'>
           <h3 className='car-card__info--model'>
-            { props.model }
+            { name ? name : 'Модель' }
           </h3>
 
           <span className='car-card__info--type'>
-            { props.type }
+            { type != '' ? type : 'Тип' }
           </span>
         </div>
 
@@ -41,9 +45,7 @@ export default function CarCard(props: Props) {
         </h6>
 
         <p className='car-card__description--text'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque,
-          quidem, commodi soluta qui quae quod dolorum sint alias, possimus illum
-          assumenda eligendi cumque?
+          { description != '' ? description : 'Описание машины ...' }
         </p>
       </div>
     </section>

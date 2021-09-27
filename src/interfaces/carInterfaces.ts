@@ -17,3 +17,10 @@ export interface ICar {
   colors: Array<string>,
   id: string
 }
+
+export interface ICarImage {
+  uid: string,
+  name: string,
+  status: string,
+  url: string
+}

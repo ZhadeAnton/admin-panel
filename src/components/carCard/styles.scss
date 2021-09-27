@@ -8,13 +8,17 @@
   background-color: $white-color;
 
   &__top {
+    @include flex-center;
+    flex-direction: column;
     padding: 34px 22px 0 22px;
   }
 
   &__image-wrapper {
-    width: 100%;
+    width: 245px;
+    height: 110px;
     @include flex-center;
     margin-bottom: 10px;
+    overflow: hidden;
   }
 
   &__info {

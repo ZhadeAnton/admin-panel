@@ -39,5 +39,9 @@
     .ant-upload {
       @extend %input-font;
     }
+    
+    .ant-upload-list {
+      display: none !important;
+    }
   }
 }
