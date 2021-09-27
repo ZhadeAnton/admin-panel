@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment'
 
 import './styles.scss'
-import carImage from '../../assets/mocks/car-mock.png'
+import carMock from '../../assets/mocks/car-mock.png'
 import { IOrder } from '../../interfaces/orderInterfaces'
 import { getCarImage } from '../../utils/carUtils'
 import CheckboxSecondary from '../inputs/checkboxSecondary'
@@ -13,9 +13,12 @@ interface Props {
 }
 
 export default function OrderListItem(props: Props) {
-  const image = props.order.carId
-  ? getCarImage(props.order.carId.thumbnail!.path)
-  : carImage
+  let image
+  if (props.order.carId) {
+    image = getCarImage(props.order.carId.thumbnail?.path)
+  } else {
+    image = carMock
+  }
 
   return (
     <li className='order-list-item'>

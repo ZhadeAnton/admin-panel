@@ -22,13 +22,14 @@
 
     &--button {
       width: 110px;
-      height: 29px;
     }
 
     &--left-block {
       @include flex-align-center;
+      height: 29px;
 
       & > button {
+        width: 110px;
         margin-right: 12px;
       }
     }

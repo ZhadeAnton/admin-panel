@@ -12,7 +12,7 @@ interface IGetOrder {
 export const getOrders = ({accessToken, currentPage}: IGetOrder) => {
   return axios({
     method: 'GET',
-    url: `${url}api/db/order?limit=${ordersLimit}&page=${currentPage}`,
+    url: `${url}api/db/order?&limit=${ordersLimit}&page=${currentPage}`,
     headers: {
       'X-Api-Factory-Application-Id': appId,
       'Content-Type': 'application/json',

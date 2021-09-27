@@ -17,7 +17,6 @@ export default function OrdersTab() {
   const count = state.order.count
 
   const handlePagination = useCallback((page: number) => {
-    console.log(page)
     dispatch(getOrders(accessToken, page))
   }, [])
 
