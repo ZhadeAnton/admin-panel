@@ -1,15 +1,29 @@
 @import '../../../scss/variables';
 @import '../../../scss/typography';
+@import '../../../scss/mixins';
 
 .input-primary {
   width: 100%;
-  padding: $space-sm 11px;
-  margin-bottom: $space-md;
-  border-radius: 3px;
-  outline: none;
-  border: 0.5px solid $grey-light-2-color;
-  font-weight: 400;
-  font-size: 11px;
-  line-height: 12px;
-  color: $black-light-color;
+  position: relative;
+
+  &__input {
+    width: 100%;
+    padding: $space-sm 11px;
+    margin-bottom: $space-md;
+    border-radius: 3px;
+    outline: none;
+    border: 0.5px solid $grey-light-2-color;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 12px;
+    color: $black-light-color;
+  }
+
+  &__error {
+    @include abs-position(calc(100% + 2px), auto, auto, 11px);
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: $red-color;
+  }
 }

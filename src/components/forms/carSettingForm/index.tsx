@@ -2,14 +2,21 @@ import React from 'react'
 
 import './styles.scss'
 import { useAppDispatch, useAppSelector } from '../../../hooks/usePreTypedHooks'
-import { carSettingChange } from '../../../redux/carSetting/carActionCreators'
+import {
+  addCarColorCheckbox,
+  carSettingChange
+} from '../../../redux/carSetting/carActionCreators'
 import InputPrimary from '../../inputs/inputPrimary'
 import ButtonPlus from '../../button/buttonPlus'
 import TextArea from '../../inputs/textArea'
+import CheckboxGroup from '../checkboxGroup'
 
 export default function CarSettingForm() {
   const dispatch = useAppDispatch()
   const state = useAppSelector((state) => state)
+
+  // eslint-disable-next-line max-len
+  const { name, type, description, priceMin, priceMax, color, colorCheckboxes } = state.carSetting
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
@@ -21,7 +28,14 @@ export default function CarSettingForm() {
     dispatch(carSettingChange(name, value))
   }
 
-  const { name, type, description, priceMin, priceMax } = state.carSetting
+  const handleAddColorCheckbox = () => {
+    if (color != '') {
+      dispatch(addCarColorCheckbox({
+        checked: true,
+        value: color
+      }))
+    }
+  }
 
   return (
     <form className='car-setting-form'>
@@ -60,6 +74,10 @@ export default function CarSettingForm() {
             type="text"
             name="priceMin"
             value={priceMin}
+            isOnlyNumber={true}
+            error={{
+              message: 'Только цифры!'
+            }}
             onChange={handleInputChange}
           />
         </div>
@@ -72,6 +90,10 @@ export default function CarSettingForm() {
             type="text"
             name="priceMax"
             value={priceMax}
+            isOnlyNumber={true}
+            error={{
+              message: 'Только цифры!'
+            }}
             onChange={handleInputChange}
           />
         </div>
@@ -86,11 +108,23 @@ export default function CarSettingForm() {
           <InputPrimary
             type="text"
             name="color"
+            value={color}
+            error={{
+              condition: colorCheckboxes.length >= 6,
+              message: 'Не более 6 цветов'
+            }}
             onChange={handleInputChange}
           />
 
-          <ButtonPlus onClick={() => console.log('fire')} />
+          {
+            colorCheckboxes.length <= 5 &&
+            <ButtonPlus onClick={handleAddColorCheckbox} />
+          }
         </div>
+      </div>
+
+      <div className='car-setting-form__checkbox-group'>
+        <CheckboxGroup checkboxes={colorCheckboxes}/>
       </div>
 
       <div className='car-setting-form__text-area'>

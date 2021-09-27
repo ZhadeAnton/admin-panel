@@ -1,4 +1,5 @@
 import { ICarImage } from '../../interfaces/carInterfaces'
+import { ICheckbox } from '../../interfaces/inputInterfaces'
 import * as types from './carActionTypes'
 
 interface ICarSettingState {
@@ -7,8 +8,9 @@ interface ICarSettingState {
   description: string,
   priceMin: string,
   priceMax: string,
-  image: ICarImage | null
-
+  color: string,
+  image: ICarImage | null,
+  colorCheckboxes: Array<ICheckbox>
 }
 
 const INIT_STATE: ICarSettingState = {
@@ -17,7 +19,9 @@ const INIT_STATE: ICarSettingState = {
   description: '',
   priceMin: '',
   priceMax: '',
-  image: null
+  color: '',
+  image: null,
+  colorCheckboxes: [{checked: true, value: 'Любой'}]
 }
 
 const carSettingReducer = (
@@ -33,6 +37,13 @@ const carSettingReducer = (
       return {
         ...state,
         image: action.payload
+      }
+
+    case types.CAR_SETTING_ADD_CHECKBOX:
+      return {
+        ...state,
+        colorCheckboxes: [...state.colorCheckboxes, action.payload],
+        color: ''
       }
 
     default:

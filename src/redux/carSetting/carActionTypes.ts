@@ -1,4 +1,5 @@
 import { ICarImage } from '../../interfaces/carInterfaces'
+import { ICheckbox } from '../../interfaces/inputInterfaces'
 
 export const CAR_SETTING_CHANGE = 'CAR_SETTING_CHANGE'
 export interface ICarSettingChange {
@@ -12,6 +13,13 @@ export interface ICarSettingSetImage {
   payload: ICarImage
 }
 
+export const CAR_SETTING_ADD_CHECKBOX = 'CAR_SETTING_ADD_CHECKBOX'
+export interface ICarSettingAddCheckbox {
+  type: typeof CAR_SETTING_ADD_CHECKBOX,
+  payload: ICheckbox
+}
+
 export type ICarSettingTypes =
 | ICarSettingChange
 | ICarSettingSetImage
+| ICarSettingAddCheckbox
