@@ -19,7 +19,13 @@ export interface ICarSettingAddCheckbox {
   payload: ICheckbox
 }
 
+export const CAR_SETTING_RESET = 'CAR_SETTING_RESET'
+export interface ICarSettingReset {
+  type: typeof CAR_SETTING_RESET
+}
+
 export type ICarSettingTypes =
 | ICarSettingChange
 | ICarSettingSetImage
 | ICarSettingAddCheckbox
+| ICarSettingReset

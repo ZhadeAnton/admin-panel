@@ -25,6 +25,7 @@
     height: 100%;
     @include flex-center;
     cursor: pointer;
+    overflow: hidden;
     transition: $transition-sm;
     background-color: $grey-strong-3-color;
 

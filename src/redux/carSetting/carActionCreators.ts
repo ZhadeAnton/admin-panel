@@ -18,3 +18,7 @@ export const addCarColorCheckbox = (checkbox: ICheckbox)
   type: types.CAR_SETTING_ADD_CHECKBOX,
   payload: checkbox
 })
+
+export const carSettingReset = (): types.ICarSettingReset => ({
+  type: types.CAR_SETTING_RESET
+})

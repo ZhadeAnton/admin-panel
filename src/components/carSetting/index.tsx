@@ -1,10 +1,18 @@
 import React from 'react'
 
 import './styles.scss'
+import { useAppDispatch } from '../../hooks/usePreTypedHooks'
+import { carSettingReset } from '../../redux/carSetting/carActionCreators'
 import Button from '../button/buttonPrimary/index'
 import CarSettingForm from '../forms/carSettingForm'
 
 export default function CarSetting() {
+  const dispatch = useAppDispatch()
+
+  const handleReset = () => {
+    dispatch(carSettingReset())
+  }
+
   return (
     <section className='car-setting'>
       <div className='car-setting__top'>
@@ -27,7 +35,7 @@ export default function CarSetting() {
 
           <Button
             backgrond='grey'
-            onClick={() => console.log('grey')}
+            onClick={handleReset}
             className='car-setting__footer--button'
           >
             Отменить

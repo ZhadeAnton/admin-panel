@@ -46,6 +46,11 @@ const carSettingReducer = (
         color: ''
       }
 
+    case types.CAR_SETTING_RESET:
+      return {
+        ...INIT_STATE
+      }
+
     default:
       return state
   }
