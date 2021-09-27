@@ -1,30 +1,27 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import './styles.scss'
+import { useAppDispatch, useAppSelector } from '../../../hooks/usePreTypedHooks'
+import { carSettingChange } from '../../../redux/carSetting/carActionCreators'
 import InputPrimary from '../../inputs/inputPrimary'
 import ButtonPlus from '../../button/buttonPlus'
 import TextArea from '../../inputs/textArea'
 
 export default function CarSettingForm() {
-  const [carSettingData, setCarSettingData] = useState({
-    name: '',
-    type: '',
-    description: '',
-    priceMin: '',
-    priceMax: ''
-  })
+  const dispatch = useAppDispatch()
+  const state = useAppSelector((state) => state)
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const {name, value} = event.target
-    setCarSettingData({...carSettingData, [name]: value})
+    const { name, value } = event.target
+    dispatch(carSettingChange(name, value))
   }
 
   const handleTextAreaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const target = event.target
-    setCarSettingData({...carSettingData, description: target.value})
+    const { name, value } = event.target
+    dispatch(carSettingChange(name, value))
   }
 
-  const { name, type, description, priceMin, priceMax } = carSettingData
+  const { name, type, description, priceMin, priceMax } = state.carSetting
 
   return (
     <form className='car-setting-form'>
