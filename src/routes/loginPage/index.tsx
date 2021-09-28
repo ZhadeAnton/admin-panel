@@ -48,8 +48,7 @@ export default function LoginPage() {
 
         <LoginForm />
 
-        {
-          alertVisible &&
+        { alertVisible &&
           <Alert
             type='error'
             onClose={handleCloseAlert}

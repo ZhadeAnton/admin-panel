@@ -25,6 +25,11 @@ export interface ICarSettingAddNewCar {
   payload: { accessToken: string, newCar: INewCar }
 }
 
+export const CAR_SETTING_ADD_NEW_CAR_SUCCESS = 'CAR_SETTING_ADD_NEW_CAR_SUCCESS'
+export interface ICarSettingAddNewCarSuccess {
+  type: typeof CAR_SETTING_ADD_NEW_CAR_SUCCESS
+}
+
 export const CAR_SETTING_CATEGORY_CHANGE = 'CAR_SETTING_CATEGORY_CHANGE'
 export interface ICarSettingCategoryChange {
   type: typeof CAR_SETTING_CATEGORY_CHANGE,
@@ -41,5 +46,6 @@ export type ICarSettingTypes =
 | ICarSettingSetImage
 | ICarSettingAddCheckbox
 | ICarSettingAddNewCar
+| ICarSettingAddNewCarSuccess
 | ICarSettingCategoryChange
 | ICarSettingReset

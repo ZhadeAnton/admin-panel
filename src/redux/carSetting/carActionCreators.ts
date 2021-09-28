@@ -31,6 +31,10 @@ export const addNewCar = ({accessToken, newCar}: IPostNewCar)
   payload: {accessToken, newCar}
 })
 
+export const addNewCarSuccess = (): types.ICarSettingAddNewCarSuccess => ({
+  type: types.CAR_SETTING_ADD_NEW_CAR_SUCCESS
+})
+
 export const carSettingReset = (): types.ICarSettingReset => ({
   type: types.CAR_SETTING_RESET
 })

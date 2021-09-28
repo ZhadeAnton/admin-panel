@@ -15,7 +15,8 @@ interface ICarSettingState {
     description: string
   },
   image: ICarImage | null,
-  colorCheckboxes: Array<ICheckbox>
+  colorCheckboxes: Array<ICheckbox>,
+  isNewCarSaved: boolean
 }
 
 const INIT_STATE: ICarSettingState = {
@@ -31,7 +32,8 @@ const INIT_STATE: ICarSettingState = {
     id: '61027a262aed9a0b9b8500c2'
   },
   image: null,
-  colorCheckboxes: [{checked: true, value: 'Любой'}]
+  colorCheckboxes: [],
+  isNewCarSaved: false
 }
 
 const carSettingReducer = (
@@ -60,6 +62,19 @@ const carSettingReducer = (
       return {
         ...state,
         categoryId: action.payload
+      }
+
+    case types.CAR_SETTING_ADD_NEW_CAR:
+      return {
+        ...state,
+        isNewCarSaved: false
+      }
+
+    case types.CAR_SETTING_ADD_NEW_CAR_SUCCESS:
+      return {
+        ...state,
+        ...INIT_STATE,
+        isNewCarSaved: true
       }
 
     case types.CAR_SETTING_RESET:
