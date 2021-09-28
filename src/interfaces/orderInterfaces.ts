@@ -1,4 +1,3 @@
-
 export interface IOrder {
   orderStatusId: {
     name: string,
@@ -32,5 +31,15 @@ export interface IOrder {
   price: number | undefined,
   isFullTank: boolean,
   isNeedChildChair: boolean,
-  isRightWheel: boolean
+  isRightWheel: boolean,
+  id: string
+}
+
+export interface IOrderStatus {
+  id: string,
+  name: string
+}
+
+export interface IFnSetOrderComplete {
+  (accessToken: string, order: IOrder, newOrderId: IOrderStatus | undefined): any
 }

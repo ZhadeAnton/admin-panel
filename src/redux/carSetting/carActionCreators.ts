@@ -1,5 +1,5 @@
-import { ICheckbox, IRadioButton } from './../../interfaces/inputInterfaces';
 import * as types from './carActionTypes'
+import { ICheckbox, IRadioButton } from './../../interfaces/inputInterfaces';
 import { ICarImage, IPostNewCar } from './../../interfaces/carInterfaces';
 
 export const carSettingChange = (type: string, value: string)

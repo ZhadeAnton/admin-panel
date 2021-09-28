@@ -9,7 +9,9 @@ import CheckboxSecondary from '../inputs/checkboxSecondary'
 import ButtonsMenu from '../forms/buttonsMenu'
 
 interface Props {
-  order: IOrder
+  order: IOrder,
+  onSetOrderComplete: (order: IOrder) => void
+  onSetOrderCancel: (order: IOrder) => void
 }
 
 export default function OrderListItem(props: Props) {
@@ -75,9 +77,21 @@ export default function OrderListItem(props: Props) {
       <div className='order-list-item__price'>
         { props.order.price }
       </div>
+      {
+        props.order.orderStatusId &&
+        <span>{props.order.orderStatusId.name}</span>
+      }
 
       <>
-        <ButtonsMenu />
+        {
+          props.order.orderStatusId &&
+          <ButtonsMenu
+            order={props.order}
+            orderStatus={props.order.orderStatusId.name}
+            onSetOrderComplete={props.onSetOrderComplete}
+            onSetOrderCancel={props.onSetOrderCancel}
+          />
+        }
       </>
     </li>
   )

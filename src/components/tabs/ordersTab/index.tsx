@@ -1,20 +1,46 @@
-import React, { useCallback } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 
 import './styles.scss'
-import { getOrders } from '../../../redux/order/orderActionCreators'
+import {
+  getOrders,
+  getOrderStatuses,
+  hideOrderNotification } from '../../../redux/order/orderActionCreators'
 import { useAppDispatch, useAppSelector } from '../../../hooks/usePreTypedHooks'
 import OrderList from '../../orderList'
 import PanelTitle from '../../panel/panelTitle'
 import SelectPrimary from '../../inputs/selectPrimary'
 import Button from '../../button/buttonPrimary'
 import CustomPagination from '../../pagination'
+import Alert from '../../alert/index'
 
 export default function OrdersTab() {
   const dispatch = useAppDispatch()
   const state = useAppSelector((state) => state)
+  const [alertVisible, setAlertVisible] = useState(false)
   const accessToken = state.auth.authData?.accessToken!
-  const orders = state.order.orders
   const count = state.order.count
+  const isError = state.order.isError
+
+  useEffect(() => {
+    dispatch(getOrderStatuses(accessToken))
+    return () => {
+      dispatch(getOrderStatuses(accessToken))
+    }
+  }, [])
+
+  useEffect(() => {
+    if (isError) {
+      setAlertVisible(true)
+      setTimeout(() => {
+        dispatch(hideOrderNotification())
+        setAlertVisible(false)
+      }, 3000)
+    }
+  }, [isError])
+
+  function handleCloseAlert() {
+    setAlertVisible(false)
+  }
 
   const handlePagination = useCallback((page: number) => {
     dispatch(getOrders(accessToken, page))
@@ -59,7 +85,7 @@ export default function OrdersTab() {
         </div>
 
         <div className='orders-tab__main--orders'>
-          <OrderList orderList={orders} />
+          <OrderList />
         </div>
 
         <div className='orders-tab__main--footer'>
@@ -70,6 +96,15 @@ export default function OrdersTab() {
           />
         </div>
       </div>
+
+      { alertVisible &&
+          <Alert
+            type='error'
+            onClose={handleCloseAlert}
+          >
+            Невозможно редактировать заказ!
+          </Alert>
+      }
     </section>
   )
 }

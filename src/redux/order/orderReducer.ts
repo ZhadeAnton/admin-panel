@@ -1,15 +1,19 @@
-import { IOrder } from '../../interfaces/orderInterfaces'
+import { IOrder, IOrderStatus } from '../../interfaces/orderInterfaces'
 import * as types from './orderActionTypes'
 
 interface IOrderState {
   orders: Array<IOrder>,
+  orderStatuses: Array<IOrderStatus>,
   count: number,
+  isError: boolean,
   isLoading: boolean
 }
 
 const INIT_STATE: IOrderState = {
   orders: [],
+  orderStatuses: [],
   count: 0,
+  isError: false,
   isLoading: false
 }
 
@@ -27,6 +31,35 @@ const orderReducer = (state = INIT_STATE, action: types.IOrderTypes): IOrderStat
         orders: action.payload.orders,
         count: action.payload.count,
         isLoading: false
+      }
+
+    case types.GET_ORDER_STATUSES_SUCCESS:
+      return {
+        ...state,
+        orderStatuses: action.payload
+      }
+
+    case types.SET_ORDER_STATUS_COMPLETE_SUCCESS:
+    case types.SET_ORDER_STATUS_CANCEL_SUCCESS:
+      return {
+        ...state,
+        orders: state.orders.map((order) => {
+          if (order.id === action.payload.id) return action.payload as any
+          return order
+        })
+      }
+
+    case types.SET_ORDER_STATUS_CANCEL_FAILURE:
+    case types.SET_ORDER_STATUS_COMPLETE_FAILURE:
+      return {
+        ...state,
+        isError: true
+      }
+
+    case types.HIDE_ORDER_NOTIFICATION:
+      return {
+        ...state,
+        isError: false
       }
 
     default:

@@ -13,12 +13,54 @@ function* getOrders({ payload }) {
   }
 }
 
+function* getOrderStatuses({ payload }) {
+  try {
+    const response = yield call(API.getOrderStatuses, payload)
+    yield put(actions.getOrderStatusesSuccess(response.data.data))
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+function* setOrderStatusComplete({ payload }) {
+  try {
+    const response = yield call(API.setOrderStatusComplete, {...payload})
+    yield put(actions.setOrderStatusCompleteSuccess(response.data.data))
+  } catch (error) {
+    yield put(actions.setOrderStatusCompleteFailure())
+  }
+}
+
+function* setOrderStatusCancel({ payload }) {
+  try {
+    const response = yield call(API.setOrderStatusCancel, {...payload})
+    yield put(actions.setOrderStatusCancelSuccess(response.data.data))
+  } catch (error) {
+    yield put(actions.setOrderStatusCancelFailure())
+  }
+}
+
 function* onGetOrders() {
   yield takeLatest(types.GET_ORDERS, getOrders)
 }
 
+function* onGetOrderStatuses() {
+  yield takeLatest(types.GET_ORDER_STATUSES, getOrderStatuses)
+}
+
+function* onSetOrderStatusComplete() {
+  yield takeLatest(types.SET_ORDER_STATUS_COMPLETE, setOrderStatusComplete)
+}
+
+function* onSetOrderStatusCancel() {
+  yield takeLatest(types.SET_ORDER_STATUS_CANCEL, setOrderStatusCancel)
+}
+
 export default function* orderSagas() {
   yield all([
-    call(onGetOrders)
+    call(onGetOrders),
+    call(onGetOrderStatuses),
+    call(onSetOrderStatusComplete),
+    call(onSetOrderStatusCancel)
   ])
 }

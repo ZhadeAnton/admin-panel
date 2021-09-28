@@ -3,7 +3,8 @@
 @import '../../../scss/mixins';
 
 .menu-button {
-  width: 100%;
+  width: auto;
+  max-width: 77px;
   height: 100%;
   @include flex-center;
   @extend %button-rules;
