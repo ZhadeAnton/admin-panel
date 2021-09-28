@@ -9,6 +9,11 @@ interface ICarSettingState {
   priceMin: string,
   priceMax: string,
   color: string,
+  categoryId: {
+    value: string,
+    id: string,
+    description: string
+  },
   image: ICarImage | null,
   colorCheckboxes: Array<ICheckbox>
 }
@@ -20,6 +25,11 @@ const INIT_STATE: ICarSettingState = {
   priceMin: '',
   priceMax: '',
   color: '',
+  categoryId: {
+    value: 'Эконом+',
+    description: 'Комфортные машины среднего класса',
+    id: '61027a262aed9a0b9b8500c2'
+  },
   image: null,
   colorCheckboxes: [{checked: true, value: 'Любой'}]
 }
@@ -44,6 +54,12 @@ const carSettingReducer = (
         ...state,
         colorCheckboxes: [...state.colorCheckboxes, action.payload],
         color: ''
+      }
+
+    case types.CAR_SETTING_CATEGORY_CHANGE:
+      return {
+        ...state,
+        categoryId: action.payload
       }
 
     case types.CAR_SETTING_RESET:

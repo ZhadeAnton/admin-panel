@@ -4,19 +4,21 @@ import './styles.scss'
 import { useAppDispatch, useAppSelector } from '../../../hooks/usePreTypedHooks'
 import {
   addCarColorCheckbox,
+  carCategoryChange,
   carSettingChange
 } from '../../../redux/carSetting/carActionCreators'
+import { IRadioButton } from '../../../interfaces/inputInterfaces'
+import { carSettingCategories } from '../../../utils/carUtils'
 import InputPrimary from '../../inputs/inputPrimary'
 import ButtonPlus from '../../button/buttonPlus'
 import TextArea from '../../inputs/textArea'
 import CheckboxGroup from '../checkboxGroup'
+import RadioGroup from '../radioGroup'
 
 export default function CarSettingForm() {
   const dispatch = useAppDispatch()
   const state = useAppSelector((state) => state)
-
-  // eslint-disable-next-line max-len
-  const { name, type, description, priceMin, priceMax, color, colorCheckboxes } = state.carSetting
+  const carSettings = state.carSetting
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
@@ -28,11 +30,15 @@ export default function CarSettingForm() {
     dispatch(carSettingChange(name, value))
   }
 
+  const handleRadioButtonChange = (button: IRadioButton) => {
+    dispatch(carCategoryChange(button))
+  }
+
   const handleAddColorCheckbox = () => {
-    if (color != '') {
+    if (carSettings.color != '') {
       dispatch(addCarColorCheckbox({
         checked: true,
-        value: color
+        value: carSettings.color
       }))
     }
   }
@@ -47,7 +53,7 @@ export default function CarSettingForm() {
           <InputPrimary
             type="text"
             name="name"
-            value={name}
+            value={carSettings.name}
             onChange={handleInputChange}
           />
         </div>
@@ -59,10 +65,18 @@ export default function CarSettingForm() {
           <InputPrimary
             type="text"
             name="type"
-            value={type}
+            value={carSettings.type}
             onChange={handleInputChange}
           />
         </div>
+      </div>
+
+      <div className='car-setting-form__categories'>
+        <RadioGroup
+          buttons={carSettingCategories}
+          selected={carSettings.categoryId.value}
+          onChange={handleRadioButtonChange}
+        />
       </div>
 
       <div className='car-setting-form__double-inputs'>
@@ -73,7 +87,7 @@ export default function CarSettingForm() {
           <InputPrimary
             type="text"
             name="priceMin"
-            value={priceMin}
+            value={carSettings.priceMin}
             isOnlyNumber={true}
             error={{
               message: 'Только цифры!'
@@ -89,7 +103,7 @@ export default function CarSettingForm() {
           <InputPrimary
             type="text"
             name="priceMax"
-            value={priceMax}
+            value={carSettings.priceMax}
             isOnlyNumber={true}
             error={{
               message: 'Только цифры!'
@@ -108,29 +122,29 @@ export default function CarSettingForm() {
           <InputPrimary
             type="text"
             name="color"
-            value={color}
+            value={carSettings.color}
             error={{
-              condition: colorCheckboxes.length >= 6,
+              condition: carSettings.colorCheckboxes.length >= 6,
               message: 'Не более 6 цветов'
             }}
             onChange={handleInputChange}
           />
 
           {
-            colorCheckboxes.length <= 5 &&
+            carSettings.colorCheckboxes.length <= 5 &&
             <ButtonPlus onClick={handleAddColorCheckbox} />
           }
         </div>
       </div>
 
       <div className='car-setting-form__checkbox-group'>
-        <CheckboxGroup checkboxes={colorCheckboxes}/>
+        <CheckboxGroup checkboxes={carSettings.colorCheckboxes}/>
       </div>
 
       <div className='car-setting-form__text-area'>
         <TextArea
           name="description"
-          value={description}
+          value={carSettings.description}
           onChange={handleTextAreaChange}
         />
       </div>

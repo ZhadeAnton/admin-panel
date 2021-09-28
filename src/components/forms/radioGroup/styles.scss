@@ -1,0 +1,11 @@
+@import '../../../scss/variables';
+
+.radio-buttons-group {
+  display: flex;
+
+  & > * {
+    &:not(:last-child) {
+      margin-right: $space-sm;
+    }
+  }
+}

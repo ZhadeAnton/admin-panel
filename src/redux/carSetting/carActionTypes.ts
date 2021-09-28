@@ -1,5 +1,5 @@
-import { ICarImage } from '../../interfaces/carInterfaces'
-import { ICheckbox } from '../../interfaces/inputInterfaces'
+import { ICarImage, INewCar } from '../../interfaces/carInterfaces'
+import { ICheckbox, IRadioButton } from '../../interfaces/inputInterfaces'
 
 export const CAR_SETTING_CHANGE = 'CAR_SETTING_CHANGE'
 export interface ICarSettingChange {
@@ -19,6 +19,18 @@ export interface ICarSettingAddCheckbox {
   payload: ICheckbox
 }
 
+export const CAR_SETTING_ADD_NEW_CAR = 'CAR_SETTING_ADD_NEW_CAR'
+export interface ICarSettingAddNewCar {
+  type: typeof CAR_SETTING_ADD_NEW_CAR,
+  payload: INewCar
+}
+
+export const CAR_SETTING_CATEGORY_CHANGE = 'CAR_SETTING_CATEGORY_CHANGE'
+export interface ICarSettingCategoryChange {
+  type: typeof CAR_SETTING_CATEGORY_CHANGE,
+  payload: IRadioButton
+}
+
 export const CAR_SETTING_RESET = 'CAR_SETTING_RESET'
 export interface ICarSettingReset {
   type: typeof CAR_SETTING_RESET
@@ -28,4 +40,6 @@ export type ICarSettingTypes =
 | ICarSettingChange
 | ICarSettingSetImage
 | ICarSettingAddCheckbox
+| ICarSettingAddNewCar
+| ICarSettingCategoryChange
 | ICarSettingReset

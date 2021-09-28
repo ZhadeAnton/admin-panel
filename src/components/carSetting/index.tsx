@@ -9,7 +9,7 @@ import CarSettingForm from '../forms/carSettingForm'
 export default function CarSetting() {
   const dispatch = useAppDispatch()
 
-  const handleReset = () => {
+  const handleResetForm = () => {
     dispatch(carSettingReset())
   }
 
@@ -35,7 +35,7 @@ export default function CarSetting() {
 
           <Button
             backgrond='grey'
-            onClick={handleReset}
+            onClick={handleResetForm}
             className='car-setting__footer--button'
           >
             Отменить
