@@ -77,12 +77,8 @@ export default function OrderListItem(props: Props) {
       <div className='order-list-item__price'>
         { props.order.price }
       </div>
-      {
-        props.order.orderStatusId &&
-        <span>{props.order.orderStatusId.name}</span>
-      }
 
-      <>
+      <div className='order-list-item__menu'>
         {
           props.order.orderStatusId &&
           <ButtonsMenu
@@ -92,7 +88,7 @@ export default function OrderListItem(props: Props) {
             onSetOrderCancel={props.onSetOrderCancel}
           />
         }
-      </>
+      </div>
     </li>
   )
 }
