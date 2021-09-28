@@ -1,16 +1,24 @@
 import React from 'react'
 
 import './styles.scss'
-import { useAppDispatch } from '../../hooks/usePreTypedHooks'
-import { carSettingReset } from '../../redux/carSetting/carActionCreators'
+import { useAppDispatch, useAppSelector } from '../../hooks/usePreTypedHooks'
+import { addNewCar, carSettingReset } from '../../redux/carSetting/carActionCreators'
+import { newCarSelector } from '../../redux/carSetting/carSettingSelectors'
 import Button from '../button/buttonPrimary/index'
 import CarSettingForm from '../forms/carSettingForm'
 
 export default function CarSetting() {
   const dispatch = useAppDispatch()
+  const state = useAppSelector((state) => state)
+  const accessToken = state.auth.authData?.accessToken!
+  const newCar = newCarSelector(state)
 
   const handleResetForm = () => {
     dispatch(carSettingReset())
+  }
+
+  const handleAddNewcar = () => {
+    dispatch(addNewCar({accessToken, newCar}))
   }
 
   return (
@@ -27,7 +35,7 @@ export default function CarSetting() {
         <div className='car-setting__footer--left-block'>
           <Button
             backgrond='blue'
-            onClick={() => console.log('blue')}
+            onClick={handleAddNewcar}
             className='car-setting__footer--button'
           >
             Сохранить

@@ -1,8 +1,8 @@
 export interface ICarImage {
-  uid: string,
-  name: string,
-  status: string,
-  url: string
+  size: number,
+  originalname: string,
+  mimetype: string,
+  path: string
 }
 
 export interface INewCar {
@@ -26,4 +26,9 @@ export interface INewCar {
 
 export interface ICar extends INewCar {
   id: string
+}
+
+export interface IPostNewCar {
+  accessToken: string,
+  newCar: INewCar
 }

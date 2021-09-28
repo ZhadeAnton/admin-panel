@@ -9,16 +9,16 @@ import { setCarImage } from '../../../redux/carSetting/carActionCreators';
 export default function InputUpload() {
   const dispatch = useAppDispatch()
   const state = useAppSelector((state) => state)
-  const imageName = state.carSetting.image?.name
+  const imageName = state.carSetting.image?.originalname
 
   const handleChange = async ({ file }: any) => {
     const imageBase64 = await getBase64(file.originFileObj)
 
     dispatch(setCarImage({
-      uid: file.uid,
-      name: file.name,
-      status: file.status,
-      url: imageBase64 as string
+      size: file.size,
+      originalname: file.name,
+      mimetype: file.type,
+      path: imageBase64 as string
     }))
   }
 

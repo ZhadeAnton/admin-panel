@@ -17,7 +17,7 @@ export default function CarCard() {
           className='car-card__image-wrapper'>
           {
             image
-            ? <img src={image.url} alt="image" />
+            ? <img src={image.path} alt="image" />
             : <Skeleton.Image />
           }
         </div>

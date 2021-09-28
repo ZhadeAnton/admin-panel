@@ -22,7 +22,7 @@ export interface ICarSettingAddCheckbox {
 export const CAR_SETTING_ADD_NEW_CAR = 'CAR_SETTING_ADD_NEW_CAR'
 export interface ICarSettingAddNewCar {
   type: typeof CAR_SETTING_ADD_NEW_CAR,
-  payload: INewCar
+  payload: { accessToken: string, newCar: INewCar }
 }
 
 export const CAR_SETTING_CATEGORY_CHANGE = 'CAR_SETTING_CATEGORY_CHANGE'

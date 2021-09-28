@@ -1,6 +1,6 @@
 import { ICheckbox, IRadioButton } from './../../interfaces/inputInterfaces';
 import * as types from './carActionTypes'
-import { ICarImage, INewCar } from './../../interfaces/carInterfaces';
+import { ICarImage, IPostNewCar } from './../../interfaces/carInterfaces';
 
 export const carSettingChange = (type: string, value: string)
   : types.ICarSettingChange => ({
@@ -25,9 +25,10 @@ export const carCategoryChange = (category: IRadioButton)
   payload: category
 })
 
-export const addNewCar = (newCar: INewCar): types.ICarSettingAddNewCar => ({
+export const addNewCar = ({accessToken, newCar}: IPostNewCar)
+  : types.ICarSettingAddNewCar => ({
   type: types.CAR_SETTING_ADD_NEW_CAR,
-  payload: newCar
+  payload: {accessToken, newCar}
 })
 
 export const carSettingReset = (): types.ICarSettingReset => ({
