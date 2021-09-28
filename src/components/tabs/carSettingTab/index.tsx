@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
 
 import './styles.scss'
-import { useAppSelector } from '../../../hooks/usePreTypedHooks'
+import { useAppDispatch, useAppSelector } from '../../../hooks/usePreTypedHooks'
+import { hideCarNotification } from '../../../redux/carSetting/carActionCreators'
 import CarCard from '../../carCard'
 import CarSetting from '../../carSetting'
 import PanelTitle from '../../panel/panelTitle'
 import Alert from '../../alert/index'
 
 export default function CarSettingTab() {
+  const dispatch = useAppDispatch()
   const state = useAppSelector((state) => state)
   const [alertVisible, setAlertVisible] = useState(false)
   const isNewCarSaved = state.carSetting.isNewCarSaved
@@ -15,7 +17,10 @@ export default function CarSettingTab() {
   useEffect(() => {
     if (isNewCarSaved) {
       setAlertVisible(true)
-      setTimeout(() => setAlertVisible(false), 3500)
+      setTimeout(() => {
+        dispatch(hideCarNotification())
+        setAlertVisible(false)
+      }, 3000)
     }
   }, [isNewCarSaved])
 

@@ -35,6 +35,10 @@ export const addNewCarSuccess = (): types.ICarSettingAddNewCarSuccess => ({
   type: types.CAR_SETTING_ADD_NEW_CAR_SUCCESS
 })
 
+export const hideCarNotification = (): types.ICarSettingHideNotification => ({
+  type: types.CAR_SETTING_HIDE_NOTIFICATION
+})
+
 export const carSettingReset = (): types.ICarSettingReset => ({
   type: types.CAR_SETTING_RESET
 })

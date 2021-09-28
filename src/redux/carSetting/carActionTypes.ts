@@ -30,6 +30,11 @@ export interface ICarSettingAddNewCarSuccess {
   type: typeof CAR_SETTING_ADD_NEW_CAR_SUCCESS
 }
 
+export const CAR_SETTING_HIDE_NOTIFICATION = 'CAR_SETTING_HIDE_NOTIFICATION'
+export interface ICarSettingHideNotification {
+  type: typeof CAR_SETTING_HIDE_NOTIFICATION
+}
+
 export const CAR_SETTING_CATEGORY_CHANGE = 'CAR_SETTING_CATEGORY_CHANGE'
 export interface ICarSettingCategoryChange {
   type: typeof CAR_SETTING_CATEGORY_CHANGE,
@@ -48,4 +53,5 @@ export type ICarSettingTypes =
 | ICarSettingAddNewCar
 | ICarSettingAddNewCarSuccess
 | ICarSettingCategoryChange
+| ICarSettingHideNotification
 | ICarSettingReset

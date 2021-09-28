@@ -77,6 +77,12 @@ const carSettingReducer = (
         isNewCarSaved: true
       }
 
+    case types.CAR_SETTING_HIDE_NOTIFICATION:
+      return {
+        ...state,
+        isNewCarSaved: false
+      }
+
     case types.CAR_SETTING_RESET:
       return {
         ...INIT_STATE

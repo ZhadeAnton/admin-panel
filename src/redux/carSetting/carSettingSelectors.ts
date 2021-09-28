@@ -4,14 +4,28 @@ import { RootState } from '../store'
 
 const carSettingSelector = (state: RootState) => state.carSetting
 
-const carColorCheckboxed = createSelector(
+export const carSettingFieldsSelector = createSelector(
+    carSettingSelector,
+    (carState) => {
+      return [
+        carState.name,
+        carState.type,
+        carState.description,
+        carState.image,
+        carState.priceMax,
+        carState.priceMin
+      ].filter((item) => item)
+    }
+)
+
+const carColorCheckboxes = createSelector(
     carSettingSelector,
     (carState) => carState.colorCheckboxes.map((checkbox) => checkbox.value)
 )
 
 export const newCarSelector = createSelector(
     carSettingSelector,
-    carColorCheckboxed,
+    carColorCheckboxes,
     (carState, carColors) => (
       {
         priceMax: carState.priceMax,
