@@ -3,7 +3,8 @@ const orderFilterByCar = [
   { value: '600f4935ad015e0bb6997d30', title: 'Nissan, Qashqai', field: 'carId' },
   { value: '60a4fe4e2aed9a0b9b7ec10a', title: 'Volvo S90', field: 'carId' },
   { value: '611d60152aed9a0b9b850bdf', title: 'Lada Vesta', field: 'carId' },
-  { value: '61228bab2aed9a0b9b850eab', title: 'Renault Sandero', field: 'carId' }
+  { value: '61228bab2aed9a0b9b850eab', title: 'Renault Sandero', field: 'carId' },
+  { value: 'Любая', title: 'Любая', field: 'carId' }
 ]
 
 const orderFilterByCity = [

@@ -48,5 +48,6 @@ export interface IOrderByFilter {
   carId: string | null,
   cityId: string | null,
   statusId: string | null,
-  accessToken: string
+  accessToken: string,
+  currentPage: number
 }

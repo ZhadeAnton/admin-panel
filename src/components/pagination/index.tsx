@@ -6,6 +6,7 @@ import './styles.scss'
 interface Props {
   pagesLength: number,
   defaultPageSize: number,
+  currentPage: number,
   onChange: (page: number) => void
 }
 
@@ -14,7 +15,7 @@ export default function CustomPagination(props: Props) {
 
   useEffect(() => {
     setCurrent(1)
-    props.onChange(0)
+    props.onChange(props.currentPage)
   }, [])
 
   const handleChangePagination = (page: number) => {

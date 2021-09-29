@@ -14,10 +14,11 @@ export const getOrdersSuccess = (orders: Array<IOrder>, count: number)
   payload: { orders, count }
 })
 
-export const getOrdersByFilters = ({carId, cityId, statusId, accessToken}: IOrderByFilter)
+export const getOrdersByFilters = (
+    {carId, cityId, statusId, accessToken, currentPage}: IOrderByFilter)
   : types.IGetOrdersByFilters => ({
   type: types.GET_ORDERS_BY_FILTER,
-  payload: { carId, cityId, statusId, accessToken }
+  payload: { carId, cityId, statusId, accessToken, currentPage }
 })
 
 export const getOrdersByFiltersSuccess = (orders: Array<IOrder>, count: number)
@@ -71,6 +72,11 @@ export const setOrderStatusCancelFailure = ()
 export const setOrderStatusCompleteFailure = ()
   : types.ISetOrderStatusCompleteFailure => ({
   type: types.SET_ORDER_STATUS_COMPLETE_FAILURE
+})
+
+export const setOrderSuccentPage = (currentPage: number): types.ISetOrderCurrentPage => ({
+  type: types.SET_ORDER_CURRENT_PAGE,
+  payload: currentPage
 })
 
 export const hideOrderNotification = (): types.IHideOrderNotification => ({

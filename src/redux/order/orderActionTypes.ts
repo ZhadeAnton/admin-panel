@@ -65,6 +65,12 @@ export interface ISetOrderStatusCancelFailure {
   type: typeof SET_ORDER_STATUS_CANCEL_FAILURE
 }
 
+export const SET_ORDER_CURRENT_PAGE = 'SET_ORDER_CURRENT_PAGE'
+export interface ISetOrderCurrentPage {
+  type: typeof SET_ORDER_CURRENT_PAGE,
+  payload: number
+}
+
 export const SET_ORDER_STATUS_COMPLETE_FAILURE = 'SET_ORDER_STATUS_COMPLETE_FAILURE'
 export interface ISetOrderStatusCompleteFailure {
   type: typeof SET_ORDER_STATUS_COMPLETE_FAILURE
@@ -87,5 +93,6 @@ export type IOrderTypes =
 | ISetOrderStatusCompleteSuccess
 | ISetOrderStatusCancelSuccess
 | ISetOrderStatusCancelFailure
+| ISetOrderCurrentPage
 | ISetOrderStatusCompleteFailure
 | IHideOrderNotification

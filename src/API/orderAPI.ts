@@ -30,10 +30,10 @@ export const getOrders = ({accessToken, currentPage}: IGetOrder) => {
 }
 
 export const getOrdersByFilter = (
-    {carId, cityId, statusId, accessToken}: IOrderByFilter) => {
+    {carId, cityId, statusId, accessToken, currentPage}: IOrderByFilter) => {
   return axios({
     method: 'GET',
-    url: `${url}api/db/order?carId=${carId}&cityId=${cityId}&orderStatusId=${statusId}&limit=${ordersLimit}`,
+    url: `${url}api/db/order?${carId !== 'Любая' ? 'carId' + `=${carId}` + '&' : ''}cityId=${cityId}&orderStatusId=${statusId}&limit=${ordersLimit}&page=${currentPage}`,
     headers: {
       'X-Api-Factory-Application-Id': appId,
       'Content-Type': 'application/json',

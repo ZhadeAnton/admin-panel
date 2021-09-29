@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 
 import './styles.scss'
 import {
-  getOrders,
   getOrdersByFilters,
   getOrderStatuses,
-  hideOrderNotification } from '../../../redux/order/orderActionCreators'
+  hideOrderNotification,
+  setOrderSuccentPage} from '../../../redux/order/orderActionCreators'
 import { useAppDispatch, useAppSelector } from '../../../hooks/usePreTypedHooks'
 import { carOrderSelects } from '../../../utils/orderUtils'
 import OrderList from '../../orderList'
@@ -26,15 +26,21 @@ export default function OrdersTab() {
   const orders = state.order.orders
   const accessToken = state.auth.authData?.accessToken!
   const count = state.order.count
+  const currentPage = state.order.currentPage
   const isError = state.order.isError
 
   useEffect(() => {
     dispatch(getOrderStatuses(accessToken))
+    dispatch(getOrdersByFilters({...values, accessToken, currentPage}))
 
     return () => {
       dispatch(getOrderStatuses(accessToken))
     }
   }, [])
+
+  useEffect(() => {
+    handleOrderFilter()
+  }, [currentPage])
 
   useEffect(() => {
     if (isError) {
@@ -50,8 +56,12 @@ export default function OrdersTab() {
     setAlertVisible(false)
   }
 
-  const handleOrderFilter = () => {
-    dispatch(getOrdersByFilters({...values, accessToken}))
+  const handleChangeOrderPage = (currentPage: number) => {
+    dispatch(setOrderSuccentPage(currentPage))
+  }
+
+  function handleOrderFilter() {
+    dispatch(getOrdersByFilters({...values, accessToken, currentPage}))
   }
 
   const handleSelectChange = (value: string, field: string) => {
@@ -59,10 +69,6 @@ export default function OrdersTab() {
       ...prevState,
       [field]: value
     }))
-  }
-
-  const handlePagination = (page: number) => {
-    dispatch(getOrders(accessToken, page))
   }
 
   return (
@@ -81,7 +87,8 @@ export default function OrdersTab() {
         <CustomPagination
           defaultPageSize={4}
           pagesLength={count}
-          onChange={handlePagination}
+          currentPage={currentPage}
+          onChange={handleChangeOrderPage}
         />
       </div>
 

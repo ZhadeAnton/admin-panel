@@ -16,6 +16,7 @@ function* getOrders({ payload }) {
 function* getOrdersByFilter({ payload }) {
   try {
     const response = yield call(API.getOrdersByFilter, payload)
+    yield console.log(response)
     yield put(actions.getOrdersByFiltersSuccess(response.data.data, response.data.count))
   } catch (error) {
     console.error(error)
