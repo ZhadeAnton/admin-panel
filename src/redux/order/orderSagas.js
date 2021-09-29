@@ -4,19 +4,9 @@ import * as actions from './orderActionCreators'
 import * as types from './orderActionTypes'
 import * as API from '../../API/orderAPI'
 
-function* getOrders({ payload }) {
-  try {
-    const response = yield call(API.getOrders, payload)
-    yield put(actions.getOrdersSuccess(response.data.data, response.data.count))
-  } catch (error) {
-    console.error(error)
-  }
-}
-
 function* getOrdersByFilter({ payload }) {
   try {
     const response = yield call(API.getOrdersByFilter, payload)
-    yield console.log(response)
     yield put(actions.getOrdersByFiltersSuccess(response.data.data, response.data.count))
   } catch (error) {
     console.error(error)
@@ -50,10 +40,6 @@ function* setOrderStatusCancel({ payload }) {
   }
 }
 
-function* onGetOrders() {
-  yield takeLatest(types.GET_ORDERS, getOrders)
-}
-
 function* onGetOrderStatuses() {
   yield takeLatest(types.GET_ORDER_STATUSES, getOrderStatuses)
 }
@@ -72,7 +58,6 @@ function* onGetOrdersByFilter() {
 
 export default function* orderSagas() {
   yield all([
-    call(onGetOrders),
     call(onGetOrderStatuses),
     call(onSetOrderStatusComplete),
     call(onSetOrderStatusCancel),

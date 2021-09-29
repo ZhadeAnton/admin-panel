@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Pagination } from 'antd';
 
 import './styles.scss'
@@ -11,21 +11,17 @@ interface Props {
 }
 
 export default function CustomPagination(props: Props) {
-  const [current, setCurrent] = useState(1)
-
   useEffect(() => {
-    setCurrent(1)
     props.onChange(props.currentPage)
   }, [])
 
   const handleChangePagination = (page: number) => {
     props.onChange(page - 1)
-    setCurrent(page)
   }
 
   return (
     <Pagination
-      current={current}
+      current={props.currentPage + 1}
       total={props.pagesLength - props.defaultPageSize}
       pageSize={props.defaultPageSize}
       showSizeChanger={false}

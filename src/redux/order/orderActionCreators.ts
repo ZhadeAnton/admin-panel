@@ -2,18 +2,6 @@ import { IFnSetOrderComplete, IOrderByFilter } from './../../interfaces/orderInt
 import { IOrder, IOrderStatus } from '../../interfaces/orderInterfaces'
 import * as types from './orderActionTypes'
 
-export const getOrders = (accessToken: string, currentPage: number)
-  : types.IGetOrders => ({
-  type: types.GET_ORDERS,
-  payload: { accessToken, currentPage }
-})
-
-export const getOrdersSuccess = (orders: Array<IOrder>, count: number)
-  : types.IGetOrdersSuccess => ({
-  type: types.GET_ORDERS_SUCCESS,
-  payload: { orders, count }
-})
-
 export const getOrdersByFilters = (
     {carId, cityId, statusId, accessToken, currentPage}: IOrderByFilter)
   : types.IGetOrdersByFilters => ({

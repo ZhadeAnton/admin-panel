@@ -18,9 +18,9 @@ export default function OrdersTab() {
   const dispatch = useAppDispatch()
   const state = useAppSelector((state) => state)
   const [values, setValues] = useState({
-    carId: '600f4a97ad015e0bb6997d37',
+    carId: 'Любая',
     cityId: '5ea07ad3099b810b946c6254',
-    statusId: '5e26a1f0099b810b946c5d8b'
+    statusId: '5e26a191099b810b946c5d89'
   })
   const [alertVisible, setAlertVisible] = useState(false)
   const orders = state.order.orders
@@ -60,7 +60,7 @@ export default function OrdersTab() {
     dispatch(setOrderSuccentPage(currentPage))
   }
 
-  function handleOrderFilter() {
+  const handleOrderFilter = () => {
     dispatch(getOrdersByFilters({...values, accessToken, currentPage}))
   }
 

@@ -1,15 +1,11 @@
 /* eslint-disable max-len */
 import axios from 'axios';
 import { IOrder, IOrderByFilter, IOrderStatus } from '../interfaces/orderInterfaces';
+import { getFilterByCarId } from '../utils/orderUtils';
 
 const url = process.env.REACT_APP_DEFAULT_URL
 const appId = process.env.REACT_APP_APPLICATION_ID
 const ordersLimit = 4
-
-interface IGetOrder {
-  accessToken: string,
-  currentPage: number
-}
 
 interface ISetOrderComplete {
   accessToken: string,
@@ -17,23 +13,13 @@ interface ISetOrderComplete {
   newOrderId: IOrderStatus[] | undefined
 }
 
-export const getOrders = ({accessToken, currentPage}: IGetOrder) => {
-  return axios({
-    method: 'GET',
-    url: `${url}api/db/order?&limit=${ordersLimit}&page=${currentPage}`,
-    headers: {
-      'X-Api-Factory-Application-Id': appId,
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${accessToken}`
-    }
-  })
-}
-
 export const getOrdersByFilter = (
     {carId, cityId, statusId, accessToken, currentPage}: IOrderByFilter) => {
+  const carFilter = getFilterByCarId(carId)
+
   return axios({
     method: 'GET',
-    url: `${url}api/db/order?${carId !== 'Любая' ? 'carId' + `=${carId}` + '&' : ''}cityId=${cityId}&orderStatusId=${statusId}&limit=${ordersLimit}&page=${currentPage}`,
+    url: `${url}api/db/order?${carFilter}cityId=${cityId}&orderStatusId=${statusId}&limit=${ordersLimit}&page=${currentPage}`,
     headers: {
       'X-Api-Factory-Application-Id': appId,
       'Content-Type': 'application/json',

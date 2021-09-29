@@ -26,7 +26,11 @@ const orderFilterByStatus = [
 ]
 
 export const carOrderSelects = [
-  { defaultValue: 'Nissan, X-Trail', options: orderFilterByCar },
+  { defaultValue: 'Любая', options: orderFilterByCar },
   { defaultValue: 'Ульяновск', options: orderFilterByCity },
-  { defaultValue: 'Подтвержденные', options: orderFilterByStatus },
+  { defaultValue: 'Новые', options: orderFilterByStatus },
 ]
+
+export const getFilterByCarId = (carId: string | null) => {
+  return carId !== 'Любая' ? 'carId' + `=${carId}` + '&' : ''
+}
