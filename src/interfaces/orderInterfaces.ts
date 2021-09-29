@@ -45,6 +45,7 @@ export interface IFnSetOrderComplete {
 }
 
 export interface IOrderByFilter {
+  createdAt: string,
   carId: string | null,
   cityId: string | null,
   statusId: string | null,

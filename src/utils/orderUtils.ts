@@ -1,3 +1,10 @@
+const orderFilterByDate = [
+  { value: 'За сегодня', title: 'За сегодня', field: 'createdAt' },
+  { value: 'За неделю', title: 'За неделю', field: 'createdAt' },
+  { value: 'За месяц', title: 'За месяц', field: 'createdAt' },
+  { value: 'За год', title: 'За год', field: 'createdAt' },
+]
+
 const orderFilterByCar = [
   { value: '600f4a97ad015e0bb6997d37', title: 'Nissan, X-Trail', field: 'carId' },
   { value: '600f4935ad015e0bb6997d30', title: 'Nissan, Qashqai', field: 'carId' },
@@ -26,6 +33,7 @@ const orderFilterByStatus = [
 ]
 
 export const carOrderSelects = [
+  { defaultValue: 'За месяц', options: orderFilterByDate },
   { defaultValue: 'Любая', options: orderFilterByCar },
   { defaultValue: 'Ульяновск', options: orderFilterByCity },
   { defaultValue: 'Новые', options: orderFilterByStatus },
@@ -33,4 +41,27 @@ export const carOrderSelects = [
 
 export const getFilterByCarId = (carId: string | null) => {
   return carId !== 'Любая' ? 'carId' + `=${carId}` + '&' : ''
+}
+
+export const getFilterByDate = (date: string) => {
+  const dateNow = Date.now()
+  const oneDayInMills = 86400000
+  const dayAgo = dateNow - (oneDayInMills * 1)
+  const weekAgo = dateNow - (oneDayInMills * 7)
+  const monthAgo = dateNow - (oneDayInMills * 30)
+  const yearAgo = dateNow - (oneDayInMills * 365)
+
+  switch (date) {
+    case 'За сегодня':
+      return `createdAt[$gt]=${dayAgo}&`
+
+    case 'За неделю':
+      return `createdAt[$gt]=${weekAgo}&`
+
+    case 'За месяц':
+      return `createdAt[$gt]=${monthAgo}&`
+
+    case 'За год':
+      return `createdAt[$gt]=${yearAgo}&`
+  }
 }

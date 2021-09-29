@@ -3,10 +3,10 @@ import { IOrder, IOrderStatus } from '../../interfaces/orderInterfaces'
 import * as types from './orderActionTypes'
 
 export const getOrdersByFilters = (
-    {carId, cityId, statusId, accessToken, currentPage}: IOrderByFilter)
+    {createdAt, carId, cityId, statusId, accessToken, currentPage}: IOrderByFilter)
   : types.IGetOrdersByFilters => ({
   type: types.GET_ORDERS_BY_FILTER,
-  payload: { carId, cityId, statusId, accessToken, currentPage }
+  payload: { createdAt, carId, cityId, statusId, accessToken, currentPage }
 })
 
 export const getOrdersByFiltersSuccess = (orders: Array<IOrder>, count: number)

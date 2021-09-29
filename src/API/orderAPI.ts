@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import axios from 'axios';
 import { IOrder, IOrderByFilter, IOrderStatus } from '../interfaces/orderInterfaces';
-import { getFilterByCarId } from '../utils/orderUtils';
+import { getFilterByCarId, getFilterByDate } from '../utils/orderUtils';
 
 const url = process.env.REACT_APP_DEFAULT_URL
 const appId = process.env.REACT_APP_APPLICATION_ID
@@ -14,12 +14,13 @@ interface ISetOrderComplete {
 }
 
 export const getOrdersByFilter = (
-    {carId, cityId, statusId, accessToken, currentPage}: IOrderByFilter) => {
+    {createdAt, carId, cityId, statusId, accessToken, currentPage}: IOrderByFilter) => {
   const carFilter = getFilterByCarId(carId)
+  const dateFilter = getFilterByDate(createdAt)
 
   return axios({
     method: 'GET',
-    url: `${url}api/db/order?${carFilter}cityId=${cityId}&orderStatusId=${statusId}&limit=${ordersLimit}&page=${currentPage}`,
+    url: `${url}api/db/order?${dateFilter}${carFilter}cityId=${cityId}&orderStatusId=${statusId}&limit=${ordersLimit}&page=${currentPage}`,
     headers: {
       'X-Api-Factory-Application-Id': appId,
       'Content-Type': 'application/json',

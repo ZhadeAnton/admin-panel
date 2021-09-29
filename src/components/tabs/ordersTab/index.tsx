@@ -18,6 +18,7 @@ export default function OrdersTab() {
   const dispatch = useAppDispatch()
   const state = useAppSelector((state) => state)
   const [values, setValues] = useState({
+    createdAt: 'За неделю',
     carId: 'Любая',
     cityId: '5ea07ad3099b810b946c6254',
     statusId: '5e26a191099b810b946c5d89'
