@@ -70,10 +70,10 @@
 
     &:after {
       content: '';
-      width: 30px;
-      height: 30px;
-      @include abs-position(50%, auto, auto, 54%);
-      transform: translate(-51%, -50%);
+      width: 25px;
+      height: 25px;
+      @include abs-position(50%, auto, auto, 52%);
+      transform: translate(-50%, -50%);
       border-radius: 50%;
       z-index: -1;
       background-color: $blue-color;

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Spin } from 'antd'
 
 import './styles.scss'
 import {
@@ -29,14 +30,11 @@ export default function OrdersTab() {
   const count = state.order.count
   const currentPage = state.order.currentPage
   const isError = state.order.isError
+  const isLoading = state.order.isLoading
 
   useEffect(() => {
     dispatch(getOrderStatuses(accessToken))
     dispatch(getOrdersByFilters({...values, accessToken, currentPage}))
-
-    return () => {
-      dispatch(getOrderStatuses(accessToken))
-    }
   }, [])
 
   useEffect(() => {
@@ -73,35 +71,37 @@ export default function OrdersTab() {
   }
 
   return (
-    <section className='orders-tab'>
-      <PanelTitle title='Заказ' />
+    <Spin tip='Loading' spinning={isLoading}>
+      <section className='orders-tab'>
+        <PanelTitle title='Заказ' />
 
-      <div className='orders-tab__main'>
-        <FilterRow
-          selects={carOrderSelects}
-          onFilter={handleOrderFilter}
-          onChangeSelect={handleSelectChange}
-        />
+        <div className='orders-tab__main'>
+          <FilterRow
+            selects={carOrderSelects}
+            onFilter={handleOrderFilter}
+            onChangeSelect={handleSelectChange}
+          />
 
-        <OrderList orders={orders} />
+          <OrderList orders={orders} />
 
-        <CustomPagination
-          defaultPageSize={4}
-          pagesLength={count}
-          currentPage={currentPage}
-          onChange={handleChangeOrderPage}
-        />
-      </div>
+          <CustomPagination
+            defaultPageSize={4}
+            pagesLength={count}
+            currentPage={currentPage}
+            onChange={handleChangeOrderPage}
+          />
+        </div>
 
-      {
-        alertVisible &&
-        <Alert
-          type='error'
-          onClose={handleCloseAlert}
-        >
-          Невозможно редактировать заказ!
-        </Alert>
-      }
-    </section>
+        {
+          alertVisible &&
+          <Alert
+            type='error'
+            onClose={handleCloseAlert}
+          >
+            Невозможно редактировать заказ!
+          </Alert>
+        }
+      </section>
+    </Spin>
   )
 }

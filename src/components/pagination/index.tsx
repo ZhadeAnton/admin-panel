@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Pagination } from 'antd';
 
 import './styles.scss'
@@ -11,10 +11,6 @@ interface Props {
 }
 
 export default function CustomPagination(props: Props) {
-  useEffect(() => {
-    props.onChange(props.currentPage)
-  }, [])
-
   const handleChangePagination = (page: number) => {
     props.onChange(page - 1)
   }

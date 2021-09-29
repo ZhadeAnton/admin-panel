@@ -39,11 +39,11 @@ export const carOrderSelects = [
   { defaultValue: 'Новые', options: orderFilterByStatus },
 ]
 
-export const getFilterByCarId = (carId: string | null) => {
+export const getCarIdFilter = (carId: string | null) => {
   return carId !== 'Любая' ? 'carId' + `=${carId}` + '&' : ''
 }
 
-export const getFilterByDate = (date: string) => {
+export const getDateFilter = (date: string) => {
   const dateNow = Date.now()
   const oneDayInMills = 86400000
   const dayAgo = dateNow - (oneDayInMills * 1)

@@ -21,6 +21,14 @@ const INIT_STATE: IOrderState = {
 
 const orderReducer = (state = INIT_STATE, action: types.IOrderTypes): IOrderState => {
   switch (action.type) {
+    case types.GET_ORDERS_BY_FILTER:
+    case types.SET_ORDER_STATUS_COMPLETE:
+    case types.SET_ORDER_STATUS_CANCEL:
+      return {
+        ...state,
+        isLoading: true
+      }
+
     case types.GET_ORDERS_BY_FILTER_SUCCESS:
       return {
         ...state,
@@ -48,14 +56,16 @@ const orderReducer = (state = INIT_STATE, action: types.IOrderTypes): IOrderStat
     case types.SET_ORDER_STATUS_CANCEL_SUCCESS:
       return {
         ...state,
-        orders: state.orders.filter((order) => order.id !== action.payload.id)
+        orders: state.orders.filter((order) => order.id !== action.payload.id),
+        isLoading: false
       }
 
     case types.SET_ORDER_STATUS_CANCEL_FAILURE:
     case types.SET_ORDER_STATUS_COMPLETE_FAILURE:
       return {
         ...state,
-        isError: true
+        isError: true,
+        isLoading: false
       }
 
     case types.HIDE_ORDER_NOTIFICATION:
