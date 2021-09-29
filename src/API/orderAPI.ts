@@ -1,5 +1,6 @@
+/* eslint-disable max-len */
 import axios from 'axios';
-import { IOrder, IOrderStatus } from '../interfaces/orderInterfaces';
+import { IOrder, IOrderByFilter, IOrderStatus } from '../interfaces/orderInterfaces';
 
 const url = process.env.REACT_APP_DEFAULT_URL
 const appId = process.env.REACT_APP_APPLICATION_ID
@@ -20,6 +21,19 @@ export const getOrders = ({accessToken, currentPage}: IGetOrder) => {
   return axios({
     method: 'GET',
     url: `${url}api/db/order?&limit=${ordersLimit}&page=${currentPage}`,
+    headers: {
+      'X-Api-Factory-Application-Id': appId,
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessToken}`
+    }
+  })
+}
+
+export const getOrdersByFilter = (
+    {carId, cityId, statusId, accessToken}: IOrderByFilter) => {
+  return axios({
+    method: 'GET',
+    url: `${url}api/db/order?carId=${carId}&cityId=${cityId}&orderStatusId=${statusId}&limit=${ordersLimit}`,
     headers: {
       'X-Api-Factory-Application-Id': appId,
       'Content-Type': 'application/json',

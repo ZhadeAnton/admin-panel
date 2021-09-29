@@ -15,7 +15,7 @@ export default function CustomPagination(props: Props) {
   useEffect(() => {
     setCurrent(1)
     props.onChange(0)
-  }, [props.defaultPageSize, props.pagesLength])
+  }, [])
 
   const handleChangePagination = (page: number) => {
     props.onChange(page - 1)

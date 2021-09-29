@@ -13,6 +13,15 @@ function* getOrders({ payload }) {
   }
 }
 
+function* getOrdersByFilter({ payload }) {
+  try {
+    const response = yield call(API.getOrdersByFilter, payload)
+    yield put(actions.getOrdersByFiltersSuccess(response.data.data, response.data.count))
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 function* getOrderStatuses({ payload }) {
   try {
     const response = yield call(API.getOrderStatuses, payload)
@@ -56,11 +65,16 @@ function* onSetOrderStatusCancel() {
   yield takeLatest(types.SET_ORDER_STATUS_CANCEL, setOrderStatusCancel)
 }
 
+function* onGetOrdersByFilter() {
+  yield takeLatest(types.GET_ORDERS_BY_FILTER, getOrdersByFilter)
+}
+
 export default function* orderSagas() {
   yield all([
     call(onGetOrders),
     call(onGetOrderStatuses),
     call(onSetOrderStatusComplete),
-    call(onSetOrderStatusCancel)
+    call(onSetOrderStatusCancel),
+    call(onGetOrdersByFilter)
   ])
 }

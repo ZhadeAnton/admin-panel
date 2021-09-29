@@ -4,15 +4,17 @@ const { Option } = Select;
 
 import './styles.scss'
 import { ReactComponent as Icon } from '../../../assets/SVG/doubleArrow.svg'
+import { IOption } from '../../../interfaces/inputInterfaces';
 
 interface Props {
   defaultValue: string,
-  options: Array<string>
+  options: Array<IOption>,
+  onChangeSelect: (value: string, field: string) => void
 }
 
 export default function SelectPrimary(props: Props) {
   function handleChange(value: string) {
-    console.log(`selected ${value}`);
+    props.onChangeSelect(value, props.options[0].field)
   }
 
   return (
@@ -25,7 +27,9 @@ export default function SelectPrimary(props: Props) {
       >
         {
           props.options.map((opt) => (
-            <Option key={opt} value={opt}>{opt}</Option>
+            <Option key={opt.value} value={opt.value}>
+              { opt.title }
+            </Option>
           ))
         }
       </Select>

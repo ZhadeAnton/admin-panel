@@ -1,4 +1,4 @@
-import { IOrder, IOrderStatus } from '../../interfaces/orderInterfaces'
+import { IOrder, IOrderByFilter, IOrderStatus } from '../../interfaces/orderInterfaces'
 
 export const GET_ORDERS = 'GET_ORDERS'
 export interface IGetOrders {
@@ -9,6 +9,18 @@ export interface IGetOrders {
 export const GET_ORDERS_SUCCESS = 'GET_ORDERS_SUCCESS'
 export interface IGetOrdersSuccess {
   type: typeof GET_ORDERS_SUCCESS,
+  payload: { orders: Array<IOrder>, count: number }
+}
+
+export const GET_ORDERS_BY_FILTER = 'GET_ORDERS_BY_FILTER'
+export interface IGetOrdersByFilters {
+  type: typeof GET_ORDERS_BY_FILTER,
+  payload: IOrderByFilter
+}
+
+export const GET_ORDERS_BY_FILTER_SUCCESS = 'GET_ORDERS_BY_FILTER_SUCCESS'
+export interface IGetOrdersByFiltersSuccess {
+  type: typeof GET_ORDERS_BY_FILTER_SUCCESS,
   payload: { orders: Array<IOrder>, count: number }
 }
 
@@ -66,6 +78,8 @@ export interface IHideOrderNotification {
 export type IOrderTypes =
 | IGetOrders
 | IGetOrdersSuccess
+| IGetOrdersByFilters
+| IGetOrdersByFiltersSuccess
 | IGetOrderStatuses
 | IGetOrderStatusesSuccess
 | ISetOrderStatusComplete

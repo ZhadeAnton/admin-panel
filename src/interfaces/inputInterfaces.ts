@@ -8,3 +8,9 @@ export interface IRadioButton {
   id: string,
   description: string
 }
+
+export interface IOption {
+  value: string,
+  title: string,
+  field: string
+}

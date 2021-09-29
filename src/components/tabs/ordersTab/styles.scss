@@ -10,31 +10,5 @@
   &__main {
     margin-top: 30px;
     background-color: $white-color;
-
-    &--header {
-      @include flex-align-center;
-      justify-content: space-between;
-      padding: 16px 20px;
-    }
-
-    &--options {
-      display: flex;
-
-      & > * {
-        &:not(:last-child) {
-          margin-right: $space-md;
-        }
-      }
-    }
-
-    &--button {
-      width: 95px;
-      height: 30px;
-    }
-
-    &--footer {
-      @include flex-center;
-      padding: 20px;
-    }
   }
 }

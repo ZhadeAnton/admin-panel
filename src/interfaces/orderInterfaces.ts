@@ -43,3 +43,10 @@ export interface IOrderStatus {
 export interface IFnSetOrderComplete {
   (accessToken: string, order: IOrder, newOrderId: IOrderStatus | undefined): any
 }
+
+export interface IOrderByFilter {
+  carId: string | null,
+  cityId: string | null,
+  statusId: string | null,
+  accessToken: string
+}

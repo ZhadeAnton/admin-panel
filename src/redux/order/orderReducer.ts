@@ -26,6 +26,7 @@ const orderReducer = (state = INIT_STATE, action: types.IOrderTypes): IOrderStat
       }
 
     case types.GET_ORDERS_SUCCESS:
+    case types.GET_ORDERS_BY_FILTER_SUCCESS:
       return {
         ...state,
         orders: action.payload.orders,

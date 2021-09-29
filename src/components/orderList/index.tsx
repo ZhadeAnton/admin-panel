@@ -11,11 +11,14 @@ import {
 import { IOrder } from '../../interfaces/orderInterfaces'
 import OrderListItem from '../orderListItem'
 
-export default function OrderList() {
+interface Props {
+  orders: Array<IOrder>
+}
+
+export default function OrderList(props: Props) {
   const dispatch = useAppDispatch()
   const state = useAppSelector((state) => state)
   const accessToken = state.auth.authData?.accessToken!
-  const orders = state.order.orders
   const completeStatus = getOrderStatusCompleteSelector(state)
   const cancelStatus = getOrderStatusCancelSelector(state)
 
@@ -30,7 +33,7 @@ export default function OrderList() {
   return (
     <section className='order-list'>
       {
-        orders.map((order, i) => (
+        props.orders.map((order, i) => (
           <OrderListItem
             key={i}
             order={order}
