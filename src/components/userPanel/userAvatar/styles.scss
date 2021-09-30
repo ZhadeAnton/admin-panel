@@ -1,5 +1,17 @@
+@import '../../../scss/variables';
+
 .user-avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+
+  @media (max-width: getBreackpoint('lg')) {
+    width: 30px;
+    height: 30px;
+  }
+
+  @media (max-width: getBreackpoint('vsm')) {
+    width: 20px;
+    height: 20px;
+  }
 }

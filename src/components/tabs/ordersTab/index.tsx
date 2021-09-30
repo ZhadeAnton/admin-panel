@@ -9,14 +9,17 @@ import {
   setOrderSuccentPage} from '../../../redux/order/orderActionCreators'
 import { useAppDispatch, useAppSelector } from '../../../hooks/usePreTypedHooks'
 import { carOrderSelects } from '../../../utils/orderUtils'
+import useWindowDimensions from '../../../hooks/useWindowDimensions'
 import OrderList from '../../orderList'
 import PanelTitle from '../../panel/panelTitle'
 import CustomPagination from '../../pagination'
 import Alert from '../../alert/index'
 import FilterRow from '../../filterRow'
+import OrderListItemDrawer from '../../orderListItemDrawer'
 
 export default function OrdersTab() {
   const dispatch = useAppDispatch()
+  const windowDimentions = useWindowDimensions()
   const state = useAppSelector((state) => state)
   const [values, setValues] = useState({
     createdAt: 'За неделю',
@@ -83,6 +86,10 @@ export default function OrdersTab() {
           />
 
           <OrderList orders={orders} />
+          {
+            windowDimentions.width < 1024 &&
+            <OrderListItemDrawer />
+          }
 
           <CustomPagination
             defaultPageSize={4}

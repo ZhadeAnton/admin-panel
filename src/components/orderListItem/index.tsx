@@ -1,60 +1,34 @@
 import React from 'react'
-import moment from 'moment'
 
 import './styles.scss'
-import carMock from '../../assets/mocks/car-mock.png'
 import { IOrder } from '../../interfaces/orderInterfaces'
 import { getCarImage } from '../../utils/carUtils'
 import CheckboxSecondary from '../inputs/checkboxSecondary'
 import ButtonsMenu from '../forms/buttonsMenu'
+import CarOrderInfo from '../carOrderInfo'
 
 interface Props {
   order: IOrder,
+  selected: boolean,
   onSetOrderComplete: (order: IOrder) => void
-  onSetOrderCancel: (order: IOrder) => void
+  onSetOrderCancel: (order: IOrder) => void,
+  onSelectOrder: (order: IOrder) => void
 }
 
 export default function OrderListItem(props: Props) {
-  let image
-  if (props.order.carId) {
-    image = getCarImage(props.order.carId.thumbnail?.path)
-  } else {
-    image = carMock
-  }
-
   return (
-    <li className='order-list-item'>
+    <li
+      className={`order-list-item${props.selected ? '-selected' : ''}`}
+      onClick={() => props.onSelectOrder(props.order)}
+    >
       <div className='order-list-item__item-wrapper'>
         <img
           className='order-list-item__item-wrapper--image'
-          src={image}
+          src={getCarImage(props.order.carId)}
           alt="car"
         />
 
-        <div className='order-list-item__info'>
-          <div className='order-list-item__info--row'>
-            <strong className='order-list-item__info--row-strong'>
-              { props.order.carId ? props.order.carId.name : 'Не найдено' }
-            </strong>
-            &nbsp;в&nbsp;
-            <strong className='order-list-item__info--row-strong'>
-              { props.order.cityId ? props.order.cityId.name : 'Не найдено' },&nbsp;
-            </strong>
-            { props.order.pointId ? props.order.pointId.address : 'Не найдено' }&nbsp;
-          </div>
-
-          <div className='order-list-item__info--row'>
-            { moment(props.order.dateFrom).format('DD.MM.YYYY h:mm') }
-            &nbsp;&#9472;&nbsp;
-            { moment(props.order.dateTo).format('DD.MM.YYYY h:mm') }
-          </div>
-
-          <div className='order-list-item__info--row'>
-          Цвет: <strong className='order-list-item__info--row-strong'>
-              { props.order.color ?? 'Не выбрано' }
-            </strong>
-          </div>
-        </div>
+        <CarOrderInfo order={props.order} />
       </div>
 
       <div className='order-list-item__checkbox-group'>
@@ -75,7 +49,7 @@ export default function OrderListItem(props: Props) {
       </div>
 
       <div className='order-list-item__price'>
-        { props.order.price }
+        { props.order.price && Math.trunc(props.order.price) } &#8381;
       </div>
 
       <div className='order-list-item__menu'>
@@ -83,6 +57,7 @@ export default function OrderListItem(props: Props) {
           props.order.orderStatusId &&
           <ButtonsMenu
             order={props.order}
+            isAdaptive
             orderStatus={props.order.orderStatusId.name}
             onSetOrderComplete={props.onSetOrderComplete}
             onSetOrderCancel={props.onSetOrderCancel}

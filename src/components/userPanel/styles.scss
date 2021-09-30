@@ -30,4 +30,29 @@
       background-color: $grey-light-color;
     }
   }
+
+  @media (max-width: getBreackpoint('md')) {
+    &__name {
+      font-size: 13px;
+      line-height: 16px;
+    }
+  }
+
+  @media (max-width: getBreackpoint('vsm')) {
+    &__name {
+      margin-left: $space-sm;
+      font-size: 11px;
+      line-height: 14px;
+    }
+
+    &__dropdown {
+      padding: 0 10px;
+    }
+  }
+}
+
+.ant-dropdown-menu-item {
+  @media (max-width: getBreackpoint('vsm')) {
+    font-size: 11px !important;
+  }
 }

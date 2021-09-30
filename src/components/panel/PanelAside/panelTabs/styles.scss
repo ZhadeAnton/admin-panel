@@ -12,6 +12,20 @@
   font-size: 15px;
   line-height: 17px;
   color: $blue-darl-color;
+
+  @media (max-width: getBreackpoint('md')) {
+    padding: $space-md $space-sm;
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  @media (max-width: 640px) {
+    padding: 20px 12px;
+  }
+
+  @media (max-width: getBreackpoint('vsm')) {
+    padding: 14px 12px;
+  }
 }
 
 .panel-tabs {
@@ -41,6 +55,33 @@
   .ant-tabs-tab-btn {
     width: 100% !important;
   }
+
+  @media (max-width: getBreackpoint('md')) {
+    &__item {
+      &--image {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  @media (max-width: 640px) {
+    &__item {
+      &--title {
+        display: none;
+      }
+
+      &--image {
+        svg {
+          width: 16px;
+          height: 16px;
+         }
+      }
+    }
+  }
+
+  @media (max-width: getBreackpoint('vsm')) {
+    
+  }
 }
 
 .ant-tabs > .ant-tabs-nav, .ant-tabs > div > .ant-tabs-nav {
@@ -55,5 +96,5 @@
   svg path {
     transition: $transition-sm;
     fill: $blue-color;
-   }
+  }
 }

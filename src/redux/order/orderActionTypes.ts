@@ -64,6 +64,17 @@ export interface ISetOrderStatusCompleteFailure {
   type: typeof SET_ORDER_STATUS_COMPLETE_FAILURE
 }
 
+export const SELECT_CURRENT_ORDER = 'SELECT_CURRENT_ORDER'
+export interface ISelectCurrentOrder {
+  type: typeof SELECT_CURRENT_ORDER,
+  payload: IOrder
+}
+
+export const REMOVE_CURRENT_ORDER = 'REMOVE_CURRENT_ORDER'
+export interface IRemoveCurrentOrder {
+  type: typeof REMOVE_CURRENT_ORDER
+}
+
 export const HIDE_ORDER_NOTIFICATION = 'HIDE_ORDER_NOTIFICATION'
 export interface IHideOrderNotification {
   type: typeof HIDE_ORDER_NOTIFICATION
@@ -81,4 +92,6 @@ export type IOrderTypes =
 | ISetOrderStatusCancelFailure
 | ISetOrderCurrentPage
 | ISetOrderStatusCompleteFailure
+| ISelectCurrentOrder
+| IRemoveCurrentOrder
 | IHideOrderNotification

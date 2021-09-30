@@ -6,6 +6,7 @@ interface IOrderState {
   orderStatuses: Array<IOrderStatus>,
   count: number,
   currentPage: number,
+  selectedOrder: IOrder | null,
   isError: boolean,
   isLoading: boolean
 }
@@ -15,6 +16,7 @@ const INIT_STATE: IOrderState = {
   orderStatuses: [],
   count: 0,
   currentPage: 0,
+  selectedOrder: null,
   isError: false,
   isLoading: false
 }
@@ -38,6 +40,18 @@ const orderReducer = (state = INIT_STATE, action: types.IOrderTypes): IOrderStat
           ? state.currentPage = 0
           : state.currentPage,
         isLoading: false
+      }
+
+    case types.SELECT_CURRENT_ORDER:
+      return {
+        ...state,
+        selectedOrder: action.payload
+      }
+
+    case types.REMOVE_CURRENT_ORDER:
+      return {
+        ...state,
+        selectedOrder: null
       }
 
     case types.GET_ORDER_STATUSES_SUCCESS:

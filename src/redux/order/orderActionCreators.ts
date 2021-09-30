@@ -67,6 +67,15 @@ export const setOrderSuccentPage = (currentPage: number): types.ISetOrderCurrent
   payload: currentPage
 })
 
+export const selectCurrentOrder = (order: IOrder): types.ISelectCurrentOrder => ({
+  type: types.SELECT_CURRENT_ORDER,
+  payload: order
+})
+
+export const removeCurrentOrder = (): types.IRemoveCurrentOrder => ({
+  type: types.REMOVE_CURRENT_ORDER
+})
+
 export const hideOrderNotification = (): types.IHideOrderNotification => ({
   type: types.HIDE_ORDER_NOTIFICATION
 })

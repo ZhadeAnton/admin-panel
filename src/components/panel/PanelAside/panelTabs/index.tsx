@@ -28,7 +28,7 @@ export default function PanelTabs() {
           <Icon />
         </div>
 
-        <span>
+        <span className='panel-tabs__item--title'>
           { title }
         </span>
       </div>

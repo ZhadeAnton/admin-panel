@@ -11,12 +11,13 @@ interface Props {
   order: IOrder,
   orderStatus: string,
   onSetOrderComplete: (order: IOrder) => void,
-  onSetOrderCancel: (order: IOrder) => void
+  onSetOrderCancel: (order: IOrder) => void,
+  isAdaptive?: boolean
 }
 
 export default function ButtonsMenu(props: Props) {
   return (
-    <div className='buttons-menu'>
+    <div className={`buttons-menu${props.isAdaptive ? '-adaptive' : ''}`}>
       {
         props.orderStatus !== 'Отмененые' && props.orderStatus !== 'Подтвержденные' &&
         <MenuButton

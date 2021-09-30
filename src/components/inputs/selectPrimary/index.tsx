@@ -23,7 +23,6 @@ export default function SelectPrimary(props: Props) {
         defaultValue={props.defaultValue}
         onChange={handleChange}
         suffixIcon={<Icon />}
-        style={{width: '110px'}}
       >
         {
           props.options.map((opt) => (
