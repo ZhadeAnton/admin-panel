@@ -24,6 +24,7 @@
   }
 
   @media (max-width: getBreackpoint('vsm')) {
+    margin-top: 10px;
     padding: $space-sm;
   }
 }

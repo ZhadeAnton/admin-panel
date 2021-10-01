@@ -15,6 +15,8 @@ export default function TextArea(props: Props) {
       value={props.value}
       name={props.name}
       placeholder='Введите описание ...'
+      wrap="hard"
+      maxLength={80}
       onChange={(e) => props.onChange(e)}
     />
   )

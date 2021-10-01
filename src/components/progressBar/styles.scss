@@ -25,7 +25,11 @@
    }
  }
 
- .ant-progress-success-bg, .ant-progress-bg {
-   background-color: $blue-color;
- }
+  .ant-progress-success-bg, .ant-progress-bg {
+    background-color: $blue-color;
+  }
+
+  @media (max-width: 500px) {
+    padding: $space-md $space-sm;
+  }
 }

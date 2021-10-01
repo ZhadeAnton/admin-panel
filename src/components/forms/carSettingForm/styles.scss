@@ -60,6 +60,23 @@
     margin-top: 30px;
     max-width: 661px;
   }
+
+  @media (max-width: 500px) {
+    &__double-inputs {
+      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: flex-start;
+      align-content: flex-start;
+
+      &:not(:last-child) {
+        margin-right: 0;
+      }
+
+      &--wrapper {
+        margin-bottom: $space-sm;
+      }
+    }
+  }
 }
 
 .ant-upload {

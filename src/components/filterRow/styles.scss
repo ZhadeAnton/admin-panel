@@ -5,11 +5,12 @@
   width: 100%;
   @include flex-align-center;
   justify-content: space-between;
-  padding: 16px 20px;
+  padding: $space-md 20px;
   border-bottom: 1px solid $grey-light-color;
 
   &__selects {
     display: flex;
+    margin-right: $space-sm;
 
     & > * {
       &:not(:last-child) {
@@ -35,16 +36,7 @@
 
   @media (max-width: getBreackpoint('lg')) {
     padding: $space-md;
-
-    &__button {
-      width: 80px;
-      height: 30px;
-    }
-  }
-
-  @media (max-width: getBreackpoint('md')) {
-    padding: $space-sm;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: flex-start;
 
     &__selects {
@@ -52,23 +44,31 @@
       flex-wrap: wrap;
   
       & > * {
-        &:not(:last-child) {
-          margin-bottom: $space-sm;
-        }
+        margin-bottom: $space-sm;
       }
     }
 
     &__button {
-      width: 85px;
-      height: 30px;
-      margin-top: $space-sm;
+      width: 110px;
     }
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: getBreackpoint('md')) {
+    padding: $space-sm;
+  }
+
+  @media (max-width: getBreackpoint('sm')) {
     &__button {
-      width: 105px;
-      margin-top: $space-sm;
+      height: 25px;
+    }
+
+    &__selects {
+      display: flex;
+      flex-wrap: wrap;
+  
+      & > * {
+        margin-bottom: 4px;
+      }
     }
   }
 }

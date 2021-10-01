@@ -3,7 +3,7 @@
 
 .car-setting {
   width: 100%;
-  height: 80%;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -19,9 +19,11 @@
   &__footer {
     @include flex-align-center;
     justify-content: space-between;
+    margin-top: $space-xl;
 
     &--button {
       max-width: 110px;
+      height: 29px !important;
     }
 
     &--left-block {
@@ -31,6 +33,30 @@
       & > button {
         width: 110px;
         margin-right: 12px;
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    padding: $space-sm;
+
+    &__title {
+      margin-bottom: $space-md;
+    }
+
+    &__footer {
+      margin-top: $space-md;
+  
+      &--button {
+        max-width: 70px;
+        height: 25px !important;
+      }
+  
+      &--left-block {
+        & > button {
+          margin-right: $space-sm;
+          height: 25px !important;
+        }
       }
     }
   }

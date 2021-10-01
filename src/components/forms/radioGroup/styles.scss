@@ -2,10 +2,9 @@
 
 .radio-buttons-group {
   display: flex;
+  flex-wrap: wrap;
 
   & > * {
-    &:not(:last-child) {
-      margin-right: $space-sm;
-    }
+    margin-right: $space-sm;
   }
 }
