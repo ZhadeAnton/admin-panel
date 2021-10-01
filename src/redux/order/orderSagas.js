@@ -1,5 +1,6 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects'
 
+import { handleServerError } from '../panel/panelActionCreators'
 import * as actions from './orderActionCreators'
 import * as types from './orderActionTypes'
 import * as API from '../../API/orderAPI'
@@ -9,6 +10,7 @@ function* getOrdersByFilter({ payload }) {
     const response = yield call(API.getOrdersByFilter, payload)
     yield put(actions.getOrdersByFiltersSuccess(response.data.data, response.data.count))
   } catch (error) {
+    if (response.status >= 500) yield put(handleServerError())
     console.error(error)
   }
 }
@@ -18,6 +20,7 @@ function* getOrderStatuses({ payload }) {
     const response = yield call(API.getOrderStatuses, payload)
     yield put(actions.getOrderStatusesSuccess(response.data.data))
   } catch (error) {
+    if (response.status >= 500) yield put(handleServerError())
     console.error(error)
   }
 }
@@ -27,6 +30,7 @@ function* setOrderStatusComplete({ payload }) {
     const response = yield call(API.setOrderStatusComplete, {...payload})
     yield put(actions.setOrderStatusCompleteSuccess(response.data.data))
   } catch (error) {
+    if (response.status >= 500) yield put(handleServerError())
     yield put(actions.setOrderStatusCompleteFailure())
   }
 }
@@ -36,6 +40,7 @@ function* setOrderStatusCancel({ payload }) {
     const response = yield call(API.setOrderStatusCancel, {...payload})
     yield put(actions.setOrderStatusCancelSuccess(response.data.data))
   } catch (error) {
+    if (response.status >= 500) yield put(handleServerError())
     yield put(actions.setOrderStatusCancelFailure())
   }
 }

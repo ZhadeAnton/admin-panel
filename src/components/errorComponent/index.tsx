@@ -1,5 +1,4 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom';
 
 import './styles.scss'
 import Button from '../button/buttonPrimary/index'
@@ -11,8 +10,6 @@ interface Props {
 }
 
 export default function ErrorComponent(props: Props) {
-  const history = useHistory();
-
   return (
     <section className='error-component'>
       <h1 className='error-component__code'>
@@ -28,7 +25,7 @@ export default function ErrorComponent(props: Props) {
       </span>
 
       <div className='error-component__button'>
-        <Button backgrond='blue' onClick={() => history.goBack()}>
+        <Button backgrond='blue' onClick={() => console.log('back')}>
           Назад
         </Button>
       </div>

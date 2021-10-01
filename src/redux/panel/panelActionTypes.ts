@@ -4,5 +4,11 @@ export interface IChangeActiveTab {
   payload: string
 }
 
+export const HANDLE_SERVER_ERROR = 'HANDLE_SERVER_ERROR'
+export interface IHandleServerError {
+  type: typeof HANDLE_SERVER_ERROR,
+}
+
 export type IPanelTypes =
 | IChangeActiveTab
+| IHandleServerError
