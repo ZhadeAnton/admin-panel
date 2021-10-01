@@ -9,6 +9,7 @@ import { ReactComponent as person } from '../assets/SVG/person.svg'
 import { ReactComponent as error } from '../assets/SVG//error.svg'
 import CarSettingTab from '../components/tabs/carSettingTab'
 import OrdersTab from '../components/tabs/ordersTab'
+import TableTab from '../components/tabs/tableTab'
 import ErrorComponent from '../components/errorComponent'
 
 const ErrorTab = () => (
@@ -21,7 +22,7 @@ const ErrorTab = () => (
 
 export const panelList = [
   { icon: pen, title: 'Карточка автомобиля', component: CarSettingTab },
-  { icon: list, title: 'Список авто', component: CarSettingTab },
+  { icon: list, title: 'Список авто', component: TableTab },
   { icon: doc, title: 'Заказы', component: OrdersTab },
   { icon: grid, title: 'Menu 4', component: ErrorTab },
   { icon: panel, title: 'Menu 5', component: ErrorTab },

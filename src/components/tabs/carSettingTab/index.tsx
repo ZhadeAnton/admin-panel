@@ -30,7 +30,7 @@ export default function CarSettingTab() {
 
   return (
     <section className='car-setting-tab'>
-      <PanelTitle title='Карточка атомобиля' />
+      <PanelTitle title='Карточка автомобиля' />
 
       <div className='car-setting-tab__content'>
         <CarCard />
