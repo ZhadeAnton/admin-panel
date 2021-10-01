@@ -56,7 +56,7 @@ export default function OrderListItemDrawer() {
         <div className='order-drawer__image-wrapper'>
           <img
             className='order-drawer__image-wrapper--image'
-            src={getCarImage(selectedOrder?.carId)}
+            src={getCarImage(selectedOrder?.carId?.thumbnail?.path)}
             alt="car"
           />
         </div>

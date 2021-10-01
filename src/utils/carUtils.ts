@@ -1,4 +1,3 @@
-import { IOrder } from '../interfaces/orderInterfaces'
 import carMock from '../assets/mocks/car-mock.png'
 
 const baseURL = process.env.REACT_APP_DEFAULT_URL
@@ -30,6 +29,6 @@ export const carSettingCategories = [
   }
 ]
 
-export const getCarImage = (carId: IOrder['carId'] | undefined) => {
-  return carId ? getCarImageByPath(carId.thumbnail?.path) : carMock
+export const getCarImage = (imagePath: string | undefined) => {
+  return imagePath ? getCarImageByPath(imagePath) : carMock
 }

@@ -24,7 +24,7 @@ export default function OrderListItem(props: Props) {
       <div className='order-list-item__item-wrapper'>
         <img
           className='order-list-item__item-wrapper--image'
-          src={getCarImage(props.order.carId)}
+          src={getCarImage(props.order.carId?.thumbnail?.path)}
           alt="car"
         />
 
