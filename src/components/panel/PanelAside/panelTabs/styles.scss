@@ -20,11 +20,11 @@
   }
 
   @media (max-width: 640px) {
-    padding: 20px 12px;
+    padding: 20px 8px;
   }
 
   @media (max-width: getBreackpoint('vsm')) {
-    padding: 14px 12px;
+    padding: 14px 9px;
   }
 }
 
@@ -72,15 +72,11 @@
 
       &--image {
         svg {
-          width: 16px;
-          height: 16px;
+          width: 14px;
+          height: 14px;
          }
       }
     }
-  }
-
-  @media (max-width: getBreackpoint('vsm')) {
-    
   }
 }
 

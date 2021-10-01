@@ -9,6 +9,8 @@
 }
 
 .car-setting-form {
+  position: relative;
+
   &__double-inputs {
     @include flex-align-center;
     margin-bottom: $space-md;

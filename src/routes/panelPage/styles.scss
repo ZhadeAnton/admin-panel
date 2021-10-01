@@ -14,7 +14,6 @@
     overflow: auto;
 
     &--content {
-      height: 100%;
       overflow: auto;
     }
   }
@@ -28,7 +27,7 @@
   }
 
   @media (max-width: 640px) {
-    grid-template-columns: 40px 1fr;
+    grid-template-columns: 35px 1fr;
   }
 }
 
