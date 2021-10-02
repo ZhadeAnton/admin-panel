@@ -1,6 +1,5 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects'
 
-import { handleServerError } from '../panel/panelActionCreators'
 import * as actions from './authActionCreators'
 import * as types from './authActionTypes'
 import * as API from '../../API/loginAPI'
@@ -18,7 +17,6 @@ function* logIn({ payload }) {
     }
     yield put(actions.logInSuccess(authSuccess))
   } catch (error) {
-    if (response.status >= 500) yield put(handleServerError())
     yield put(actions.logInFailure(error.message))
   }
 }
@@ -28,7 +26,6 @@ function* logOut({ payload }) {
     yield call(API.logOut, payload)
     yield put(actions.logOutSuccess())
   } catch (error) {
-    if (response.status >= 500) yield put(handleServerError())
     yield put(actions.logOutFailure(error.message))
   }
 }
