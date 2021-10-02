@@ -21,6 +21,15 @@
       margin-top: $space-md;
     }
   }
+
+  @media (max-width: 460px) {
+    margin-top: 10px;
+  }
+}
+
+.ant-table-body {
+  overflow: auto scroll !important;
+  max-height: 500px;
 }
 
 .ant-table-thead > tr > th {
@@ -34,6 +43,7 @@
 .ant-table-tbody > tr > td {
   border: none;
   vertical-align: middle;
+  padding: 10px;
   font-size: 12px;
   color: $grey-strong-2-color;
 

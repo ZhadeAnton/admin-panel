@@ -28,6 +28,9 @@ const carsReducer = (state = INIT_STATE, action: types.ICarsTypes): ICarsState =
         ...state,
         cars: action.payload.cars,
         count: action.payload.count,
+        currentPage: state.count !== action.payload.count
+          ? state.currentPage = 0
+          : state.currentPage,
         isLoading: false
       }
 

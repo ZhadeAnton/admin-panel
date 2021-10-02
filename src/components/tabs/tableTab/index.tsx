@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Spin } from 'antd'
 
 import './styles.scss'
 import { useAppDispatch, useAppSelector } from '../../../hooks/usePreTypedHooks'
@@ -18,6 +19,7 @@ export default function TableTab() {
   const cars = state.cars.cars
   const count = state.cars.count
   const currentPage = state.cars.currentPage
+  const isLoading = state.cars.isLoading
 
   useEffect(() => {
     handleOrderFilter()
@@ -38,25 +40,27 @@ export default function TableTab() {
     dispatch(setCarsCurrentPage(currentPage))
   }
   return (
-    <section className='table-tab'>
-      <PanelTitle title='Список машин' />
+    <Spin tip='Loading' spinning={isLoading}>
+      <section className='table-tab'>
+        <PanelTitle title='Список машин' />
 
-      <section className='table-tab__main'>
-        <FilterRow
-          selects={carTableSelects}
-          onFilter={handleOrderFilter}
-          onChangeSelect={handleSelectChange}
-        />
+        <section className='table-tab__main'>
+          <FilterRow
+            selects={carTableSelects}
+            onFilter={handleOrderFilter}
+            onChangeSelect={handleSelectChange}
+          />
 
-        <CarsList cars={cars} />
+          <CarsList cars={cars} />
 
-        <CustomPagination
-          defaultPageSize={7}
-          pagesLength={count}
-          currentPage={currentPage}
-          onChange={handleChangeCarsPage}
-        />
+          <CustomPagination
+            defaultPageSize={7}
+            pagesLength={count}
+            currentPage={currentPage}
+            onChange={handleChangeCarsPage}
+          />
+        </section>
       </section>
-    </section>
+    </Spin>
   )
 }

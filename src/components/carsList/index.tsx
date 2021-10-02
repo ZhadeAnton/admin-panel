@@ -12,9 +12,9 @@ interface Props {
 
 export default function CarsList(props: Props) {
   const windowDimension = useWindowDimensions()
-  const carImageWidth = windowDimension.width < 600 ? 70 : 100
-  const carImageHeight = windowDimension.width < 600 ? 30 : 40
-  const carImageColumn = windowDimension.width < 600 ? 6 : 10
+  const carImageWidth = windowDimension.width < 640 ? 80 : 110
+  const carImageHeight = windowDimension.width < 640 ? 40 : 50
+  const carImageColumn = windowDimension.width < 640 ? 6 : 10
   const data = []
 
   for (let i = 0; i < props.cars.length; i++) {
@@ -82,7 +82,7 @@ export default function CarsList(props: Props) {
     <Table
       columns={columns}
       dataSource={data}
-      style={{cursor: 'pointer', width: '100%', height: '100%', overflowX: 'scroll'}}
+      style={{cursor: 'pointer'}}
       bordered={false}
       pagination={false}
       scroll={{x: 900}}
