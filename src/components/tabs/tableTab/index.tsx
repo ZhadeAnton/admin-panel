@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import './styles.scss'
 import { useAppDispatch, useAppSelector } from '../../../hooks/usePreTypedHooks'
-import { getCars } from '../../../redux/cars/carsActionCreators'
+import { getCars, setCarsCurrentPage } from '../../../redux/cars/carsActionCreators'
 import { carTableSelects } from '../../../utils/carUtils'
 import CarsList from '../../carsList'
 import CustomPagination from '../../pagination'
@@ -13,18 +13,18 @@ export default function TableTab() {
   const dispatch = useAppDispatch()
   const state = useAppSelector((state) => state)
   const [values, setValues] = useState({
-    carCategory: 'Любая',
+    carCategory: 'Любые',
   })
   const cars = state.cars.cars
   const count = state.cars.count
   const currentPage = state.cars.currentPage
 
   useEffect(() => {
-    dispatch(getCars())
-  }, [])
+    handleOrderFilter()
+  }, [currentPage])
 
   const handleOrderFilter = () => {
-    console.log(values)
+    dispatch(getCars(values.carCategory, currentPage))
   }
 
   const handleSelectChange = (value: string, field: string) => {
@@ -34,10 +34,9 @@ export default function TableTab() {
     }))
   }
 
-  const handleChangeCarsPage = () => {
-    dispatch(getCars())
+  const handleChangeCarsPage = (currentPage: number) => {
+    dispatch(setCarsCurrentPage(currentPage))
   }
-
   return (
     <section className='table-tab'>
       <PanelTitle title='Список машин' />

@@ -31,6 +31,12 @@ const carsReducer = (state = INIT_STATE, action: types.ICarsTypes): ICarsState =
         isLoading: false
       }
 
+    case types.SET_CARS_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.payload
+      }
+
     default:
       return state
   }

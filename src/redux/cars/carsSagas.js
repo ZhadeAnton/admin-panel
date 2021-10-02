@@ -4,12 +4,11 @@ import * as actions from './carsActionCreators'
 import * as types from './carsActionTypes'
 import * as API from '../../API/carAPI'
 
-function* getCars() {
+function* getCars({ payload }) {
   try {
-    const response = yield call(API.getCars)
+    const response = yield call(API.getCarsByFilter, payload)
     yield put(actions.getCarsSuccess(response.data.data, response.data.count))
   } catch (error) {
-    if (response.status >= 500) yield put(handleServerError())
     console.error(error)
   }
 }

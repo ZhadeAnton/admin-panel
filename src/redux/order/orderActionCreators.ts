@@ -62,7 +62,7 @@ export const setOrderStatusCompleteFailure = ()
   type: types.SET_ORDER_STATUS_COMPLETE_FAILURE
 })
 
-export const setOrderSuccentPage = (currentPage: number): types.ISetOrderCurrentPage => ({
+export const setOrderCurrentPage = (currentPage: number): types.ISetOrderCurrentPage => ({
   type: types.SET_ORDER_CURRENT_PAGE,
   payload: currentPage
 })

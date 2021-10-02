@@ -30,7 +30,11 @@ export const carSettingCategories = [
 ]
 
 const carsFilterByCategory = [
-  { value: 'Любые', title: 'Категория', field: 'carCategory' },
+  { value: 'Любые', title: 'Любые', field: 'carCategory' },
+  { value: '5fd91add935d4e0be16a3c4b', title: 'Спорт', field: 'carCategory' },
+  { value: '60b943492aed9a0b9b7ed335', title: 'Люкс', field: 'carCategory' },
+  { value: '600598a3ad015e0bb699774c', title: 'Супер-эконом', field: 'carCategory' },
+  { value: '61027a262aed9a0b9b8500c2', title: 'Эконом+', field: 'carCategory' },
 ]
 
 export const carTableSelects = [
@@ -39,4 +43,8 @@ export const carTableSelects = [
 
 export const getCarImage = (imagePath: string | undefined) => {
   return imagePath ? getCarImageByPath(imagePath) : carMock
+}
+
+export const getCarTableFilter = (category: string | null) => {
+  return category === 'Любые' ? '' : 'categoryId' + `=${category}` + '&'
 }
