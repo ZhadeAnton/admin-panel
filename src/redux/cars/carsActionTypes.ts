@@ -8,7 +8,7 @@ export interface IGetCars {
 export const GET_CARS_SUCCESS = 'GET_CARS_SUCCESS'
 export interface IGetCarsSuccess {
   type: typeof GET_CARS_SUCCESS,
-  payload: Array<ICarFromDB>
+  payload: { cars: Array<ICarFromDB>, count: number }
 }
 
 export type ICarsTypes =

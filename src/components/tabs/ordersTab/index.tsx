@@ -86,6 +86,7 @@ export default function OrdersTab() {
           />
 
           <OrderList orders={orders} />
+
           {
             windowDimentions.width < 1024 &&
             <OrderListItemDrawer />

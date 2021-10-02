@@ -29,6 +29,14 @@ export const carSettingCategories = [
   }
 ]
 
+const carsFilterByCategory = [
+  { value: 'Любые', title: 'Категория', field: 'carCategory' },
+]
+
+export const carTableSelects = [
+  { defaultValue: 'Любые', options: carsFilterByCategory },
+]
+
 export const getCarImage = (imagePath: string | undefined) => {
   return imagePath ? getCarImageByPath(imagePath) : carMock
 }

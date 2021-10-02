@@ -7,7 +7,7 @@ import * as API from '../../API/carAPI'
 function* getCars() {
   try {
     const response = yield call(API.getCars)
-    yield put(actions.getCarsSuccess(response.data.data))
+    yield put(actions.getCarsSuccess(response.data.data, response.data.count))
   } catch (error) {
     if (response.status >= 500) yield put(handleServerError())
     console.error(error)

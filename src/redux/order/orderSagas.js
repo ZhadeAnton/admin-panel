@@ -30,8 +30,8 @@ function* setOrderStatusComplete({ payload }) {
     const response = yield call(API.setOrderStatusComplete, {...payload})
     yield put(actions.setOrderStatusCompleteSuccess(response.data.data))
   } catch (error) {
-    if (response.status >= 500) yield put(handleServerError())
     yield put(actions.setOrderStatusCompleteFailure())
+    if (response.status >= 500) yield put(handleServerError())
   }
 }
 
@@ -40,8 +40,8 @@ function* setOrderStatusCancel({ payload }) {
     const response = yield call(API.setOrderStatusCancel, {...payload})
     yield put(actions.setOrderStatusCancelSuccess(response.data.data))
   } catch (error) {
-    if (response.status >= 500) yield put(handleServerError())
     yield put(actions.setOrderStatusCancelFailure())
+    if (response.status >= 500) yield put(handleServerError())
   }
 }
 

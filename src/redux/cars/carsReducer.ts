@@ -3,11 +3,15 @@ import * as types from './carsActionTypes'
 
 interface ICarsState {
   cars: Array<ICarFromDB>,
+  count: number,
+  currentPage: number,
   isLoading: boolean
 }
 
 const INIT_STATE: ICarsState = {
   cars: [],
+  count: 0,
+  currentPage: 0,
   isLoading: false
 }
 
@@ -22,7 +26,8 @@ const carsReducer = (state = INIT_STATE, action: types.ICarsTypes): ICarsState =
     case types.GET_CARS_SUCCESS:
       return {
         ...state,
-        cars: action.payload,
+        cars: action.payload.cars,
+        count: action.payload.count,
         isLoading: false
       }
 

@@ -5,7 +5,8 @@ export const getCars = (): types.IGetCars => ({
   type: types.GET_CARS
 })
 
-export const getCarsSuccess = (cars: Array<ICarFromDB>): types.IGetCarsSuccess => ({
+export const getCarsSuccess = (cars: Array<ICarFromDB>, count: number)
+  : types.IGetCarsSuccess => ({
   type: types.GET_CARS_SUCCESS,
-  payload: cars
+  payload: { cars, count }
 })
