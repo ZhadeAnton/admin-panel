@@ -1,6 +1,6 @@
 import * as types from './carActionTypes'
 import { ICheckbox, IRadioButton } from './../../interfaces/inputInterfaces';
-import { ICarImage, IPostNewCar } from './../../interfaces/carInterfaces';
+import { ICarFromDB, ICarImage, IPostNewCar } from './../../interfaces/carInterfaces';
 
 export const carSettingChange = (type: string, value: string)
   : types.ICarSettingChange => ({
@@ -37,6 +37,11 @@ export const addNewCarSuccess = (): types.ICarSettingAddNewCarSuccess => ({
 
 export const hideCarNotification = (): types.ICarSettingHideNotification => ({
   type: types.CAR_SETTING_HIDE_NOTIFICATION
+})
+
+export const setEditableCarItem = (carItem: ICarFromDB): types.ISetEditedCarItem => ({
+  type: types.SET_EDITED_CAR_ITEM,
+  payload: carItem
 })
 
 export const carSettingReset = (): types.ICarSettingReset => ({

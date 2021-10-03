@@ -89,9 +89,7 @@ export default function CarSettingForm() {
             name="priceMin"
             value={carSettings.priceMin}
             isOnlyNumber={true}
-            error={{
-              message: 'Только цифры!'
-            }}
+            error={{message: 'Только цифры!'}}
             onChange={handleInputChange}
           />
         </div>
@@ -105,9 +103,7 @@ export default function CarSettingForm() {
             name="priceMax"
             value={carSettings.priceMax}
             isOnlyNumber={true}
-            error={{
-              message: 'Только цифры!'
-            }}
+            error={{message: 'Только цифры!'}}
             onChange={handleInputChange}
           />
         </div>

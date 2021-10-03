@@ -1,4 +1,4 @@
-import { ICarImage } from '../../interfaces/carInterfaces'
+import { ICarFromDB, ICarImage } from '../../interfaces/carInterfaces'
 import { ICheckbox } from '../../interfaces/inputInterfaces'
 import * as types from './carActionTypes'
 
@@ -16,6 +16,7 @@ interface ICarSettingState {
   },
   image: ICarImage | null,
   colorCheckboxes: Array<ICheckbox>,
+  editableItem: ICarFromDB | null,
   isNewCarSaved: boolean
 }
 
@@ -33,6 +34,7 @@ const INIT_STATE: ICarSettingState = {
   },
   image: null,
   colorCheckboxes: [],
+  editableItem: null,
   isNewCarSaved: false
 }
 
@@ -81,6 +83,12 @@ const carSettingReducer = (
       return {
         ...state,
         isNewCarSaved: false
+      }
+
+    case types.SET_EDITED_CAR_ITEM:
+      return {
+        ...state,
+        editableItem: action.payload
       }
 
     case types.CAR_SETTING_RESET:

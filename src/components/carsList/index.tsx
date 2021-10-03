@@ -5,17 +5,20 @@ import './styles.scss'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 import { ICarFromDB } from '../../interfaces/carInterfaces'
 import { getCarImage } from '../../utils/carUtils'
+import { useAppDispatch } from '../../hooks/usePreTypedHooks'
+import { setEditableCarItem } from '../../redux/carSetting/carActionCreators'
 
 interface Props {
   cars: Array<ICarFromDB>
 }
 
 export default function CarsList(props: Props) {
+  const dispatch = useAppDispatch()
   const windowDimension = useWindowDimensions()
   const carImageWidth = windowDimension.width < 640 ? 80 : 110
   const carImageHeight = windowDimension.width < 640 ? 40 : 50
   const carImageColumn = windowDimension.width < 640 ? 6 : 10
-  const data = []
+  const data: Array<any> = []
 
   for (let i = 0; i < props.cars.length; i++) {
     data.push({
@@ -26,7 +29,10 @@ export default function CarsList(props: Props) {
         width={carImageWidth}
         height={carImageHeight}
       />,
+      id: props.cars[i].id,
       name: props.cars[i].name,
+      isFullTank: props.cars[i].isFullTank,
+      isNeedChildChair: props.cars[i].isNeedChildChair,
       type: props.cars[i].categoryId?.name,
       priceMin: props.cars[i].priceMin,
       priceMax: props.cars[i].priceMax,
@@ -74,8 +80,9 @@ export default function CarsList(props: Props) {
     }
   ]
 
-  const handleClickByRow = () => {
-    console.log('hi')
+  const handleClickByRow = (record: ICarFromDB) => {
+    const carItem = data.filter((item) => item.id === record.id)[0]
+    dispatch(setEditableCarItem(carItem as unknown as ICarFromDB))
   }
 
   return (
@@ -89,7 +96,7 @@ export default function CarsList(props: Props) {
       sticky
       onRow={(record) => {
         return {
-          onClick: () => handleClickByRow()
+          onClick: () => handleClickByRow(record)
         }
       }}
     />
