@@ -1,80 +1,36 @@
 /* eslint-disable max-len */
-import axios from 'axios';
-import { IOrder, IOrderByFilter, IOrderStatus } from '../interfaces/orderInterfaces';
-import { getCarIdFilter, getDateFilter } from '../utils/orderUtils';
-
-const url = process.env.REACT_APP_DEFAULT_URL
-const appId = process.env.REACT_APP_APPLICATION_ID
-const ordersLimit = 4
-
-interface ISetOrderComplete {
-  accessToken: string,
-  order: IOrder,
-  newOrderId: IOrderStatus[] | undefined
-}
+import axios from './axiosConfig';
+import { IOrderByFilter, ISetOrderComplete } from '../interfaces/orderInterfaces';
+import { getOrderFilters, getOrderStatusComplete } from '../utils/orderUtils';
 
 export const getOrdersByFilter = (
     {createdAt, carId, cityId, statusId, accessToken, currentPage}: IOrderByFilter) => {
-  const carFilter = getCarIdFilter(carId)
-  const dateFilter = getDateFilter(createdAt)
-
-  return axios({
-    method: 'GET',
-    url: `${url}api/db/order?${dateFilter}${carFilter}cityId=${cityId}&orderStatusId=${statusId}&limit=${ordersLimit}&page=${currentPage}`,
+  return axios.get(getOrderFilters({createdAt, carId, cityId, statusId, currentPage}), {
     headers: {
-      'X-Api-Factory-Application-Id': appId,
-      'Content-Type': 'application/json',
       'Authorization': `Bearer ${accessToken}`
-    }
-  })
+    }})
 }
 
 export const getOrderStatuses = (accessToken: string) => {
-  return axios({
-    method: 'GET',
-    url: `${url}api/db/orderStatus`,
+  return axios.get('db/orderStatus', {
     headers: {
-      'X-Api-Factory-Application-Id': appId,
-      'Content-Type': 'application/json',
       'Authorization': `Bearer ${accessToken}`
     }
   })
 }
 
-export const setOrderStatusComplete = (payload: ISetOrderComplete) => {
-  return axios({
-    method: 'PUT',
-    url: `${url}api/db/order/${payload.order.id}`,
+export const setOrderStatusComplete = (order: ISetOrderComplete) => {
+  return axios.put(`db/order/${order.order.id}`, getOrderStatusComplete(order), {
     headers: {
-      'X-Api-Factory-Application-Id': appId,
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${payload.accessToken}`
-    },
-    data: {
-      ...payload.order,
-      orderStatusId: {
-        id: payload.newOrderId![0].id,
-        name: payload.newOrderId![0].name
-      }
+      'Authorization': `Bearer ${order.accessToken}`
     }
   })
 }
 
-export const setOrderStatusCancel = (payload: ISetOrderComplete) => {
-  return axios({
-    method: 'PUT',
-    url: `${url}api/db/order/${payload.order.id}`,
+export const setOrderStatusCancel = (order: ISetOrderComplete) => {
+  return axios.put(`db/order/${order.order.id}`, getOrderStatusComplete(order), {
     headers: {
-      'X-Api-Factory-Application-Id': appId,
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${payload.accessToken}`
-    },
-    data: {
-      ...payload.order,
-      orderStatusId: {
-        id: payload.newOrderId![0].id,
-        name: payload.newOrderId![0].name
-      }
+      'Authorization': `Bearer ${order.accessToken}`
     }
   })
 }

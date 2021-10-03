@@ -28,3 +28,8 @@ export interface IDeleteCar {
   accessToken: string,
   carId: ICar['id']
 }
+
+export interface IGetCarsByFilter {
+  category: string,
+  currentPage: number
+}

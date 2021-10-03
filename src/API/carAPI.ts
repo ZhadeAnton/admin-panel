@@ -1,63 +1,31 @@
-import axios from 'axios';
-import { IDeleteCar, IPostNewCar } from '../interfaces/carInterfaces';
+import axios from './axiosConfig'
+import { IDeleteCar, IGetCarsByFilter, IPostNewCar } from '../interfaces/carInterfaces';
 import { getCarTableFilter } from '../utils/carUtils';
 
-const url = process.env.REACT_APP_DEFAULT_URL
-const appId = process.env.REACT_APP_APPLICATION_ID
-const carsLimit = 7
-
-interface IGetCarsByFilter {
-  category: string,
-  currentPage: number
-}
-
 export const addNewCar = ({accessToken, newCar}: IPostNewCar) => {
-  return axios({
-    method: 'POST',
-    url: `${url}api/db/car/`,
+  return axios.post('db/car', newCar, {
     headers: {
-      'X-Api-Factory-Application-Id': appId,
-      'Content-Type': 'application/json',
       'Authorization': `Bearer ${accessToken}`
-    },
-    data: newCar
+    }
   })
 }
 
 export const editCar = ({accessToken, newCar}: IPostNewCar) => {
-  return axios({
-    method: 'PUT',
-    url: `${url}api/db/car/${newCar.id}`,
+  return axios.put(`db/car/${newCar.id}`, newCar, {
     headers: {
-      'X-Api-Factory-Application-Id': appId,
-      'Content-Type': 'application/json',
       'Authorization': `Bearer ${accessToken}`
-    },
-    data: newCar
+    }
   })
 }
 
 export const deleteCar = ({accessToken, carId}: IDeleteCar) => {
-  return axios({
-    method: 'DELETE',
-    url: `${url}api/db/car/${carId}`,
+  return axios.delete(`db/car/${carId}`, {
     headers: {
-      'X-Api-Factory-Application-Id': appId,
-      'Content-Type': 'application/json',
       'Authorization': `Bearer ${accessToken}`
     }
   })
 }
 
 export const getCarsByFilter = ({category, currentPage}: IGetCarsByFilter) => {
-  const categoryId = getCarTableFilter(category)
-
-  return axios({
-    method: 'GET',
-    url: `${url}api/db/car?${categoryId}limit=${carsLimit}&page=${currentPage}`,
-    headers: {
-      'X-Api-Factory-Application-Id': appId,
-      'Content-Type': 'application/json'
-    }
-  })
+  return axios.get(`db/car?${getCarTableFilter(category)}limit=${7}&page=${currentPage}`)
 }
