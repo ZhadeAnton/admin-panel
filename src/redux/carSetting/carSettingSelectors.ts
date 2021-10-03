@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect'
-import { INewCar } from '../../interfaces/carInterfaces'
+import { ICarWithId } from '../../interfaces/carInterfaces'
 import { RootState } from '../store'
 
 const carSettingSelector = (state: RootState) => state.carSetting
@@ -45,5 +45,5 @@ export const newCarSelector = createSelector(
         },
         colors: carColors
       }
-    ) as unknown as INewCar
+    ) as unknown as ICarWithId
 )

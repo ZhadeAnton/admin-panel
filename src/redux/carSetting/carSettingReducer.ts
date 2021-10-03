@@ -1,4 +1,4 @@
-import { ICarFromDB, ICarImage } from '../../interfaces/carInterfaces'
+import { ICar, ICarFromDB } from '../../interfaces/carInterfaces'
 import { ICheckbox } from '../../interfaces/inputInterfaces'
 import * as types from './carActionTypes'
 
@@ -14,7 +14,7 @@ interface ICarSettingState {
     id: string,
     description: string
   },
-  image: ICarImage | null,
+  image: ICar['thumbnail'] | null,
   colorCheckboxes: Array<ICheckbox>,
   editableItem: ICarFromDB | null,
   isNewCarSaved: boolean

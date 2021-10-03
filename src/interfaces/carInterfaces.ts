@@ -23,14 +23,7 @@ export interface ICarFromDB {
   }
 }
 
-export interface ICarImage {
-  size: number,
-  originalname: string,
-  mimetype: string,
-  path: string
-}
-
-export interface INewCar {
+export interface ICar {
   priceMax: number,
   priceMin: number,
   name: string,
@@ -49,11 +42,11 @@ export interface INewCar {
   colors: Array<string>
 }
 
-export interface ICar extends INewCar {
+export interface ICarWithId extends ICar {
   id: string
 }
 
 export interface IPostNewCar {
   accessToken: string,
-  newCar: INewCar
+  newCar: ICarWithId
 }

@@ -22,31 +22,34 @@ export default function CarsList(props: Props) {
 
   for (let i = 0; i < props.cars.length; i++) {
     data.push({
-      key: i,
-      image: <img
-        src={getCarImage(props.cars[0].thumbnail.path)}
-        alt="Car"
-        width={carImageWidth}
-        height={carImageHeight}
-      />,
+      key: props.cars[i].id,
       id: props.cars[i].id,
       name: props.cars[i].name,
-      isFullTank: props.cars[i].isFullTank,
-      isNeedChildChair: props.cars[i].isNeedChildChair,
       type: props.cars[i].categoryId?.name,
       priceMin: props.cars[i].priceMin,
       priceMax: props.cars[i].priceMax,
       number: props.cars[i].number,
+      categoryId: props.cars[i].categoryId,
+      colors: props.cars[i].colors,
+      description: props.cars[i].description,
+      thumbnail: props.cars[i].thumbnail
     })
   }
 
   const columns = [
     {
       title: 'Картинка',
-      dataIndex: 'image',
+      dataIndex: 'thumbnail',
       width: carImageColumn,
       fixed: true,
-      key: 'Картинка'
+      key: 'Картинка',
+      render: (data: ICarFromDB['thumbnail']) => (
+        <img
+          width={carImageWidth}
+          height={carImageHeight}
+          alt='car'
+          src={getCarImage(data.path)}
+        />)
     },
     {
       title: 'Название',

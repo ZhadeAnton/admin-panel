@@ -1,4 +1,4 @@
-import { ICarFromDB, ICarImage, INewCar } from '../../interfaces/carInterfaces'
+import { ICar, ICarFromDB, ICarWithId } from '../../interfaces/carInterfaces'
 import { ICheckbox, IRadioButton } from '../../interfaces/inputInterfaces'
 
 export const CAR_SETTING_CHANGE = 'CAR_SETTING_CHANGE'
@@ -10,7 +10,7 @@ export interface ICarSettingChange {
 export const CAR_SETTING_SET_IMAGE = 'CAR_SETTING_SET_IMAGE'
 export interface ICarSettingSetImage {
   type: typeof CAR_SETTING_SET_IMAGE,
-  payload: ICarImage
+  payload: ICar['thumbnail']
 }
 
 export const CAR_SETTING_ADD_CHECKBOX = 'CAR_SETTING_ADD_CHECKBOX'
@@ -22,7 +22,7 @@ export interface ICarSettingAddCheckbox {
 export const CAR_SETTING_ADD_NEW_CAR = 'CAR_SETTING_ADD_NEW_CAR'
 export interface ICarSettingAddNewCar {
   type: typeof CAR_SETTING_ADD_NEW_CAR,
-  payload: { accessToken: string, newCar: INewCar }
+  payload: { accessToken: string, newCar: ICarWithId }
 }
 
 export const CAR_SETTING_ADD_NEW_CAR_SUCCESS = 'CAR_SETTING_ADD_NEW_CAR_SUCCESS'
