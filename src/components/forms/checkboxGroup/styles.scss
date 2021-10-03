@@ -1,6 +1,8 @@
 @import '../../../scss/variables';
 
 .checkbox-group {
+  display: inline-block;
+
   & > * {
     margin-top: $space-sm;
   }

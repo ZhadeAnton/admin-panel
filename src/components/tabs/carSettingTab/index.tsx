@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Spin } from 'antd'
 
 import './styles.scss'
 import { useAppDispatch, useAppSelector } from '../../../hooks/usePreTypedHooks'
@@ -15,6 +16,7 @@ export default function CarSettingTab() {
   const state = useAppSelector((state) => state)
   const [alertVisible, setAlertVisible] = useState(false)
   const isNewCarSaved = state.carSetting.isNewCarSaved
+  const isLoading = state.carSetting.isLoading
 
   useEffect(() => {
     if (isNewCarSaved) {
@@ -35,23 +37,25 @@ export default function CarSettingTab() {
   }
 
   return (
-    <section className='car-setting-tab'>
-      <PanelTitle title='Карточка автомобиля' />
+    <Spin tip='Loading' spinning={isLoading}>
+      <section className='car-setting-tab'>
+        <PanelTitle title='Карточка автомобиля' />
 
-      <div className='car-setting-tab__content'>
-        <CarCard />
+        <div className='car-setting-tab__content'>
+          <CarCard />
 
-        <CarSetting />
-      </div>
+          <CarSetting />
+        </div>
 
-      { alertVisible &&
-          <Alert
-            type='success'
-            onClose={handleCloseAlert}
-          >
-            Успех! Машина сохранена
-          </Alert>
-      }
-    </section>
+        { alertVisible &&
+            <Alert
+              type='success'
+              onClose={handleCloseAlert}
+            >
+              Успех! Машина сохранена
+            </Alert>
+        }
+      </section>
+    </Spin>
   )
 }

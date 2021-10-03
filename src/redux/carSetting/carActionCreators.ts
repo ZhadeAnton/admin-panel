@@ -19,6 +19,12 @@ export const addCarColorCheckbox = (checkbox: ICheckbox)
   payload: checkbox
 })
 
+export const removeCarColorCheckbox = (checkbox: ICheckbox)
+  :types.ICarSettingRemoveCheckbox => ({
+  type: types.CAR_SETTING_REMOVE_CHECKBOX,
+  payload: checkbox
+})
+
 export const carCategoryChange = (category: IRadioButton)
   : types.ICarSettingCategoryChange => ({
   type: types.CAR_SETTING_CATEGORY_CHANGE,

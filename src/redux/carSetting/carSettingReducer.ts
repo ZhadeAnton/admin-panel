@@ -1,7 +1,4 @@
-import {
-  EDIT_CAR_BY_ID_SUCCESS,
-  DELETE_CAR_BY_ID_SUCCESS,
-  ICarsTypes } from '../cars/carsActionTypes'
+import * as carTypes from '../cars/carsActionTypes'
 import { ICar } from '../../interfaces/carInterfaces'
 import { ICheckbox } from '../../interfaces/inputInterfaces'
 import { getCarColorsCheckboxes } from '../../utils/carUtils'
@@ -22,7 +19,8 @@ interface ICarSettingState {
   image: ICar['thumbnail'] | null,
   colorCheckboxes: Array<ICheckbox>,
   id: string | undefined,
-  isNewCarSaved: boolean
+  isNewCarSaved: boolean,
+  isLoading: boolean
 }
 
 const INIT_STATE: ICarSettingState = {
@@ -40,10 +38,11 @@ const INIT_STATE: ICarSettingState = {
   image: null,
   colorCheckboxes: [],
   id: undefined,
-  isNewCarSaved: false
+  isNewCarSaved: false,
+  isLoading: false
 }
 
-type carTypes = ICarsTypes | types.ICarSettingTypes
+type carTypes = carTypes.ICarsTypes | types.ICarSettingTypes
 
 const carSettingReducer = (
     state = INIT_STATE, action: carTypes): ICarSettingState => {
@@ -79,9 +78,16 @@ const carSettingReducer = (
         isNewCarSaved: false
       }
 
+    case types.CAR_SETTING_REMOVE_CHECKBOX:
+      return {
+        ...state,
+        colorCheckboxes: state.colorCheckboxes
+            .filter((color) => color.value !== action.payload.value)
+      }
+
     case types.CAR_SETTING_ADD_NEW_CAR_SUCCESS:
-    case EDIT_CAR_BY_ID_SUCCESS:
-    case DELETE_CAR_BY_ID_SUCCESS:
+    case carTypes.EDIT_CAR_BY_ID_SUCCESS:
+    case carTypes.DELETE_CAR_BY_ID_SUCCESS:
       return {
         ...state,
         ...INIT_STATE,
@@ -106,6 +112,22 @@ const carSettingReducer = (
         image: action.payload.thumbnail,
         id: action.payload.id,
         colorCheckboxes: getCarColorsCheckboxes(action.payload.colors),
+      }
+
+    case types.CAR_SETTING_ADD_NEW_CAR:
+    case carTypes.EDIT_CAR_BY_ID:
+    case carTypes.DELETE_CAR_BY_ID:
+      return {
+        ...state,
+        isLoading: true
+      }
+
+    case types.CAR_SETTING_ADD_NEW_CAR_SUCCESS:
+    case carTypes.EDIT_CAR_BY_ID_SUCCESS:
+    case carTypes.DELETE_CAR_BY_ID_SUCCESS:
+      return {
+        ...state,
+        isLoading: false
       }
 
     case types.CAR_SETTING_RESET:

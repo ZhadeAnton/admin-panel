@@ -5,9 +5,10 @@ import { useAppDispatch, useAppSelector } from '../../../hooks/usePreTypedHooks'
 import {
   addCarColorCheckbox,
   carCategoryChange,
-  carSettingChange
+  carSettingChange,
+  removeCarColorCheckbox
 } from '../../../redux/carSetting/carActionCreators'
-import { IRadioButton } from '../../../interfaces/inputInterfaces'
+import { ICheckbox, IRadioButton } from '../../../interfaces/inputInterfaces'
 import { carSettingCategories } from '../../../utils/carUtils'
 import InputPrimary from '../../inputs/inputPrimary'
 import ButtonPlus from '../../button/buttonPlus'
@@ -32,6 +33,10 @@ export default function CarSettingForm() {
 
   const handleRadioButtonChange = (button: IRadioButton) => {
     dispatch(carCategoryChange(button))
+  }
+
+  const handleRemoveColor = (color: ICheckbox) => {
+    dispatch(removeCarColorCheckbox(color))
   }
 
   const handleAddColorCheckbox = () => {
@@ -134,7 +139,10 @@ export default function CarSettingForm() {
       </div>
 
       <div className='car-setting-form__checkbox-group'>
-        <CheckboxGroup checkboxes={carSettings.colorCheckboxes}/>
+        <CheckboxGroup
+          checkboxes={carSettings.colorCheckboxes}
+          onRemoveItem={handleRemoveColor}
+        />
       </div>
 
       <div className='car-setting-form__text-area'>

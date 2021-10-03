@@ -5,12 +5,13 @@ import { ICheckbox } from '../../../interfaces/inputInterfaces'
 
 interface Props {
   value: ICheckbox['value'],
-  checked: ICheckbox['checked']
+  checked: ICheckbox['checked'],
+  onRemoveItem: (checkbox: ICheckbox) => void
 }
 
 export default function CheckboxPrimary(props: Props) {
   return (
-    <li>
+    <li onClick={() => props.onRemoveItem({value: props.value, checked: props.checked})}>
       <input
         readOnly
         type="checkbox"

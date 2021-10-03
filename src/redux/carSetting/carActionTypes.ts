@@ -19,6 +19,12 @@ export interface ICarSettingAddCheckbox {
   payload: ICheckbox
 }
 
+export const CAR_SETTING_REMOVE_CHECKBOX = 'CAR_SETTING_REMOVE_CHECKBOX'
+export interface ICarSettingRemoveCheckbox {
+  type: typeof CAR_SETTING_REMOVE_CHECKBOX,
+  payload: ICheckbox
+}
+
 export const CAR_SETTING_ADD_NEW_CAR = 'CAR_SETTING_ADD_NEW_CAR'
 export interface ICarSettingAddNewCar {
   type: typeof CAR_SETTING_ADD_NEW_CAR,
@@ -56,6 +62,7 @@ export type ICarSettingTypes =
 | ICarSettingChange
 | ICarSettingSetImage
 | ICarSettingAddCheckbox
+| ICarSettingRemoveCheckbox
 | ICarSettingAddNewCar
 | ICarSettingAddNewCarSuccess
 | ICarSettingCategoryChange
