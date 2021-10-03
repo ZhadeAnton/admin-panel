@@ -1,0 +1,86 @@
+@import '../../../scss/variables';
+@import '../../../scss/mixins';
+
+%setting-label {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 12px;
+  color: $black-color;
+}
+
+.car-setting-form {
+  position: relative;
+
+  &__double-inputs {
+    @include flex-align-center;
+    margin-bottom: $space-md;
+
+    &--wrapper {
+      width: 100%;
+      max-width: 320px;
+
+      input {
+        margin: 0;
+      }
+
+      &:not(:last-child) {
+        margin-right: 21px;
+      }
+    }
+
+    &--label {
+      @extend %setting-label;
+    }
+  }
+
+  &__categories {
+    margin-bottom: $space-sm;
+  }
+
+  &__car-colors {
+    width: 100%;
+    max-width: 320px;
+
+    &--label {
+      @extend %setting-label;
+    }
+
+    &--inputs-wrapper {
+      @include flex-align-center;
+
+      button {
+        margin-left: 8px;
+      }
+
+      input {
+        margin: 0;
+      }
+    }
+  }
+
+  &__text-area {
+    margin-top: 30px;
+    max-width: 661px;
+  }
+
+  @media (max-width: 500px) {
+    &__double-inputs {
+      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: flex-start;
+      align-content: flex-start;
+
+      &:not(:last-child) {
+        margin-right: 0;
+      }
+
+      &--wrapper {
+        margin-bottom: $space-sm;
+      }
+    }
+  }
+}
+
+.ant-upload {
+  padding: 15px;
+}

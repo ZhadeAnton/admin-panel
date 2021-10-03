@@ -1,0 +1,55 @@
+@import '../../../scss/variables';
+
+.select-primary {
+  width: auto;
+  height: 30px;
+  background-color: $white-color;
+
+  .ant-select {
+    width: 110px;
+  }
+}
+
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  border-radius: 4px;
+  border: 1px solid $grey-light-2-color;
+
+  @media (max-width: 640px) {
+    height: 30px;
+  }
+
+  @media (max-width: getBreackpoint('sm')) {
+    height: 25px;
+  }
+}
+
+.ant-select-selection-item {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 12px;
+  color: $grey-light-5-color;
+
+  @media (max-width: getBreackpoint('sm')) {
+    font-size: 10px !important;
+  }
+}
+
+.ant-select-item.ant-select-item-option {
+  @media (max-width: getBreackpoint('lg')) {
+    font-size: 13px !important;
+  }
+
+  @media (max-width: getBreackpoint('sm')) {
+    font-size: 10px !important;
+  }
+}
+
+.ant-select-single .ant-select-selector .ant-select-selection-item {
+  @media (max-width: 640px) {
+    line-height: 28px;
+  }
+
+  @media (max-width: getBreackpoint('sm')) {
+    line-height: 25px;
+  }
+}

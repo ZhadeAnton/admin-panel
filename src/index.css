@@ -1,3 +1,4 @@
+@import 'antd/dist/antd.css';
 @import './reset.css';
 
 body {
@@ -19,6 +20,18 @@ code {
 @font-face {
   font-family: 'HelveticaRegular';
   src: local('Helvetica-Regular'), url('./assets/typography/Helvetica.ttf')
+}
+
+/* Roboto 400 */
+@font-face {
+  font-family: 'RobotoRegular';
+  src: local('Roboto-regular'), url('./assets/typography/Roboto-Regular.ttf')
+}
+
+/* Roboto 500 */
+@font-face {
+  font-family: 'RobotoMedium';
+  src: local('Roboto-medium'), url('./assets/typography/Roboto-Medium.ttf')
 }
 
 ::-webkit-scrollbar {

@@ -1,0 +1,67 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+%alert-properties {
+  width: 100%;
+  @include flex-align-center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  @include abs-position(0, auto, auto, 0);
+
+  svg path {
+    fill: $white-color;
+  }
+}
+
+.alert {
+  @extend %alert-properties;
+
+  &-success {
+    @extend %alert-properties;
+    background-color: $primary-accent-color;
+  }
+
+  &-error {
+    @extend %alert-properties;
+    background-color: $red-color;
+  }
+
+  &__info {
+    @include flex-align-center;
+
+    &--image {
+      width: 13px;
+      height: 10px;
+      fill: $white-color;
+    }
+
+    &--title {
+      margin-left: $space-sm;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 15px;
+      color: $white-color;
+    }
+  }
+
+  &__close {
+    width: 10px;
+    height: 10px;
+    @include flex-align-center;
+    transition: $transition-sm;
+    cursor: pointer;
+
+    svg {
+      width: inherit;
+      height: inherit;
+    }
+    
+    svg path {
+      fill: $white-color;
+    }
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+}

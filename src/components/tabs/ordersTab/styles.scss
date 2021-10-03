@@ -1,0 +1,30 @@
+@import '../../../scss/variables';
+
+.orders-tab {
+  width: 100%;
+  padding: 28px;
+  position: relative;
+
+  &__main {
+    margin-top: 30px;
+    border-radius: 9px;
+    background-color: $white-color;
+  }
+
+  @media (max-width: 1300px) {
+    padding: $space-md;
+  }
+  
+  @media (max-width: getBreackpoint('md')) {
+    &__main {
+      margin-top: $space-md;
+      border-radius: 9px;
+      background-color: $white-color;
+    }
+  }
+
+  @media (max-width: getBreackpoint('vsm')) {
+    margin-top: 10px;
+    padding: $space-sm;
+  }
+}

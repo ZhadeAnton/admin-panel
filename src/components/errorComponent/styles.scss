@@ -1,0 +1,96 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.error-component {
+  width: 100%;
+  @include flex-align-center;
+  flex-direction: column;
+  margin-top: 15%;
+
+  &__code {
+    font-family: 'RobotoMedium';
+    font-weight: 500;
+    letter-spacing: -5px;
+    font-size: 75px;
+    line-height: 88px;
+    color: $grey-light-3-color;
+  }
+
+  &__title {
+    margin-bottom: $space-md;
+    font-weight: 400;
+    letter-spacing: -2px;
+    font-size: 50px;
+    line-height: 57px;
+    color: $blue-darl-color;
+  }
+
+  &__info {
+    margin-bottom: $space-lg;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    font-size: 20px;
+    line-height: 23px;
+    color: $grey-strong-2-color;
+  }
+
+  &__button {
+    width: 95px;
+    height: 29px;
+  }
+
+  @media (max-width: getBreackpoint('lg')) {
+    &__code {
+      font-size: 65px;
+      line-height: 80px;
+    }
+
+    &__title {
+      font-size: 40px;
+      line-height: 49px;
+    }
+
+    &__info {
+      font-size: 18px;
+      line-height: 20px;
+    }
+  }
+
+  @media (max-width: getBreackpoint('md')) {
+    &__code {
+      font-size: 60px;
+      line-height: 70px;
+    }
+
+    &__title {
+      margin-bottom: $space-sm;
+      font-size: 35px;
+      line-height: 40px;
+    }
+
+    &__info {
+      margin-bottom: $space-md;
+      font-size: 15px;
+      line-height: 20px;
+    }
+  }
+
+  @media (max-width: getBreackpoint('vsm')) {
+    &__code {
+      font-size: 45px;
+      line-height: 50px;
+    }
+
+    &__title {
+      margin-bottom: $space-sm;
+      font-size: 25px;
+      line-height: 30px;
+    }
+
+    &__info {
+      margin-bottom: $space-md;
+      font-size: 13px;
+      line-height: 10px;
+    }
+  }
+}

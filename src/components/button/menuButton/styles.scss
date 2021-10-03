@@ -1,0 +1,23 @@
+@import '../../../scss/variables';
+@import '../../../scss/typography';
+@import '../../../scss/mixins';
+
+.menu-button {
+  width: auto;
+  max-width: 77px;
+  height: 100%;
+  @include flex-center;
+  @extend %button-rules;
+  transition: $transition-sm;
+  border: none;
+  outline: none;
+
+  &__title {
+    margin-left: 4px;
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 12px;
+    color: $blue-darl-2-color;
+  }
+}

@@ -1,11 +1,11 @@
-@import '../../scss/variables';
-@import '../../scss/typography';
+@import '../../../scss/variables';
+@import '../../../scss/typography';
 
 %button {
   @extend %button-rules;
   width: 100%;
-  padding: 10px;
-  border: 0.5px solid $blue-color;
+  height: 100%;
+  border: 1px solid $blue-color;
   border-radius: 4px;
   text-transform: capitalize;
   transition: $transition-sm;
@@ -14,6 +14,10 @@
   font-size: 11px;
   line-height: 14px;
   color: $white-color;
+
+  &:disabled {
+    border: none;
+  }
 }
 
 .button-primary {
@@ -31,6 +35,7 @@
 
   &-grey {
     @extend %button;
+    color: $blue-darl-color;
     background-color: $grey-color;
     border: 0.5px solid $primary-accent-color;
   }
