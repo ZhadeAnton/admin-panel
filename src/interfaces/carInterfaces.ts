@@ -14,7 +14,7 @@ export interface ICar {
     name: string,
     description: string,
     id: string
-  },
+  } | null,
   colors: Array<string>,
   id?: string
 }

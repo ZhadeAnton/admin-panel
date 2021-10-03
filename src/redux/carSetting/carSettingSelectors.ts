@@ -39,9 +39,9 @@ export const newCarSelector = createSelector(
         },
         description: carState.description,
         categoryId: {
-          name: carState.categoryId.name,
-          description: carState.categoryId.description,
-          id: carState.categoryId.id
+          name: carState.categoryId?.name,
+          description: carState.categoryId?.description,
+          id: carState.categoryId?.id
         },
         colors: carColors,
         id: carState.id

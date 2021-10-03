@@ -18,7 +18,7 @@ interface ICarSettingState {
     name: string | undefined,
     id: string,
     description: string
-  },
+  } | null,
   image: ICar['thumbnail'] | null,
   colorCheckboxes: Array<ICheckbox>,
   id: string | undefined,
@@ -102,7 +102,7 @@ const carSettingReducer = (
         description: action.payload.description!,
         priceMin: action.payload.priceMin + '',
         priceMax: action.payload.priceMax + '',
-        categoryId: action.payload.categoryId,
+        categoryId: action.payload.categoryId ?? null,
         image: action.payload.thumbnail,
         id: action.payload.id,
         colorCheckboxes: getCarColorsCheckboxes(action.payload.colors),
