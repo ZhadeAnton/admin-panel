@@ -1,4 +1,4 @@
-import { ICarFromDB } from '../../interfaces/carInterfaces'
+import { ICar } from '../../interfaces/carInterfaces'
 
 export const GET_CARS = 'GET_CARS'
 export interface IGetCars {
@@ -9,7 +9,7 @@ export interface IGetCars {
 export const GET_CARS_SUCCESS = 'GET_CARS_SUCCESS'
 export interface IGetCarsSuccess {
   type: typeof GET_CARS_SUCCESS,
-  payload: { cars: Array<ICarFromDB>, count: number }
+  payload: { cars: Array<ICar>, count: number }
 }
 
 export const SET_CARS_CURRENT_PAGE = 'SET_CARS_CURRENT_PAGE'

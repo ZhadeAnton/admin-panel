@@ -4,7 +4,7 @@ export interface ICheckbox {
 }
 
 export interface IRadioButton {
-  value: string,
+  name: string,
   id: string,
   description: string
 }

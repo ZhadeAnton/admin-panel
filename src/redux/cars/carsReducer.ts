@@ -1,8 +1,8 @@
-import { ICarFromDB } from '../../interfaces/carInterfaces'
+import { ICar } from '../../interfaces/carInterfaces'
 import * as types from './carsActionTypes'
 
 interface ICarsState {
-  cars: Array<ICarFromDB>,
+  cars: Array<ICar>,
   count: number,
   currentPage: number,
   isLoading: boolean

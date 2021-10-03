@@ -6,6 +6,7 @@ import { useAppSelector } from '../../hooks/usePreTypedHooks'
 import { carSettingFieldsSelector } from '../../redux/carSetting/carSettingSelectors'
 import InputUpload from '../inputs/inputUpload'
 import ProgressBar from '../progressBar'
+import { getCarImage } from '../../utils/carUtils'
 
 export default function CarCard() {
   const state = useAppSelector((state) => state)
@@ -21,7 +22,10 @@ export default function CarCard() {
       <div className='car-card__top'>
         <div
           className='car-card__image-wrapper'>
-          { image ? <img src={image.path} alt="image" /> : <Skeleton.Image /> }
+          { image
+            ? <img src={getCarImage(image.path)} alt="image" />
+            : <Skeleton.Image />
+          }
         </div>
 
         <div className='car-card__info'>

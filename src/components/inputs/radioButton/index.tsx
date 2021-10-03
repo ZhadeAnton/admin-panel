@@ -20,7 +20,7 @@ export default function RadioButton(props: Props) {
       />
 
       <label onClick={() => props.onChange(props.button)}>
-        { props.button.value }
+        { props.button.name }
       </label>
     </div>
   )

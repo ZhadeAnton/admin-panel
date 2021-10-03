@@ -38,6 +38,11 @@ export default function OrdersTab() {
   useEffect(() => {
     dispatch(getOrderStatuses(accessToken))
     dispatch(getOrdersByFilters({...values, accessToken, currentPage}))
+
+    return () => {
+      dispatch(getOrderStatuses(accessToken))
+      dispatch(getOrdersByFilters({...values, accessToken, currentPage}))
+    }
   }, [])
 
   useEffect(() => {

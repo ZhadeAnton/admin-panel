@@ -3,13 +3,14 @@ import { Table } from 'antd'
 
 import './styles.scss'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
-import { ICarFromDB } from '../../interfaces/carInterfaces'
+import { ICar } from '../../interfaces/carInterfaces'
 import { getCarImage } from '../../utils/carUtils'
 import { useAppDispatch } from '../../hooks/usePreTypedHooks'
 import { setEditableCarItem } from '../../redux/carSetting/carActionCreators'
+import { changeActiveTab } from '../../redux/panel/panelActionCreators'
 
 interface Props {
-  cars: Array<ICarFromDB>
+  cars: Array<ICar>
 }
 
 export default function CarsList(props: Props) {
@@ -33,7 +34,7 @@ export default function CarsList(props: Props) {
       colors: props.cars[i].colors,
       description: props.cars[i].description,
       thumbnail: props.cars[i].thumbnail
-    })
+    }) as unknown as ICar
   }
 
   const columns = [
@@ -43,13 +44,14 @@ export default function CarsList(props: Props) {
       width: carImageColumn,
       fixed: true,
       key: 'Картинка',
-      render: (data: ICarFromDB['thumbnail']) => (
+      render: (data: ICar['thumbnail']) => (
         <img
           width={carImageWidth}
           height={carImageHeight}
           alt='car'
           src={getCarImage(data.path)}
-        />)
+        />
+      )
     },
     {
       title: 'Название',
@@ -83,9 +85,10 @@ export default function CarsList(props: Props) {
     }
   ]
 
-  const handleClickByRow = (record: ICarFromDB) => {
+  const handleClickByRow = (record: ICar) => {
     const carItem = data.filter((item) => item.id === record.id)[0]
-    dispatch(setEditableCarItem(carItem as unknown as ICarFromDB))
+    dispatch(changeActiveTab('0'))
+    dispatch(setEditableCarItem(carItem))
   }
 
   return (

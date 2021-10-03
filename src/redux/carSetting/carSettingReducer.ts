@@ -1,5 +1,6 @@
-import { ICar, ICarFromDB } from '../../interfaces/carInterfaces'
+import { ICar } from '../../interfaces/carInterfaces'
 import { ICheckbox } from '../../interfaces/inputInterfaces'
+import { getCarColorsCheckboxes } from '../../utils/carUtils'
 import * as types from './carActionTypes'
 
 interface ICarSettingState {
@@ -10,13 +11,13 @@ interface ICarSettingState {
   priceMax: string,
   color: string,
   categoryId: {
-    value: string,
+    name: string | undefined,
     id: string,
     description: string
   },
   image: ICar['thumbnail'] | null,
   colorCheckboxes: Array<ICheckbox>,
-  editableItem: ICarFromDB | null,
+  id: string | undefined,
   isNewCarSaved: boolean
 }
 
@@ -28,13 +29,13 @@ const INIT_STATE: ICarSettingState = {
   priceMax: '',
   color: '',
   categoryId: {
-    value: 'Эконом+',
+    name: 'Эконом+',
     description: 'Комфортные машины среднего класса',
     id: '61027a262aed9a0b9b8500c2'
   },
   image: null,
   colorCheckboxes: [],
-  editableItem: null,
+  id: undefined,
   isNewCarSaved: false
 }
 
@@ -88,7 +89,15 @@ const carSettingReducer = (
     case types.SET_EDITED_CAR_ITEM:
       return {
         ...state,
-        editableItem: action.payload
+        name: action.payload.name,
+        type: action.payload.categoryId?.name!,
+        description: action.payload.description!,
+        priceMin: action.payload.priceMin + '',
+        priceMax: action.payload.priceMax + '',
+        categoryId: action.payload.categoryId,
+        image: action.payload.thumbnail,
+        id: action.payload.id,
+        colorCheckboxes: getCarColorsCheckboxes(action.payload.colors),
       }
 
     case types.CAR_SETTING_RESET:

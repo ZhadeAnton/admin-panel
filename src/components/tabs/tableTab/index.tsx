@@ -23,6 +23,10 @@ export default function TableTab() {
 
   useEffect(() => {
     handleOrderFilter()
+
+    return () => {
+      handleOrderFilter()
+    }
   }, [currentPage])
 
   const handleOrderFilter = () => {

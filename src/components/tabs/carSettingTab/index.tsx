@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react'
 
 import './styles.scss'
 import { useAppDispatch, useAppSelector } from '../../../hooks/usePreTypedHooks'
-import { hideCarNotification } from '../../../redux/carSetting/carActionCreators'
+import {
+  carSettingReset,
+  hideCarNotification } from '../../../redux/carSetting/carActionCreators'
 import CarCard from '../../carCard'
 import CarSetting from '../../carSetting'
 import PanelTitle from '../../panel/panelTitle'
@@ -21,6 +23,10 @@ export default function CarSettingTab() {
         dispatch(hideCarNotification())
         setAlertVisible(false)
       }, 3000)
+    }
+
+    return () => {
+      dispatch(carSettingReset())
     }
   }, [isNewCarSaved])
 

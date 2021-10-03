@@ -1,4 +1,4 @@
-import { ICarFromDB } from '../../interfaces/carInterfaces'
+import { ICar } from '../../interfaces/carInterfaces'
 import * as types from './carsActionTypes'
 
 export const getCars = (category: string | null, currentPage: number)
@@ -7,7 +7,7 @@ export const getCars = (category: string | null, currentPage: number)
   payload: { category, currentPage }
 })
 
-export const getCarsSuccess = (cars: Array<ICarFromDB>, count: number)
+export const getCarsSuccess = (cars: Array<ICar>, count: number)
   : types.IGetCarsSuccess => ({
   type: types.GET_CARS_SUCCESS,
   payload: { cars, count }

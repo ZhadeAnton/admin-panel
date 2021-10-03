@@ -74,7 +74,7 @@ export default function CarSettingForm() {
       <div className='car-setting-form__categories'>
         <RadioGroup
           buttons={carSettingCategories}
-          selected={carSettings.categoryId.value}
+          selected={carSettings.categoryId.name}
           onChange={handleRadioButtonChange}
         />
       </div>
