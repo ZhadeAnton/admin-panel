@@ -1,3 +1,7 @@
+import {
+  EDIT_CAR_BY_ID_SUCCESS,
+  DELETE_CAR_BY_ID_SUCCESS,
+  ICarsTypes } from '../cars/carsActionTypes'
 import { ICar } from '../../interfaces/carInterfaces'
 import { ICheckbox } from '../../interfaces/inputInterfaces'
 import { getCarColorsCheckboxes } from '../../utils/carUtils'
@@ -39,8 +43,10 @@ const INIT_STATE: ICarSettingState = {
   isNewCarSaved: false
 }
 
+type carTypes = ICarsTypes | types.ICarSettingTypes
+
 const carSettingReducer = (
-    state = INIT_STATE, action: types.ICarSettingTypes): ICarSettingState => {
+    state = INIT_STATE, action: carTypes): ICarSettingState => {
   switch (action.type) {
     case types.CAR_SETTING_CHANGE:
       return {
@@ -74,6 +80,8 @@ const carSettingReducer = (
       }
 
     case types.CAR_SETTING_ADD_NEW_CAR_SUCCESS:
+    case EDIT_CAR_BY_ID_SUCCESS:
+    case DELETE_CAR_BY_ID_SUCCESS:
       return {
         ...state,
         ...INIT_STATE,

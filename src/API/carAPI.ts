@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IPostNewCar } from '../interfaces/carInterfaces';
+import { IDeleteCar, IPostNewCar } from '../interfaces/carInterfaces';
 import { getCarTableFilter } from '../utils/carUtils';
 
 const url = process.env.REACT_APP_DEFAULT_URL
@@ -34,6 +34,18 @@ export const editCar = ({accessToken, newCar}: IPostNewCar) => {
       'Authorization': `Bearer ${accessToken}`
     },
     data: newCar
+  })
+}
+
+export const deleteCar = ({accessToken, carId}: IDeleteCar) => {
+  return axios({
+    method: 'DELETE',
+    url: `${url}api/db/car/${carId}`,
+    headers: {
+      'X-Api-Factory-Application-Id': appId,
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessToken}`
+    }
   })
 }
 

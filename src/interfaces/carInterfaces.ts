@@ -23,3 +23,8 @@ export interface IPostNewCar {
   accessToken: string,
   newCar: ICar
 }
+
+export interface IDeleteCar {
+  accessToken: string,
+  carId: ICar['id']
+}

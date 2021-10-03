@@ -24,8 +24,27 @@ export interface IEditCarById {
   payload: { accessToken: string, newCar: ICar }
 }
 
+export const EDIT_CAR_BY_ID_SUCCESS = 'EDIT_CAR_BY_ID_SUCCESS'
+export interface IEditCarByIdSuccess {
+  type: typeof EDIT_CAR_BY_ID_SUCCESS
+}
+
+export const DELETE_CAR_BY_ID = 'DELETE_CAR_BY_ID'
+export interface IDeleteCarById {
+  type: typeof DELETE_CAR_BY_ID,
+  payload: { accessToken: string, carId: ICar['id'] }
+}
+
+export const DELETE_CAR_BY_ID_SUCCESS = 'DELETE_CAR_BY_ID_SUCCESS'
+export interface IDeleteCarByIdSuccess {
+  type: typeof DELETE_CAR_BY_ID_SUCCESS
+}
+
 export type ICarsTypes =
 | IGetCars
 | IGetCarsSuccess
 | ISetCarsCurrentPage
 | IEditCarById
+| IDeleteCarById
+| IEditCarByIdSuccess
+| IDeleteCarByIdSuccess

@@ -14,8 +14,17 @@ function* getCars({ payload }) {
 }
 
 function* editCarById({ payload }) {
-  const response = yield call(API.editCar, payload)
-  yield console.log(response)
+  yield call(API.editCar, payload)
+  yield put(actions.editCarByIdSuccess())
+  try {
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+function* deleteCarById({ payload }) {
+  yield call(API.deleteCar, payload)
+  yield put(actions.editCarByIdSuccess())
   try {
   } catch (error) {
     console.error(error)
@@ -30,9 +39,14 @@ function* onEditCarById() {
   yield takeLatest(types.EDIT_CAR_BY_ID, editCarById)
 }
 
+function* onDeleteCarById() {
+  yield takeLatest(types.DELETE_CAR_BY_ID, deleteCarById)
+}
+
 export default function* carsSagas() {
   yield all([
     call(onGetCars),
-    call(onEditCarById)
+    call(onEditCarById),
+    call(onDeleteCarById)
   ])
 }
