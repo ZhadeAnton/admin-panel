@@ -24,6 +24,19 @@ export const addNewCar = ({accessToken, newCar}: IPostNewCar) => {
   })
 }
 
+export const editCar = ({accessToken, newCar}: IPostNewCar) => {
+  return axios({
+    method: 'PUT',
+    url: `${url}api/db/car/${newCar.id}`,
+    headers: {
+      'X-Api-Factory-Application-Id': appId,
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessToken}`
+    },
+    data: newCar
+  })
+}
+
 export const getCarsByFilter = ({category, currentPage}: IGetCarsByFilter) => {
   const categoryId = getCarTableFilter(category)
 

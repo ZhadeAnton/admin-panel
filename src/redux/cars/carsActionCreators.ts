@@ -17,3 +17,9 @@ export const setCarsCurrentPage = (currentPage: number): types.ISetCarsCurrentPa
   type: types.SET_CARS_CURRENT_PAGE,
   payload: currentPage
 })
+
+export const editCarById = (accessToken: string, newCar: ICar)
+  : types.IEditCarById => ({
+  type: types.EDIT_CAR_BY_ID,
+  payload: { accessToken, newCar }
+})

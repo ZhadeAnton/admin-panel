@@ -18,7 +18,14 @@ export interface ISetCarsCurrentPage {
   payload: number
 }
 
+export const EDIT_CAR_BY_ID = 'EDIT_CAR_BY_ID'
+export interface IEditCarById {
+  type: typeof EDIT_CAR_BY_ID,
+  payload: { accessToken: string, newCar: ICar }
+}
+
 export type ICarsTypes =
 | IGetCars
 | IGetCarsSuccess
 | ISetCarsCurrentPage
+| IEditCarById

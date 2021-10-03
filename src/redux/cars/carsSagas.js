@@ -13,12 +13,26 @@ function* getCars({ payload }) {
   }
 }
 
+function* editCarById({ payload }) {
+  const response = yield call(API.editCar, payload)
+  yield console.log(response)
+  try {
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 function* onGetCars() {
   yield takeLatest(types.GET_CARS, getCars)
 }
 
+function* onEditCarById() {
+  yield takeLatest(types.EDIT_CAR_BY_ID, editCarById)
+}
+
 export default function* carsSagas() {
   yield all([
-    call(onGetCars)
+    call(onGetCars),
+    call(onEditCarById)
   ])
 }

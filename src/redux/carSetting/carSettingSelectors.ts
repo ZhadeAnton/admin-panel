@@ -43,7 +43,8 @@ export const newCarSelector = createSelector(
           description: carState.categoryId.description,
           id: carState.categoryId.id
         },
-        colors: carColors
+        colors: carColors,
+        id: carState.id
       }
     ) as unknown as ICar
 )

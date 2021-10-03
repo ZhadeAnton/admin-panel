@@ -6,6 +6,7 @@ import { addNewCar, carSettingReset } from '../../redux/carSetting/carActionCrea
 import {
   carSettingFieldsSelector,
   newCarSelector } from '../../redux/carSetting/carSettingSelectors'
+import { editCarById } from '../../redux/cars/carsActionCreators'
 import Button from '../button/buttonPrimary/index'
 import CarSettingForm from '../forms/carSettingForm'
 
@@ -21,8 +22,12 @@ export default function CarSetting() {
     dispatch(carSettingReset())
   }
 
-  const handleAddNewcar = () => {
-    dispatch(addNewCar({accessToken, newCar}))
+  const handleClickSave = () => {
+    if (newCar.id) {
+      dispatch(editCarById(accessToken, newCar))
+    } else {
+      dispatch(addNewCar({accessToken, newCar}))
+    }
   }
 
   return (
@@ -41,7 +46,7 @@ export default function CarSetting() {
             backgrond='blue'
             disabled={progress !== 100}
             className='car-setting__footer--button'
-            onClick={handleAddNewcar}
+            onClick={handleClickSave}
           >
             Сохранить
           </Button>
