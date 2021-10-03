@@ -47,12 +47,14 @@ export default function OrdersTab() {
 
   useEffect(() => {
     if (accessToken) handleOrderFilter()
+
     return () => handleOrderFilter()
   }, [currentPage])
 
   useEffect(() => {
     if (isError) {
       setAlertVisible(true)
+
       setTimeout(() => {
         dispatch(hideOrderNotification())
         setAlertVisible(false)

@@ -22,6 +22,13 @@ export default function InputPrimary(props: Props) {
     if (e.target.value) setError(false)
   }
 
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (props.isOnlyNumber && !/[0-9]/.test(event.key)) {
+      setError(true)
+      event.preventDefault()
+    }
+  }
+
   return (
     <div className='input-primary'>
       <input
@@ -30,12 +37,7 @@ export default function InputPrimary(props: Props) {
         value={props.value}
         autoComplete="on"
         maxLength={20}
-        onKeyPress={(event) => {
-          if (props.isOnlyNumber && !/[0-9]/.test(event.key)) {
-            setError(true)
-            event.preventDefault();
-          }
-        }}
+        onKeyPress={(event) => handleKeyPress(event)}
         onChange={handleChange}
         disabled={props.error?.condition}
         className='input-primary__input'

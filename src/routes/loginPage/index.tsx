@@ -1,29 +1,33 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import './styles.scss'
 import { useAppSelector } from '../../hooks/usePreTypedHooks'
-import useHistoryPush from '../../hooks/useHistory'
 import Logo from '../../assets/SVG/logo.svg'
 import LoginForm from '../../components/forms/loginForm'
 import Alert from '../../components/alert'
 
 export default function LoginPage() {
-  const historyPush = useHistoryPush()
+  const history = useHistory()
   const state = useAppSelector((state) => state)
-
   const [alertVisible, setAlertVisible] = useState(false)
   const authorizedUser = state.auth.authData
   const errorMessage = state.auth.errorMessage
 
   useEffect(() => {
     if (!authorizedUser) return
-    if (authorizedUser) historyPush(`/admin/${authorizedUser.userId}`)
+
+    if (authorizedUser) history.push(`/admin/${authorizedUser.userId}`)
   }, [authorizedUser])
 
   useEffect(() => {
     if (errorMessage) {
       setAlertVisible(true)
-      setTimeout(() => setAlertVisible(false), 3500)
+      const timer = setTimeout(() => setAlertVisible(false), 3500)
+
+      return () => {
+        clearTimeout(timer)
+      }
     }
   }, [errorMessage])
 

@@ -10,8 +10,12 @@ interface Props {
 }
 
 export default function CheckboxPrimary(props: Props) {
+  const handleClick = () => {
+    props.onRemoveItem({value: props.value, checked: props.checked})
+  }
+
   return (
-    <li onClick={() => props.onRemoveItem({value: props.value, checked: props.checked})}>
+    <li onClick={handleClick}>
       <input
         readOnly
         type="checkbox"

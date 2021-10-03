@@ -96,13 +96,12 @@ export default function OrderListItemDrawer() {
         </div>
       }
 
-
       {
         selectedOrder &&
         <div className='order-drawer__buttons'>
           <ButtonsMenu
             order={selectedOrder}
-            orderStatus={selectedOrder.orderStatusId.name}
+            status={selectedOrder.orderStatusId.name}
             onSetOrderComplete={handleSetOrderStatusComplete}
             onSetOrderCancel={handleSetOrderStatusCancel}
           />

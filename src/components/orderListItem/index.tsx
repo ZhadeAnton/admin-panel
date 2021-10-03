@@ -58,7 +58,7 @@ export default function OrderListItem(props: Props) {
           <ButtonsMenu
             order={props.order}
             isAdaptive
-            orderStatus={props.order.orderStatusId.name}
+            status={props.order.orderStatusId.name}
             onSetOrderComplete={props.onSetOrderComplete}
             onSetOrderCancel={props.onSetOrderCancel}
           />

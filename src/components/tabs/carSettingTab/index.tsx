@@ -21,6 +21,7 @@ export default function CarSettingTab() {
   useEffect(() => {
     if (isNewCarSaved) {
       setAlertVisible(true)
+
       setTimeout(() => {
         dispatch(hideCarNotification())
         setAlertVisible(false)
@@ -48,12 +49,12 @@ export default function CarSettingTab() {
         </div>
 
         { alertVisible &&
-            <Alert
-              type='success'
-              onClose={handleCloseAlert}
-            >
-              Успех! Машина сохранена
-            </Alert>
+          <Alert
+            type='success'
+            onClose={handleCloseAlert}
+          >
+            Успех! Машина сохранена
+          </Alert>
         }
       </section>
     </Spin>

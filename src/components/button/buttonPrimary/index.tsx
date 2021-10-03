@@ -7,10 +7,15 @@ interface Props {
   className?: string,
   disabled?: boolean,
   backgrond: 'blue' | 'red' | 'grey',
-  onClick: () => void
+  onClick?: () => void
 }
 
 export default function Button(props: Props) {
+  const buttonClassnames = `${props.className} button-primary${
+    props.backgrond === 'blue'
+    ? '-blue' : props.backgrond === 'red'
+    ? '-red' : '-grey'}`
+
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
     props.onClick!()
@@ -18,8 +23,7 @@ export default function Button(props: Props) {
 
   return (
     <button
-      className={`${props.className} button-primary${props.backgrond === 'blue'
-    ? '-blue' : props.backgrond === 'red' ? '-red' : '-grey'}`}
+      className={buttonClassnames}
       disabled={props.disabled}
       onClick={handleButtonClick}
     >

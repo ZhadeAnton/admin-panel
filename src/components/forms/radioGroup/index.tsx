@@ -12,8 +12,7 @@ interface Props {
 
 export default function RadioGroup(props: Props) {
   return (
-    <ul className='radio-buttons-group'
-    >
+    <ul className='radio-buttons-group'>
       {
         props.buttons?.map((button, i) => (
           <RadioButton
