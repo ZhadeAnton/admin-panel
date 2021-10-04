@@ -25,7 +25,7 @@ export default function ErrorComponent(props: Props) {
       </span>
 
       <div className='error-component__button'>
-        <Button backgrond='blue' onClick={() => console.log('back')}>
+        <Button backgrond='blue'>
           Назад
         </Button>
       </div>

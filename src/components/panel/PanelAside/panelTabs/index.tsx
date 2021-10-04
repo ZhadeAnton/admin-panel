@@ -47,6 +47,7 @@ export default function PanelTabs() {
   return (
     <Tabs
       defaultActiveKey={activeTab}
+      activeKey={activeTab}
       tabPosition="right"
       className='panel-tabs'
       onChange={handleChangeTab}

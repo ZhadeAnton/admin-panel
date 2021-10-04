@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Spin } from 'antd'
 
 import './styles.scss'
-import useHistoryPush from '../../hooks/useHistory'
 import { useAppSelector } from '../../hooks/usePreTypedHooks'
 import PanelHeader from '../../components/panel/panelHeader'
 import PanelAside from '../../components/panel/PanelAside'
@@ -10,15 +10,14 @@ import PanelFooter from '../../components/panel/panelFooter'
 import ErrorComponent from '../../components/errorComponent'
 
 export default function PanelPage({ CurrentTab }: any) {
-  const historyPush = useHistoryPush()
+  const history = useHistory()
   const state = useAppSelector((state) => state)
-
   const isAdmin = state.auth.authData
   const isLoading = state.auth.isLoading
   const isServerError = state.panel.isServerError
 
   useEffect(() => {
-    if (!isAdmin) historyPush('/login')
+    if (!isAdmin) history.push('/login')
   }, [isAdmin])
 
   return (

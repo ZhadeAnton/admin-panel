@@ -1,4 +1,4 @@
-import { ICarImage, INewCar } from '../../interfaces/carInterfaces'
+import { ICar } from '../../interfaces/carInterfaces'
 import { ICheckbox, IRadioButton } from '../../interfaces/inputInterfaces'
 
 export const CAR_SETTING_CHANGE = 'CAR_SETTING_CHANGE'
@@ -10,7 +10,7 @@ export interface ICarSettingChange {
 export const CAR_SETTING_SET_IMAGE = 'CAR_SETTING_SET_IMAGE'
 export interface ICarSettingSetImage {
   type: typeof CAR_SETTING_SET_IMAGE,
-  payload: ICarImage
+  payload: ICar['thumbnail']
 }
 
 export const CAR_SETTING_ADD_CHECKBOX = 'CAR_SETTING_ADD_CHECKBOX'
@@ -19,10 +19,16 @@ export interface ICarSettingAddCheckbox {
   payload: ICheckbox
 }
 
+export const CAR_SETTING_REMOVE_CHECKBOX = 'CAR_SETTING_REMOVE_CHECKBOX'
+export interface ICarSettingRemoveCheckbox {
+  type: typeof CAR_SETTING_REMOVE_CHECKBOX,
+  payload: ICheckbox
+}
+
 export const CAR_SETTING_ADD_NEW_CAR = 'CAR_SETTING_ADD_NEW_CAR'
 export interface ICarSettingAddNewCar {
   type: typeof CAR_SETTING_ADD_NEW_CAR,
-  payload: { accessToken: string, newCar: INewCar }
+  payload: { accessToken: string, newCar: ICar }
 }
 
 export const CAR_SETTING_ADD_NEW_CAR_SUCCESS = 'CAR_SETTING_ADD_NEW_CAR_SUCCESS'
@@ -41,6 +47,12 @@ export interface ICarSettingCategoryChange {
   payload: IRadioButton
 }
 
+export const SET_EDITED_CAR_ITEM = 'CAR_SETTING_SET_EDITED_CAR_ITEM'
+export interface ISetEditedCarItem {
+  type: typeof SET_EDITED_CAR_ITEM,
+  payload: ICar
+}
+
 export const CAR_SETTING_RESET = 'CAR_SETTING_RESET'
 export interface ICarSettingReset {
   type: typeof CAR_SETTING_RESET
@@ -50,8 +62,10 @@ export type ICarSettingTypes =
 | ICarSettingChange
 | ICarSettingSetImage
 | ICarSettingAddCheckbox
+| ICarSettingRemoveCheckbox
 | ICarSettingAddNewCar
 | ICarSettingAddNewCarSuccess
 | ICarSettingCategoryChange
 | ICarSettingHideNotification
+| ISetEditedCarItem
 | ICarSettingReset

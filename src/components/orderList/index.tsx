@@ -41,18 +41,16 @@ export default function OrderList(props: Props) {
     <section className='order-list'>
       {
         props.orders.length > 0
-        ? (
-          props.orders.map((order, i) => (
-            <OrderListItem
-              key={i}
-              order={order}
-              selected={order.id === selectedOrderId}
-              onSetOrderComplete={handleSetOrderStatusComplete}
-              onSetOrderCancel={handleSetOrderStatusCancel}
-              onSelectOrder={handleSelectOrder}
-            />
-          ))
-        )
+        ? props.orders.map((order, i) => (
+          <OrderListItem
+            key={i}
+            order={order}
+            selected={order.id === selectedOrderId}
+            onSetOrderComplete={handleSetOrderStatusComplete}
+            onSetOrderCancel={handleSetOrderStatusCancel}
+            onSelectOrder={handleSelectOrder}
+          />
+        ))
         : (
           <div className='order-list__empty'>
             <Empty />

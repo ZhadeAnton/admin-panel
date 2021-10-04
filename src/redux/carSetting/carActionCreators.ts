@@ -1,6 +1,6 @@
 import * as types from './carActionTypes'
 import { ICheckbox, IRadioButton } from './../../interfaces/inputInterfaces';
-import { ICarImage, IPostNewCar } from './../../interfaces/carInterfaces';
+import { ICar, IPostNewCar } from './../../interfaces/carInterfaces';
 
 export const carSettingChange = (type: string, value: string)
   : types.ICarSettingChange => ({
@@ -8,7 +8,7 @@ export const carSettingChange = (type: string, value: string)
   payload: { type, value }
 })
 
-export const setCarImage = (carImage: ICarImage): types.ICarSettingSetImage => ({
+export const setCarImage = (carImage: ICar['thumbnail']): types.ICarSettingSetImage => ({
   type: types.CAR_SETTING_SET_IMAGE,
   payload: carImage
 })
@@ -16,6 +16,12 @@ export const setCarImage = (carImage: ICarImage): types.ICarSettingSetImage => (
 export const addCarColorCheckbox = (checkbox: ICheckbox)
   : types.ICarSettingAddCheckbox => ({
   type: types.CAR_SETTING_ADD_CHECKBOX,
+  payload: checkbox
+})
+
+export const removeCarColorCheckbox = (checkbox: ICheckbox)
+  :types.ICarSettingRemoveCheckbox => ({
+  type: types.CAR_SETTING_REMOVE_CHECKBOX,
   payload: checkbox
 })
 
@@ -37,6 +43,11 @@ export const addNewCarSuccess = (): types.ICarSettingAddNewCarSuccess => ({
 
 export const hideCarNotification = (): types.ICarSettingHideNotification => ({
   type: types.CAR_SETTING_HIDE_NOTIFICATION
+})
+
+export const setEditableCarItem = (carItem: ICar): types.ISetEditedCarItem => ({
+  type: types.SET_EDITED_CAR_ITEM,
+  payload: carItem
 })
 
 export const carSettingReset = (): types.ICarSettingReset => ({

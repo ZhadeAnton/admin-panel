@@ -18,9 +18,7 @@ export default function CheckboxSecondary(props: Props) {
         className="checkbox-secondary"
       />
 
-      <label
-        className="checkbox-secondary__label"
-      >
+      <label className="checkbox-secondary__label">
         { props.label }
       </label>
     </div>

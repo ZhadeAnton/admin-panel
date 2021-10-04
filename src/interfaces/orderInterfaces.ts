@@ -52,3 +52,9 @@ export interface IOrderByFilter {
   accessToken: string,
   currentPage: number
 }
+
+export interface ISetOrderComplete {
+  accessToken: string,
+  order: IOrder,
+  newOrderId: IOrderStatus[] | undefined
+}

@@ -56,7 +56,7 @@ export default function OrderListItemDrawer() {
         <div className='order-drawer__image-wrapper'>
           <img
             className='order-drawer__image-wrapper--image'
-            src={getCarImage(selectedOrder?.carId)}
+            src={getCarImage(selectedOrder?.carId?.thumbnail?.path)}
             alt="car"
           />
         </div>
@@ -96,13 +96,12 @@ export default function OrderListItemDrawer() {
         </div>
       }
 
-
       {
         selectedOrder &&
         <div className='order-drawer__buttons'>
           <ButtonsMenu
             order={selectedOrder}
-            orderStatus={selectedOrder.orderStatusId.name}
+            status={selectedOrder.orderStatusId.name}
             onSetOrderComplete={handleSetOrderStatusComplete}
             onSetOrderCancel={handleSetOrderStatusCancel}
           />

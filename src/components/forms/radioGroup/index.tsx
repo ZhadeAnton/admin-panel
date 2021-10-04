@@ -12,14 +12,13 @@ interface Props {
 
 export default function RadioGroup(props: Props) {
   return (
-    <ul className='radio-buttons-group'
-    >
+    <ul className='radio-buttons-group'>
       {
         props.buttons?.map((button, i) => (
           <RadioButton
             key={i}
             button={button}
-            checked={props.selected === button.value}
+            checked={props.selected === button.name}
             onChange={props.onChange}
           />
         ))

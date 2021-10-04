@@ -6,6 +6,7 @@ import { addNewCar, carSettingReset } from '../../redux/carSetting/carActionCrea
 import {
   carSettingFieldsSelector,
   newCarSelector } from '../../redux/carSetting/carSettingSelectors'
+import { deleteCarById, editCarById } from '../../redux/cars/carsActionCreators'
 import Button from '../button/buttonPrimary/index'
 import CarSettingForm from '../forms/carSettingForm'
 
@@ -13,7 +14,7 @@ export default function CarSetting() {
   const dispatch = useAppDispatch()
   const state = useAppSelector((state) => state)
   const accessToken = state.auth.authData?.accessToken!
-  const newCar = newCarSelector(state)
+  const editedCar = newCarSelector(state)
   const checkedFields = carSettingFieldsSelector(state)
   const progress = Math.trunc((checkedFields.length / 6) * 100)
 
@@ -21,8 +22,16 @@ export default function CarSetting() {
     dispatch(carSettingReset())
   }
 
-  const handleAddNewcar = () => {
-    dispatch(addNewCar({accessToken, newCar}))
+  const handleClickSave = () => {
+    if (editedCar.id) {
+      dispatch(editCarById(accessToken, editedCar))
+    } else {
+      dispatch(addNewCar({accessToken, newCar: editedCar}))
+    }
+  }
+
+  const handleClickByDelete = () => {
+    dispatch(deleteCarById(accessToken, editedCar.id))
   }
 
   return (
@@ -41,7 +50,7 @@ export default function CarSetting() {
             backgrond='blue'
             disabled={progress !== 100}
             className='car-setting__footer--button'
-            onClick={handleAddNewcar}
+            onClick={handleClickSave}
           >
             Сохранить
           </Button>
@@ -55,13 +64,16 @@ export default function CarSetting() {
           </Button>
         </div>
 
-        <Button
-          backgrond='red'
-          onClick={() => console.log('red')}
-          className='car-setting__footer--button'
-        >
-          Удалить
-        </Button>
+        {
+          editedCar.id &&
+          <Button
+            backgrond='red'
+            onClick={handleClickByDelete}
+            className='car-setting__footer--button'
+          >
+            Удалить
+          </Button>
+        }
       </div>
     </section>
   )

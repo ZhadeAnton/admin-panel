@@ -6,7 +6,7 @@ import {
   getOrdersByFilters,
   getOrderStatuses,
   hideOrderNotification,
-  setOrderSuccentPage} from '../../../redux/order/orderActionCreators'
+  setOrderCurrentPage} from '../../../redux/order/orderActionCreators'
 import { useAppDispatch, useAppSelector } from '../../../hooks/usePreTypedHooks'
 import { carOrderSelects } from '../../../utils/orderUtils'
 import useWindowDimensions from '../../../hooks/useWindowDimensions'
@@ -38,15 +38,23 @@ export default function OrdersTab() {
   useEffect(() => {
     dispatch(getOrderStatuses(accessToken))
     dispatch(getOrdersByFilters({...values, accessToken, currentPage}))
+
+    return () => {
+      dispatch(getOrderStatuses(accessToken))
+      dispatch(getOrdersByFilters({...values, accessToken, currentPage}))
+    }
   }, [])
 
   useEffect(() => {
-    handleOrderFilter()
+    if (accessToken) handleOrderFilter()
+
+    return () => handleOrderFilter()
   }, [currentPage])
 
   useEffect(() => {
     if (isError) {
       setAlertVisible(true)
+
       setTimeout(() => {
         dispatch(hideOrderNotification())
         setAlertVisible(false)
@@ -59,7 +67,7 @@ export default function OrdersTab() {
   }
 
   const handleChangeOrderPage = (currentPage: number) => {
-    dispatch(setOrderSuccentPage(currentPage))
+    dispatch(setOrderCurrentPage(currentPage))
   }
 
   const handleOrderFilter = () => {
@@ -86,6 +94,7 @@ export default function OrdersTab() {
           />
 
           <OrderList orders={orders} />
+
           {
             windowDimentions.width < 1024 &&
             <OrderListItemDrawer />

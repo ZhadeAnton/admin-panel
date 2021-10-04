@@ -1,5 +1,7 @@
-import { ICarImage } from '../../interfaces/carInterfaces'
+import * as carTypes from '../cars/carsActionTypes'
+import { ICar } from '../../interfaces/carInterfaces'
 import { ICheckbox } from '../../interfaces/inputInterfaces'
+import { getCarColorsCheckboxes } from '../../utils/carUtils'
 import * as types from './carActionTypes'
 
 interface ICarSettingState {
@@ -10,13 +12,15 @@ interface ICarSettingState {
   priceMax: string,
   color: string,
   categoryId: {
-    value: string,
+    name: string | undefined,
     id: string,
     description: string
-  },
-  image: ICarImage | null,
+  } | null,
+  image: ICar['thumbnail'] | null,
   colorCheckboxes: Array<ICheckbox>,
-  isNewCarSaved: boolean
+  id: string | undefined,
+  isNewCarSaved: boolean,
+  isLoading: boolean
 }
 
 const INIT_STATE: ICarSettingState = {
@@ -27,17 +31,21 @@ const INIT_STATE: ICarSettingState = {
   priceMax: '',
   color: '',
   categoryId: {
-    value: 'Эконом+',
+    name: 'Эконом+',
     description: 'Комфортные машины среднего класса',
     id: '61027a262aed9a0b9b8500c2'
   },
   image: null,
   colorCheckboxes: [],
-  isNewCarSaved: false
+  id: undefined,
+  isNewCarSaved: false,
+  isLoading: false
 }
 
+type carTypes = carTypes.ICarsTypes | types.ICarSettingTypes
+
 const carSettingReducer = (
-    state = INIT_STATE, action: types.ICarSettingTypes): ICarSettingState => {
+    state = INIT_STATE, action: carTypes): ICarSettingState => {
   switch (action.type) {
     case types.CAR_SETTING_CHANGE:
       return {
@@ -70,7 +78,16 @@ const carSettingReducer = (
         isNewCarSaved: false
       }
 
+    case types.CAR_SETTING_REMOVE_CHECKBOX:
+      return {
+        ...state,
+        colorCheckboxes: state.colorCheckboxes
+            .filter((color) => color.value !== action.payload.value)
+      }
+
     case types.CAR_SETTING_ADD_NEW_CAR_SUCCESS:
+    case carTypes.EDIT_CAR_BY_ID_SUCCESS:
+    case carTypes.DELETE_CAR_BY_ID_SUCCESS:
       return {
         ...state,
         ...INIT_STATE,
@@ -81,6 +98,36 @@ const carSettingReducer = (
       return {
         ...state,
         isNewCarSaved: false
+      }
+
+    case types.SET_EDITED_CAR_ITEM:
+      return {
+        ...state,
+        name: action.payload.name,
+        type: action.payload.categoryId?.name!,
+        description: action.payload.description!,
+        priceMin: action.payload.priceMin + '',
+        priceMax: action.payload.priceMax + '',
+        categoryId: action.payload.categoryId ?? null,
+        image: action.payload.thumbnail,
+        id: action.payload.id,
+        colorCheckboxes: getCarColorsCheckboxes(action.payload.colors),
+      }
+
+    case types.CAR_SETTING_ADD_NEW_CAR:
+    case carTypes.EDIT_CAR_BY_ID:
+    case carTypes.DELETE_CAR_BY_ID:
+      return {
+        ...state,
+        isLoading: true
+      }
+
+    case types.CAR_SETTING_ADD_NEW_CAR_SUCCESS:
+    case carTypes.EDIT_CAR_BY_ID_SUCCESS:
+    case carTypes.DELETE_CAR_BY_ID_SUCCESS:
+      return {
+        ...state,
+        isLoading: false
       }
 
     case types.CAR_SETTING_RESET:

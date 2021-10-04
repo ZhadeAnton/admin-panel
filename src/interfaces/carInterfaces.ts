@@ -1,14 +1,8 @@
-export interface ICarImage {
-  size: number,
-  originalname: string,
-  mimetype: string,
-  path: string
-}
-
-export interface INewCar {
+export interface ICar {
   priceMax: number,
   priceMin: number,
   name: string,
+  number?: number,
   thumbnail: {
     size: number,
     originalname: string,
@@ -20,15 +14,22 @@ export interface INewCar {
     name: string,
     description: string,
     id: string
-  },
-  colors: Array<string>
-}
-
-export interface ICar extends INewCar {
-  id: string
+  } | null,
+  colors: Array<string>,
+  id?: string
 }
 
 export interface IPostNewCar {
   accessToken: string,
-  newCar: INewCar
+  newCar: ICar
+}
+
+export interface IDeleteCar {
+  accessToken: string,
+  carId: ICar['id']
+}
+
+export interface IGetCarsByFilter {
+  category: string,
+  currentPage: number
 }

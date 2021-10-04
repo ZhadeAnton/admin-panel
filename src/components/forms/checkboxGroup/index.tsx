@@ -5,7 +5,8 @@ import { ICheckbox } from '../../../interfaces/inputInterfaces'
 import CheckboxPrimary from '../../inputs/checkboxPrimary'
 
 interface Props {
-  checkboxes: Array<ICheckbox>
+  checkboxes: Array<ICheckbox>,
+  onRemoveItem: (checkbox: ICheckbox) => void
 }
 
 export default function CheckboxGroup(props: Props) {
@@ -16,6 +17,7 @@ export default function CheckboxGroup(props: Props) {
           <CheckboxPrimary
             key={i}
             {...checkbox}
+            onRemoveItem={props.onRemoveItem}
           />
         ))
       }

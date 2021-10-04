@@ -9,17 +9,20 @@ import MenuButton from '../../button/menuButton'
 
 interface Props {
   order: IOrder,
-  orderStatus: string,
+  status: string,
   onSetOrderComplete: (order: IOrder) => void,
   onSetOrderCancel: (order: IOrder) => void,
   isAdaptive?: boolean
 }
 
 export default function ButtonsMenu(props: Props) {
+  const isReadyButton = props.status !== 'Отмененые' && props.status !== 'Подтвержденные'
+  const isCancelButton = props.status !== 'Отмененые'
+
   return (
     <div className={`buttons-menu${props.isAdaptive ? '-adaptive' : ''}`}>
       {
-        props.orderStatus !== 'Отмененые' && props.orderStatus !== 'Подтвержденные' &&
+        isReadyButton &&
         <MenuButton
           icon={ready}
           onClick={() => props.onSetOrderComplete(props.order)}
@@ -29,7 +32,7 @@ export default function ButtonsMenu(props: Props) {
       }
 
       {
-        props.orderStatus !== 'Отмененые' &&
+        isCancelButton &&
         <MenuButton
           icon={cancel}
           onClick={() => props.onSetOrderCancel(props.order)}

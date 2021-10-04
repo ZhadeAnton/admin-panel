@@ -1,18 +1,31 @@
-import axios from 'axios';
-import { IPostNewCar } from '../interfaces/carInterfaces';
-
-const url = process.env.REACT_APP_DEFAULT_URL
-const appId = process.env.REACT_APP_APPLICATION_ID
+import axios from './axiosConfig'
+import { IDeleteCar, IGetCarsByFilter, IPostNewCar } from '../interfaces/carInterfaces';
+import { getCarTableFilter } from '../utils/carUtils';
 
 export const addNewCar = ({accessToken, newCar}: IPostNewCar) => {
-  return axios({
-    method: 'POST',
-    url: `${url}api/db/car/`,
+  return axios.post('db/car', newCar, {
     headers: {
-      'X-Api-Factory-Application-Id': appId,
-      'Content-Type': 'application/json',
       'Authorization': `Bearer ${accessToken}`
-    },
-    data: newCar
+    }
   })
+}
+
+export const editCar = ({accessToken, newCar}: IPostNewCar) => {
+  return axios.put(`db/car/${newCar.id}`, newCar, {
+    headers: {
+      'Authorization': `Bearer ${accessToken}`
+    }
+  })
+}
+
+export const deleteCar = ({accessToken, carId}: IDeleteCar) => {
+  return axios.delete(`db/car/${carId}`, {
+    headers: {
+      'Authorization': `Bearer ${accessToken}`
+    }
+  })
+}
+
+export const getCarsByFilter = ({category, currentPage}: IGetCarsByFilter) => {
+  return axios.get(`db/car?${getCarTableFilter(category)}limit=${7}&page=${currentPage}`)
 }

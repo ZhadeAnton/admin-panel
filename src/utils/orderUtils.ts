@@ -1,3 +1,5 @@
+import { ISetOrderComplete } from '../interfaces/orderInterfaces'
+
 const orderFilterByDate = [
   { value: 'За сегодня', title: 'За сегодня', field: 'createdAt' },
   { value: 'За неделю', title: 'За неделю', field: 'createdAt' },
@@ -64,4 +66,21 @@ export const getDateFilter = (date: string) => {
     case 'За год':
       return `createdAt[$gt]=${yearAgo}&`
   }
+}
+
+export const getOrderFilters = (
+    {createdAt, carId, cityId, statusId, currentPage}: any) => {
+  const carFilter = getCarIdFilter(carId)
+  const dateFilter = getDateFilter(createdAt)
+
+  // eslint-disable-next-line max-len
+  return `db/order?${dateFilter}${carFilter}cityId=${cityId}&orderStatusId=${statusId}&limit=${4}&page=${currentPage}`
+}
+
+export const getOrderStatusComplete = (order: ISetOrderComplete) => {
+  return {...order.order,
+    orderStatusId: {
+      id: order.newOrderId![0].id,
+      name: order.newOrderId![0].name
+    }}
 }
