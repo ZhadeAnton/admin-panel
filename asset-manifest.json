@@ -1,20 +1,40 @@
 {
   "files": {
-    "main.css": "/admin-panel/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/admin-panel/static/js/main.736c3f18.chunk.js",
-    "main.js.map": "/admin-panel/static/js/main.736c3f18.chunk.js.map",
-    "runtime-main.js": "/admin-panel/static/js/runtime-main.9f47f6b5.js",
-    "runtime-main.js.map": "/admin-panel/static/js/runtime-main.9f47f6b5.js.map",
-    "static/js/2.4213fcb5.chunk.js": "/admin-panel/static/js/2.4213fcb5.chunk.js",
-    "static/js/2.4213fcb5.chunk.js.map": "/admin-panel/static/js/2.4213fcb5.chunk.js.map",
+    "main.css": "/admin-panel/static/css/main.cc23c51a.chunk.css",
+    "main.js": "/admin-panel/static/js/main.f61c615d.chunk.js",
+    "main.js.map": "/admin-panel/static/js/main.f61c615d.chunk.js.map",
+    "runtime-main.js": "/admin-panel/static/js/runtime-main.acff38c8.js",
+    "runtime-main.js.map": "/admin-panel/static/js/runtime-main.acff38c8.js.map",
+    "static/css/2.786ae0dd.chunk.css": "/admin-panel/static/css/2.786ae0dd.chunk.css",
+    "static/js/2.e9435d2e.chunk.js": "/admin-panel/static/js/2.e9435d2e.chunk.js",
+    "static/js/2.e9435d2e.chunk.js.map": "/admin-panel/static/js/2.e9435d2e.chunk.js.map",
     "index.html": "/admin-panel/index.html",
-    "static/css/main.6dea0f05.chunk.css.map": "/admin-panel/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.4213fcb5.chunk.js.LICENSE.txt": "/admin-panel/static/js/2.4213fcb5.chunk.js.LICENSE.txt"
+    "static/css/2.786ae0dd.chunk.css.map": "/admin-panel/static/css/2.786ae0dd.chunk.css.map",
+    "static/css/main.cc23c51a.chunk.css.map": "/admin-panel/static/css/main.cc23c51a.chunk.css.map",
+    "static/js/2.e9435d2e.chunk.js.LICENSE.txt": "/admin-panel/static/js/2.e9435d2e.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/admin-panel/static/media/Roboto-Regular.a8d6ac03.ttf",
+    "static/media/cancel.ebfbf7fc.svg": "/admin-panel/static/media/cancel.ebfbf7fc.svg",
+    "static/media/car-mock.8a0a66a6.png": "/admin-panel/static/media/car-mock.8a0a66a6.png",
+    "static/media/doc.f2c1be7b.svg": "/admin-panel/static/media/doc.f2c1be7b.svg",
+    "static/media/doubleArrow.551085a2.svg": "/admin-panel/static/media/doubleArrow.551085a2.svg",
+    "static/media/dropdown.e709e3e8.svg": "/admin-panel/static/media/dropdown.e709e3e8.svg",
+    "static/media/edit.850cde24.svg": "/admin-panel/static/media/edit.850cde24.svg",
+    "static/media/error.9ae656e3.svg": "/admin-panel/static/media/error.9ae656e3.svg",
+    "static/media/grid.f1fc228f.svg": "/admin-panel/static/media/grid.f1fc228f.svg",
+    "static/media/list.738fc3f8.svg": "/admin-panel/static/media/list.738fc3f8.svg",
+    "static/media/logo.bc4f3ee8.svg": "/admin-panel/static/media/logo.bc4f3ee8.svg",
+    "static/media/notification.4a73f89d.svg": "/admin-panel/static/media/notification.4a73f89d.svg",
+    "static/media/panel.66a68a11.svg": "/admin-panel/static/media/panel.66a68a11.svg",
+    "static/media/pen.d8c541b1.svg": "/admin-panel/static/media/pen.d8c541b1.svg",
+    "static/media/person.83a584d6.svg": "/admin-panel/static/media/person.83a584d6.svg",
+    "static/media/ready.35a8bd90.svg": "/admin-panel/static/media/ready.35a8bd90.svg",
+    "static/media/search.c8b5b3af.svg": "/admin-panel/static/media/search.c8b5b3af.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.9f47f6b5.js",
-    "static/js/2.4213fcb5.chunk.js",
-    "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.736c3f18.chunk.js"
+    "static/js/runtime-main.acff38c8.js",
+    "static/css/2.786ae0dd.chunk.css",
+    "static/js/2.e9435d2e.chunk.js",
+    "static/css/main.cc23c51a.chunk.css",
+    "static/js/main.f61c615d.chunk.js"
   ]
 }
