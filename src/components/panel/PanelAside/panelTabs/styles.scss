@@ -1,0 +1,96 @@
+@import '../../../../scss/variables';
+@import '../../../../scss/mixins';
+
+%list-item {
+  width: 100%;
+  @include flex-align-center;
+  padding: 20px 25px;
+  cursor: pointer;
+  transition: $transition-sm;
+  border-bottom: 2px solid $grey-light-color;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 17px;
+  color: $blue-darl-color;
+
+  @media (max-width: getBreackpoint('md')) {
+    padding: $space-md $space-sm;
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  @media (max-width: 640px) {
+    padding: 20px 8px;
+  }
+
+  @media (max-width: getBreackpoint('vsm')) {
+    padding: 14px 9px;
+  }
+}
+
+.panel-tabs {
+  &__item {
+    @extend %list-item;
+   
+    &--image {
+      width: 16px;
+      height: 16px;
+      margin-right: 12px;
+   
+      svg path {
+       fill: $grey-light-3-color;
+      }
+    }
+   
+    &:hover {
+      background-color: $grey-light-color;
+    }
+  }
+
+  .ant-tabs-tab {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .ant-tabs-tab-btn {
+    width: 100% !important;
+  }
+
+  @media (max-width: getBreackpoint('md')) {
+    &__item {
+      &--image {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  @media (max-width: 640px) {
+    &__item {
+      &--title {
+        display: none;
+      }
+
+      &--image {
+        svg {
+          width: 14px;
+          height: 14px;
+         }
+      }
+    }
+  }
+}
+
+.ant-tabs > .ant-tabs-nav, .ant-tabs > div > .ant-tabs-nav {
+  width: 100% !important;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn .panel-tabs__item {
+  @extend %list-item;
+  color: $blue-color;
+  background-color: $grey-light-color;
+
+  svg path {
+    transition: $transition-sm;
+    fill: $blue-color;
+  }
+}

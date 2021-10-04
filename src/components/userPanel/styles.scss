@@ -1,0 +1,58 @@
+@import '../../scss/mixins';
+@import '../../scss/variables';
+
+.user-panel {
+  @include flex-align-center;
+  cursor: pointer;
+
+  &__name {
+    margin-left: 13px;
+    margin-right: auto;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: $blue-darl-2-color;
+  }
+
+  &__dropdown {
+    width: 100%;
+    height: 100%;
+    @include flex-center;
+    transition: $transition-sm;
+    padding: 0 25px;
+
+    svg {
+      width: 9px;
+      height: 5px;
+    }
+
+    &:hover {
+      background-color: $grey-light-color;
+    }
+  }
+
+  @media (max-width: getBreackpoint('md')) {
+    &__name {
+      font-size: 13px;
+      line-height: 16px;
+    }
+  }
+
+  @media (max-width: getBreackpoint('vsm')) {
+    &__name {
+      margin-left: $space-sm;
+      font-size: 11px;
+      line-height: 14px;
+    }
+
+    &__dropdown {
+      padding: 0 10px;
+    }
+  }
+}
+
+.ant-dropdown-menu-item {
+  @media (max-width: getBreackpoint('vsm')) {
+    font-size: 11px !important;
+  }
+}

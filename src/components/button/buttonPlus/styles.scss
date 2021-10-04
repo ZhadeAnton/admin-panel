@@ -1,0 +1,38 @@
+@import '../../../scss/variables';
+@import '../../../scss/mixins';
+
+.button-plus {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  transition: $transition-sm;
+  border-radius: 4px;
+  border: 1px solid $grey-light-2-color;
+  background-color: transparent;
+
+  &:after {
+    content: '';
+    @include abs-position(50%, auto, auto, 50%);
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 2px;
+    background-color: $grey-light-2-color;
+  }
+
+  &:before {
+    content: '';
+    @include abs-position(50%, auto, auto, 50%);
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 16px;
+    background-color: $grey-light-2-color;
+  }
+
+  &:hover {
+    border: 1px solid $primary-accent-color;
+
+    &:after, &:before {
+      border: 1px solid $primary-accent-color;
+    }
+  }
+}

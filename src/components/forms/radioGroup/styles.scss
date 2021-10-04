@@ -1,0 +1,10 @@
+@import '../../../scss/variables';
+
+.radio-buttons-group {
+  display: flex;
+  flex-wrap: wrap;
+
+  & > * {
+    margin-right: $space-sm;
+  }
+}

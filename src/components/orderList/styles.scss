@@ -1,0 +1,48 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.order-list {
+  padding: 16px 22px;
+  height: 520px;
+
+  & > * {
+    &:not(:last-child) {
+      margin-bottom: $space-lg;
+    }
+  }
+
+  &__empty {
+    height: 100%;
+    @include flex-center;
+  }
+
+  @media (max-width: getBreackpoint('lg')) {
+    padding: $space-md;
+    height: 440px;
+
+    & > * {
+      &:not(:last-child) {
+        margin-bottom: $space-md;
+      }
+    }
+  }
+
+  @media (max-width: getBreackpoint('md')) {
+    padding: $space-sm;
+    height: 370px;
+
+    & > * {
+      &:not(:last-child) {
+        margin-bottom: $space-sm;
+      }
+    }
+  }
+
+  @media (max-width: getBreackpoint('vsm')) {
+    height: 320px;
+  }
+
+  @media (max-width: 400px) {
+    height: 290px;
+  }
+}

@@ -1,0 +1,51 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.order-drawer {
+  &__image-wrapper {
+    @include flex-center;
+
+    &--image {
+      width: 240px;
+    }
+  }
+
+  &__info {
+    margin-top: $space-md;
+  }
+
+  &__price {
+    margin-top: $space-md;
+  }
+
+  &__checboxes {
+    margin-top: $space-md;
+
+    & > * {
+      &:not(:last-child) {
+        margin-bottom: $space-sm;
+      }
+    }
+  }
+
+  &__buttons {
+    width: 100%;
+    margin-top: $space-lg;
+  }
+
+  @media (max-width: getBreackpoint('vsm')) {
+    &__image-wrapper {
+      &--image {
+        width: 220px;
+      }
+    }
+  }
+
+  @media (max-width: 380px) {
+    &__image-wrapper {
+      &--image {
+        width: 190px;
+      }
+    }
+  }
+}

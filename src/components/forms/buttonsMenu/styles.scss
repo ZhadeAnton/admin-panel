@@ -1,0 +1,40 @@
+@import '../../../scss/variables';
+@import '../../../scss/mixins';
+
+%button-menu {
+  width: fit-content;
+  height: 24px;
+  @include flex-center;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid $grey-light-2-color;
+
+  & > * {
+    &:not(:first-child) {
+      border-left: 1px solid $grey-light-2-color;
+    }
+  }
+}
+
+.buttons-menu {
+  @extend %button-menu;
+
+  &-adaptive {
+    @extend %button-menu;
+
+    @media (max-width: 1300px) {
+      flex-direction: column;
+      height: auto;
+      
+      & > * {
+        min-width: 70px;
+        min-height: 26px;
+        border-left: none !important;
+  
+        &:not(:last-child) {
+          border-bottom: 1px solid $grey-light-2-color !important;
+        }
+      }
+    }
+  }
+}

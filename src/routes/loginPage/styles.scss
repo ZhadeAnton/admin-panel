@@ -4,6 +4,7 @@
 .login-page {
   height: 100vh;
   @include flex-justify-center;
+  position: relative;
   background-color: $grey-light-color;
 
   &__form-block {

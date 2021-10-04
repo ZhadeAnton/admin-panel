@@ -1,0 +1,81 @@
+@import '../../../scss/variables';
+@import '../../../scss/typography';
+@import '../../../scss/mixins';
+
+.panel-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 27px;
+  background-color: $white-color;
+
+  &__list {
+    @include flex-align-center;
+
+   &--item {
+     @extend %button-rules;
+     cursor: pointer;
+     font-weight: 400;
+     font-size: 14px;
+     line-height: 16px;
+     color: $blue-color;
+
+     &:not(:last-child) {
+       margin-right: $space-md;
+     }
+   } 
+  }
+
+  &__copyright {
+    margin-left: 10px;
+    font-weight: 500;
+    font-family: RobotoMedium;
+    font-size: 14px;
+    line-height: 16px;
+    color: $grey-strong-2-color;
+  }
+
+  @media (max-width: getBreackpoint('lg')) {
+    padding: 24px;
+
+    &__list {
+      @include flex-align-center;
+  
+     &--item {
+       font-size: 12px;
+     } 
+    }
+  
+    &__copyright {
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: getBreackpoint('md')) {
+    padding: $space-md;
+
+    &__list {
+      @include flex-align-center;
+  
+     &--item {
+       font-size: 10px;
+     } 
+    }
+  
+    &__copyright {
+      font-size: 10px;
+    }
+  }
+
+  @media (max-width: getBreackpoint('vsm')) {
+    padding: $space-md $space-sm;
+
+    &__copyright {
+      height: auto;
+      text-align: end;
+    }
+  }
+
+  @media (max-width: 370px) {
+    padding: $space-sm;
+  }
+}

@@ -1,0 +1,67 @@
+@import '../../../scss/variables';
+@import '../../../scss/mixins';
+
+.table-tab {
+  padding: 28px;
+
+  &__main {
+    margin-top: 30px;
+    border-radius: 9px;
+    background-color: $white-color;
+  }
+
+  @media (max-width: 1300px) {
+    padding: $space-md;
+  }
+
+  @media (max-width: 640px) {
+    padding: $space-sm;
+
+    &__main {
+      margin-top: $space-md;
+    }
+  }
+
+  @media (max-width: 460px) {
+    margin-top: 10px;
+  }
+}
+
+.ant-table-body {
+  overflow: auto scroll !important;
+  max-height: 500px;
+}
+
+.ant-table-thead > tr > th {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 13px;
+  border: none;
+  background-color: $white-color;
+}
+
+.ant-table-tbody > tr > td {
+  border: none;
+  vertical-align: middle;
+  padding: 10px;
+  font-size: 12px;
+  color: $grey-strong-2-color;
+
+  @media (max-width: 640px) {
+    padding: 12px;
+    font-size: 10px;
+  }
+
+  @media (max-width: 640px) {
+    padding: 12px;
+    font-size: 10px;
+  }
+
+  @media (max-width: 640px) {
+    padding: $space-sm;
+  }
+}
+
+.ant-table-thead > tr > th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
+  display: none;
+}
